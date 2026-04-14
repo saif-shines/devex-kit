@@ -19,7 +19,7 @@ npx skills add saif-shines/devex-kit
 ### Install via tessl
 
 ```bash
-tessl install saif-at-scalekit/authoring-cookbooks
+tessl install saif-shines/authoring-cookbooks
 ```
 
 ### Try locally (no install)
@@ -27,7 +27,7 @@ tessl install saif-at-scalekit/authoring-cookbooks
 Clone this repo and point your agent at the skill directly:
 
 ```bash
-git clone https://github.com/saif-at-scalekit/devex-kit
+git clone https://github.com/saif-shines/devex-kit
 ```
 
 Then in Claude Code:
