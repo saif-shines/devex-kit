@@ -13,7 +13,7 @@ Diagnostic skill for documentation quality — skimmability, writing clarity, an
 ### Install via skills.sh
 
 ```bash
-npx skills add saif-at-scalekit/authoring-cookbooks
+npx skills add saif-shines/devex-kit
 ```
 
 ### Install via tessl

@@ -1,6 +1,7 @@
 {
-  "name": "saif-at-scalekit/authoring-cookbooks",
-  "version": "1.0.0",
+  "name": "saif-shines/authoring-cookbooks",
+  "version": "1.0.1",
+  "summary": "Diagnose and fix documentation quality problems in cookbook-style writing — skimmability, writing clarity, and reader helpfulness.",
   "skills": {
     "authoring-cookbooks": {
       "path": "SKILL.md"
