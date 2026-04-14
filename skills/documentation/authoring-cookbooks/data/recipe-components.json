@@ -1,0 +1,82 @@
+{
+  "_meta": {
+    "description": "Standard components for documentation recipes, organized by tier and quality dimension",
+    "usage": "Reference when scaffolding recipe templates or auditing existing recipes for completeness"
+  },
+  "required_components": {
+    "all_tiers": [
+      "title_as_verb_phrase",
+      "use_this_when_statement",
+      "self_contained_code_example"
+    ],
+    "standard_and_deep": [
+      "dont_use_this_when",
+      "table_of_contents",
+      "troubleshooting_section",
+      "related_recipes"
+    ],
+    "deep_only": [
+      "tl_dr_opener",
+      "background_section",
+      "performance_considerations",
+      "prerequisites_with_install"
+    ]
+  },
+  "quality_signals": {
+    "skimmability": [
+      "Informative sentence titles (not abstract nouns)",
+      "Table of contents for 4+ sections",
+      "Paragraphs under 5 sentences",
+      "Bullets and tables for lists",
+      "Takeaways before procedure"
+    ],
+    "writing": [
+      "Standalone topic sentences (no 'building on this')",
+      "Topic word in first 2 words of topic sentences",
+      "No demonstrative pronouns referencing prior sentences",
+      "Right-branching sentence structure",
+      "Consistent heading case throughout"
+    ],
+    "helpfulness": [
+      "Abbreviations expanded on first use",
+      "Problem statement before code",
+      "Troubleshooting section present",
+      "No hardcoded secrets in code examples",
+      "Self-contained examples with minimal dependencies"
+    ]
+  },
+  "title_patterns": {
+    "good": [
+      "Authenticate users with OAuth 2.0",
+      "Streaming reduces time to first token by 50%",
+      "Handle rate limits with exponential backoff",
+      "Store API keys using environment variables",
+      "Batch requests to reduce API call volume"
+    ],
+    "avoid": [
+      "Authentication",
+      "Results",
+      "Overview",
+      "Usage",
+      "Notes",
+      "Introduction",
+      "Details"
+    ]
+  },
+  "abbreviations_to_expand": {
+    "API": "application programming interface",
+    "SDK": "software development kit",
+    "JWT": "JSON Web Token",
+    "OAuth": "Open Authorization",
+    "OIDC": "OpenID Connect",
+    "SSO": "single sign-on",
+    "SAML": "Security Assertion Markup Language",
+    "CLI": "command-line interface",
+    "SQL": "structured query language",
+    "REST": "representational state transfer",
+    "TLS": "Transport Layer Security",
+    "SSL": "Secure Sockets Layer",
+    "RAG": "retrieval-augmented generation",
+    "LLM": "large language model"
+  }
+}

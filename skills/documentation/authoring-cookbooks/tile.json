@@ -1,0 +1,9 @@
+{
+  "name": "saif-at-scalekit/authoring-cookbooks",
+  "version": "1.0.0",
+  "skills": {
+    "authoring-cookbooks": {
+      "path": "SKILL.md"
+    }
+  }
+}
