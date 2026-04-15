@@ -14,16 +14,29 @@ Assistive skill for **sidebar navigation**: group labels, item labels, and order
 
 ## Try it
 
-### Install via skills.sh
+### Install via [skills.sh](https://skills.sh) (Vercel Skills CLI)
+
+Installs from this repo’s `SKILL.md` files (both skills are discovered).
 
 ```bash
-npx skills add saif-shines/devex-kit
+# Install everything
+npx skills add saif-shines/devex-kit --yes
+
+# Or pick one skill
+npx skills add saif-shines/devex-kit --skill authoring-cookbooks --yes
+npx skills add saif-shines/devex-kit --skill journey-sidebar-labels --yes
+
+# Inspect without installing
+npx skills add saif-shines/devex-kit --list
 ```
 
-### Install via tessl
+### Install via [tessl](https://tessl.io)
+
+Each skill is published as its own tile (`tile.json` next to `SKILL.md`).
 
 ```bash
-tessl install saif-shines/authoring-cookbooks
+tessl install saif-shines/authoring-cookbooks --yes
+tessl install saif-shines/journey-sidebar-labels --yes
 ```
 
 ### Try locally (no install)
@@ -41,9 +54,9 @@ Then in Claude Code:
 /skills load ./skills/documentation/journey-sidebar-labels/SKILL.md
 ```
 
-### Use the skill
+### Use the skills
 
-Once installed, the skill activates automatically when you describe a documentation problem in Claude Code. Examples:
+**authoring-cookbooks** — once installed, it activates when you describe a documentation quality problem. Examples:
 
 **Diagnose existing docs:**
 ```
@@ -65,5 +78,15 @@ Review this recipe and tell me what's wrong with it: [paste recipe]
 Audit all the recipes in ./docs/recipes/ for quality issues.
 ```
 
-The skill will identify which of the seven quality states applies and give you specific, prioritized interventions — not a generic checklist.
+The skill maps issues to its seven quality states and suggests prioritized interventions.
+
+**journey-sidebar-labels** — use when restructuring or reviewing nav labels, for example:
+
+```
+Our product sidebar is alphabetical; reorder it as an implementation journey.
+```
+
+```
+Review these sidebar group labels for sentence case and journey order: [paste config excerpt]
+```
 
