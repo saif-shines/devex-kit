@@ -3,7 +3,7 @@ name: authoring-cookbooks
 description: Diagnose and fix documentation quality problems in cookbook-style writing — skimmability, writing clarity, and reader helpfulness.
 license: MIT
 metadata:
-  author: saif-at-scalekit
+  author: saif-shines
   version: "1.0"
   type: diagnostic
   mode: diagnostic+assistive

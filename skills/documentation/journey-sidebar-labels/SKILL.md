@@ -3,7 +3,7 @@ name: journey-sidebar-labels
 description: Audit and design documentation sidebar labels and section order so navigation follows a clear developer journey — concise labels, sentence case, and phase-aligned groups (reference model: Full stack auth sidebar in Scalekit developer-docs).
 license: MIT
 metadata:
-  author: saif-at-scalekit
+  author: saif-shines
   version: "1.0"
   type: diagnostic
   mode: assistive
