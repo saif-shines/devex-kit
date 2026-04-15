@@ -8,6 +8,10 @@ A collection of agent skills for developer experience work.
 
 Diagnostic skill for documentation quality — skimmability, writing clarity, and reader helpfulness.
 
+### journey-sidebar-labels
+
+Assistive skill for **sidebar navigation**: group labels, item labels, and order should follow a **developer journey** (setup → core loop → scale → ship). Includes a reference model derived from Scalekit **Full stack auth** in [`sidebar.config.ts`](https://github.com/scalekit-inc/developer-docs/blob/main/src/configs/sidebar.config.ts) and label rules from the docs standards (concise, sentence case, outcome-focused).
+
 ## Try it
 
 ### Install via skills.sh
@@ -34,6 +38,7 @@ Then in Claude Code:
 
 ```
 /skills load ./skills/documentation/authoring-cookbooks/SKILL.md
+/skills load ./skills/documentation/journey-sidebar-labels/SKILL.md
 ```
 
 ### Use the skill

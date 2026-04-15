@@ -1,0 +1,10 @@
+{
+  "name": "saif-shines/journey-sidebar-labels",
+  "version": "1.0.0",
+  "summary": "Shape documentation sidebar labels and group order so navigation follows a clear developer journey — modeled on Scalekit Full stack auth and journey-focused docs standards.",
+  "skills": {
+    "journey-sidebar-labels": {
+      "path": "SKILL.md"
+    }
+  }
+}

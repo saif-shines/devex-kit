@@ -1,0 +1,60 @@
+{
+  "$schema_comment": "Reference: scalekit-inc/developer-docs src/configs/sidebar.config.ts — first sidebar entry (id: authenticate). Labels and order reflect the intended developer journey.",
+  "product_sidebar": {
+    "top_level_label": "Full stack auth",
+    "top_level_id": "authenticate",
+    "journey_groups": [
+      {
+        "group_label": "Getting started",
+        "journey_phase": "Onboard and orient — account setup, fastest path to value, examples",
+        "typical_items": [
+          "Set up Scalekit (implicit slug)",
+          "Quickstart: Full stack auth",
+          "Code samples"
+        ]
+      },
+      {
+        "group_label": "User authentication",
+        "journey_phase": "Core login lifecycle — implement, complete, session, logout, related dashboard topics",
+        "notes": "Heavy pages grouped under one phase so readers follow the auth loop in order."
+      },
+      {
+        "group_label": "Manage auth methods",
+        "journey_phase": "Configure how users sign in after basics work"
+      },
+      {
+        "group_label": "Manage users & orgs",
+        "journey_phase": "Directory, provisioning, org modeling, hosted UI — after auth paths exist"
+      },
+      {
+        "group_label": "Authorization",
+        "journey_phase": "Roles, permissions, access control — after identity exists"
+      },
+      {
+        "group_label": "Auth across multiple apps",
+        "journey_phase": "Multi-app and client topology"
+      },
+      {
+        "group_label": "Add auth to your APIs",
+        "journey_phase": "Machine and API consumption patterns"
+      },
+      {
+        "group_label": "Customize",
+        "journey_phase": "Branding, domains, email, attributes, external deep links where applicable"
+      },
+      {
+        "group_label": "View auth integrations",
+        "journey_phase": "Discovery — single link row to integration catalog"
+      },
+      {
+        "group_label": "Go Live",
+        "journey_phase": "Launch readiness, observability, migration"
+      }
+    ]
+  },
+  "label_conventions": {
+    "quickstart_pattern": "Quickstart: <Product or area name>",
+    "section_headers": "Name the phase of the journey (what the reader is doing next), not a generic bucket",
+    "ordering_principle": "Roughly: setup → first success → deepen product area → adjacent concerns (APIs, customization) → ship"
+  }
+}
