@@ -1,0 +1,56 @@
+{
+  "_meta": {
+    "site": "<your-site-domain>",
+    "repo": "<your-org>/<your-docs-repo>",
+    "note": "Fill in this file and drop it at <your-docs-repo>/.devex-kit/placement-map.json. The docs-contribution-router skill reads this file before falling back to the bundled Scalekit sample."
+  },
+  "content_root": "src/content/docs/",
+  "content_types": {
+    "cookbook": {
+      "description": "<Describe what a cookbook means on your docs site>",
+      "folder": "<path-relative-to-content_root>/",
+      "filename_pattern": "<pattern>.mdx",
+      "frontmatter_type": "<starlight | starlight-blog | custom>",
+      "sidebar_auto": false,
+      "note": "<Any notes about how cookbooks appear in navigation>"
+    },
+    "quickstart": {
+      "description": "<Describe what a quickstart means on your docs site>",
+      "folder": "<product>/",
+      "filename_pattern": "quickstart.mdx",
+      "frontmatter_type": "starlight",
+      "sidebar_auto": false
+    },
+    "how-to-guide": {
+      "description": "<Describe how-to guides on your docs site>",
+      "folder": "<product>/guides/",
+      "filename_pattern": "<task>.mdx",
+      "frontmatter_type": "starlight",
+      "sidebar_auto": false
+    },
+    "concept-page": {
+      "description": "<Describe concept pages on your docs site>",
+      "folder": "<product>/concepts/",
+      "filename_pattern": "<concept>.mdx",
+      "frontmatter_type": "starlight",
+      "sidebar_auto": false
+    },
+    "reference": {
+      "description": "<Describe reference pages on your docs site>",
+      "folder": "reference/",
+      "filename_pattern": "<topic>.mdx",
+      "frontmatter_type": "starlight",
+      "sidebar_auto": false
+    }
+  },
+  "products": {
+    "<product-key>": {
+      "label": "<Human-readable product name>",
+      "root": "<product-folder>/",
+      "topic_id": "<sidebar topic id or null>"
+    }
+  },
+  "special_paths": {
+    "<key>": "<description or path>"
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "_meta": {
+    "site": "docs.scalekit.com",
+    "repo": "scalekit-inc/developer-docs",
+    "codeowners": "CODEOWNERS (2 approvals required for critical paths as of 2026-05)",
+    "note": "This is the Scalekit-specific escalation trigger map. External consumers: copy _template-escalation-triggers.json to <your-docs-repo>/.devex-kit/escalation-triggers.json."
+  },
+  "severity_levels": {
+    "low": "No escalation. Standard PR review. Merge after one approval.",
+    "medium": "Mention the change in the PR description. One reviewer is sufficient but should be aware of the impact.",
+    "high": "Tag a maintainer. Explain the journey impact in the PR description. Do not merge without maintainer sign-off.",
+    "critical": "Requires 2 CODEOWNER approvals (enforced by branch protection). Do not merge without it. Explain the full impact."
+  },
+  "triggers": [
+    {
+      "path_glob": "src/content/docs/cookbooks/**",
+      "change_types": ["add", "edit"],
+      "severity": "low",
+      "reason": "New cookbook recipes are standalone and do not affect navigation or other pages."
+    },
+    {
+      "path_glob": "src/content/docs/**/*.mdx",
+      "change_types": ["edit"],
+      "severity": "low",
+      "reason": "Copy changes, frontmatter fixes, and content edits to existing pages."
+    },
+    {
+      "path_glob": "src/content/docs/**/*.mdx",
+      "change_types": ["add"],
+      "severity": "medium",
+      "reason": "New pages require a sidebar entry and may affect journey ordering. Flag in PR description.",
+      "pr_note": "Include: which product journey this page belongs to, where in the sidebar it should appear, and whether it replaces or extends existing content."
+    },
+    {
+      "path_glob": "src/configs/sidebar.config.ts",
+      "change_types": ["edit"],
+      "severity": "high",
+      "reason": "Sidebar changes affect navigation for all readers. Group label renames and reorderings change the perceived developer journey.",
+      "pr_note": "Include: which groups or items changed, the before/after label or order, and whether any redirect is needed for changed URL patterns."
+    },
+    {
+      "path_glob": "src/configs/sidebar.config.ts",
+      "change_types": ["edit"],
+      "pattern_within_file": "new top-level topic id",
+      "severity": "critical",
+      "reason": "New top-level topics change the primary navigation structure and secondary nav wiring.",
+      "pr_note": "Include: the new topic ID, the URL prefix, the secondary nav entry, and a description of the new product area's place in the overall journey."
+    },
+    {
+      "path_glob": "src/configs/secondary-nav.config.ts",
+      "change_types": ["edit", "add"],
+      "severity": "critical",
+      "reason": "Secondary nav changes affect the top-level tab bar visible on every page."
+    },
+    {
+      "path_glob": "src/configs/redirects.config.ts",
+      "change_types": ["edit", "add"],
+      "severity": "high",
+      "reason": "Redirect rules affect SEO and external links. Missing redirects break bookmarks and search rankings.",
+      "pr_note": "Include: old path, new path, and whether the old path was externally published (in changelogs, social posts, partner docs)."
+    },
+    {
+      "path_glob": "src/components/overrides/**",
+      "change_types": ["edit", "add"],
+      "severity": "critical",
+      "reason": "Overrides control the visual shell (Head, Header, Footer, PageSidebar, PageTitle, MarkdownContent, Banner) — changes affect every page."
+    },
+    {
+      "path_glob": "astro.config.mjs",
+      "change_types": ["edit"],
+      "pattern_within_file": "plugins section",
+      "severity": "critical",
+      "reason": "Plugin changes affect build behavior, link validation, and deployed features site-wide."
+    },
+    {
+      "path_glob": "src/components/templates/agent-connectors/_setup-*.mdx",
+      "change_types": ["add", "edit"],
+      "severity": "low",
+      "reason": "Setup templates are hand-authored and merged without escalation. Run pnpm run sync-agent-connectors after editing."
+    },
+    {
+      "path_glob": "src/components/templates/agent-connectors/_usage-*.mdx",
+      "change_types": ["add", "edit"],
+      "severity": "low",
+      "reason": "Usage templates are hand-authored and merged without escalation. Run pnpm run sync-agent-connectors after editing."
+    },
+    {
+      "path_glob": "src/content/docs/agentkit/connectors/**",
+      "change_types": ["edit"],
+      "severity": "high",
+      "reason": "These are generated files. Direct edits are a signal that the sync workflow was bypassed and will be overwritten.",
+      "pr_note": "Do not edit generated connector pages directly. See agent-connector-flow.md for the correct workflow."
+    },
+    {
+      "path_glob": "src/configs/llms.config.ts",
+      "change_types": ["edit"],
+      "severity": "medium",
+      "reason": "LLM config affects the llms.txt feed consumed by AI assistants and developer tools."
+    }
+  ]
+}

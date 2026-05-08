@@ -1,0 +1,30 @@
+{
+  "_meta": {
+    "site": "<your-site-domain>",
+    "repo": "<your-org>/<your-docs-repo>",
+    "codeowners": "<path to your CODEOWNERS file and approval requirements>",
+    "note": "Fill in this file and drop it at <your-docs-repo>/.devex-kit/escalation-triggers.json. The docs-contribution-router skill reads this file before falling back to the bundled Scalekit sample."
+  },
+  "severity_levels": {
+    "low": "<Describe what low severity means and the required action>",
+    "medium": "<Describe what medium severity means and the required action>",
+    "high": "<Describe what high severity means and the required action>",
+    "critical": "<Describe what critical severity means and the required action>"
+  },
+  "triggers": [
+    {
+      "path_glob": "<glob pattern matching sensitive files, e.g. src/configs/sidebar.config.ts>",
+      "change_types": ["add", "edit", "delete"],
+      "severity": "high",
+      "reason": "<Why this path is sensitive and what breaks when it changes without review>",
+      "pr_note": "<What the contributor must include in their PR description>"
+    },
+    {
+      "path_glob": "<another glob pattern>",
+      "change_types": ["edit"],
+      "severity": "critical",
+      "reason": "<Why this path requires the highest level of review>",
+      "pr_note": "<Required PR description content>"
+    }
+  ]
+}

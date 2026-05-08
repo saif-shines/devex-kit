@@ -1,0 +1,94 @@
+{
+  "_meta": {
+    "site": "docs.scalekit.com",
+    "repo": "scalekit-inc/developer-docs",
+    "note": "This is the Scalekit-specific placement map. External consumers: copy _template-placement-map.json to <your-docs-repo>/.devex-kit/placement-map.json and fill in your own folders."
+  },
+  "content_root": "src/content/docs/",
+  "content_types": {
+    "cookbook": {
+      "description": "Standalone recipe solving one specific implementation problem. Independently useful.",
+      "folder": "cookbooks/",
+      "filename_pattern": "<task-as-search-query>.mdx",
+      "frontmatter_type": "starlight-blog",
+      "sidebar_auto": true,
+      "note": "No sidebar.config.ts entry needed. starlight-blog auto-lists at /cookbooks/."
+    },
+    "quickstart": {
+      "description": "First experience with a product — shortest path to a working result.",
+      "folder": "<product>/",
+      "filename_pattern": "quickstart.mdx",
+      "frontmatter_type": "starlight",
+      "sidebar_auto": false,
+      "note": "One per product. If one exists, update it rather than creating a variant."
+    },
+    "how-to-guide": {
+      "description": "Step-by-step task within a product journey. Uses <Steps>.",
+      "folder": "<product>/guides/",
+      "filename_pattern": "<imperative-task>.mdx",
+      "frontmatter_type": "starlight",
+      "sidebar_auto": false
+    },
+    "concept-page": {
+      "description": "Explains why something works, architecture, mental models. No procedure.",
+      "folder": "<product>/concepts/",
+      "filename_pattern": "<concept-noun>.mdx",
+      "frontmatter_type": "starlight",
+      "sidebar_auto": false
+    },
+    "reference": {
+      "description": "Lookup data: API shapes, event schemas, error codes, config options.",
+      "folder": "reference/",
+      "filename_pattern": "<topic>.mdx",
+      "frontmatter_type": "starlight",
+      "sidebar_auto": false
+    },
+    "integration-guide": {
+      "description": "How to connect a third-party provider with a product feature.",
+      "folder": "guides/integrations/<category>/<provider>/",
+      "filename_pattern": "index.mdx",
+      "frontmatter_type": "starlight",
+      "sidebar_auto": false,
+      "note": "Update the relevant integrations index page after adding."
+    }
+  },
+  "products": {
+    "authenticate": {
+      "label": "SaaSKit (Full stack auth)",
+      "root": "authenticate/fsa/",
+      "topic_id": "authenticate"
+    },
+    "agentkit": {
+      "label": "AgentKit",
+      "root": "agentkit/",
+      "topic_id": "connect"
+    },
+    "mcp": {
+      "label": "MCP Auth",
+      "root": "mcp/",
+      "topic_id": "mcp"
+    },
+    "sso": {
+      "label": "Modular SSO",
+      "root": "sso/",
+      "topic_id": "modular-sso"
+    },
+    "directory": {
+      "label": "Modular SCIM",
+      "root": "directory/",
+      "topic_id": "modular-scim"
+    },
+    "cross-cutting": {
+      "label": "Guides (cross-product)",
+      "root": "guides/",
+      "topic_id": null
+    }
+  },
+  "special_paths": {
+    "agent_connectors_generated": "src/content/docs/agentkit/connectors/",
+    "agent_connectors_templates": "src/components/templates/agent-connectors/",
+    "api_spec": "public/api/",
+    "cookbooks": "src/content/docs/cookbooks/",
+    "integration_guides": "src/content/docs/guides/integrations/"
+  }
+}

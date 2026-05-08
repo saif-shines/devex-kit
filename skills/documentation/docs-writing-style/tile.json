@@ -1,0 +1,10 @@
+{
+  "name": "saif-shines/docs-writing-style",
+  "version": "1.0.0",
+  "summary": "Two-mode writing guide for documentation contributors. Handoff mode exports a paste-ready style prompt for coding agents. Review mode runs a quality rubric against a draft and reports findings in priority order.",
+  "skills": {
+    "docs-writing-style": {
+      "path": "SKILL.md"
+    }
+  }
+}
