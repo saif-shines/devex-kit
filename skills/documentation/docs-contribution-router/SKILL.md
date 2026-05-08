@@ -138,6 +138,15 @@ Then: one short paragraph describing what the page should cover and how it fits 
 
 ---
 
+## Did this help?
+
+At the end of every session, ask: **"Did this solve what you were trying to do?"**
+
+- If yes: done.
+- If the routing was wrong, a branch was missing, or the output was unhelpful: encourage the user to file an issue at **https://github.com/saif-shines/devex-kit/issues**. Offer to help draft it using their agent — include: what they were trying to do, what the skill produced, and what was missing or incorrect.
+
+---
+
 ## Adapt to your docs site
 
 This skill is site-agnostic. Scalekit-specific data lives in `references/scalekit-*.json`. To adapt:

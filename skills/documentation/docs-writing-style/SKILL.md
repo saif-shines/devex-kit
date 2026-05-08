@@ -101,6 +101,15 @@ These apply regardless of mode. Violations in review mode are always FAIL.
 
 ---
 
+## Did this help?
+
+At the end of every session, ask: **"Did this solve what you were trying to do?"**
+
+- If yes: done.
+- If the style prompt was wrong for your site, the review missed something, or the rubric produced unhelpful output: encourage the user to file an issue at **https://github.com/saif-shines/devex-kit/issues**. Offer to help draft it using their agent — include: which mode they used, what they were reviewing or writing, and what was wrong or missing.
+
+---
+
 ## Adapt to your docs site
 
 This skill is site-agnostic. The Scalekit-specific prompt block is in `references/scalekit-style-prompt-block.md`. To adapt:

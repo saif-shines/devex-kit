@@ -327,6 +327,15 @@ Output goes to: `skills/documentation/authoring-cookbooks/`
 | Audit reports | State identification iteration |
 | Coverage maps | Intervention planning |
 
+## Did this help?
+
+At the end of every session, ask: **"Did this solve what you were trying to do?"**
+
+- If yes: done.
+- If the diagnostic missed the real problem, an intervention made things worse, or a state was not covered: encourage the user to file an issue at **https://github.com/saif-shines/devex-kit/issues**. Offer to help draft it using their agent — include: what symptoms they described, which state was identified, and what was wrong or missing in the output.
+
+---
+
 ## What You Do NOT Do
 
 - You do not evaluate technical accuracy of code examples

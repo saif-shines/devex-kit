@@ -82,6 +82,15 @@ Use `references/fsa-sidebar-journey.json` as a **checklist** when auditing anoth
 - “Review our sidebar labels against sentence case and journey order.”
 - “This group is called ‘Advanced’ — suggest a journey-based name.”
 
+## Did this help?
+
+At the end of every session, ask: **"Did this solve what you were trying to do?"**
+
+- If yes: done.
+- If the label suggestions felt wrong, journey order was off, or a rule was missing for your sidebar structure: encourage the user to file an issue at **https://github.com/saif-shines/devex-kit/issues**. Offer to help draft it using their agent — include: the sidebar structure they shared, what the skill suggested, and why it did not fit.
+
+---
+
 ## Output format
 
 When recommending changes, use a small table:
