@@ -36,6 +36,44 @@ Assistive skill for **sidebar navigation**: group labels, item labels, and order
 
 ---
 
+## Using in Claude Code
+
+Once installed, invoke any skill with its slash command directly in Claude Code:
+
+```
+/docs-contribution-router
+/docs-writing-style
+/authoring-cookbooks
+/journey-sidebar-labels
+```
+
+Example sessions:
+
+```
+/docs-contribution-router I have a customer issue to document — users are confused
+about how session tokens are revoked when an org is disabled. Where does this go?
+```
+
+```
+/docs-writing-style handoff mode. I'm writing a how-to guide for agent auth in Node.js.
+```
+
+```
+/docs-writing-style review mode. [paste your MDX draft or give a file path]
+```
+
+```
+/authoring-cookbooks My cookbook has plenty of content but readers say it's hard to follow.
+```
+
+```
+/journey-sidebar-labels Review these sidebar labels for sentence case and journey order: [paste]
+```
+
+Claude Code loads the skill and routes your request automatically. You do not need to explain the skill's rules — just describe what you are trying to do.
+
+---
+
 ## Try it
 
 ### Install via [skills.sh](https://skills.sh) (Vercel Skills CLI)
