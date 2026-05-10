@@ -48,6 +48,9 @@ New information to document
 | Same Aside content appears on 2+ pages | Consolidate into one dedicated page or concept page; link from each |
 | Aside answers a recurring support question | Promote to FAQ `<details>` block or cookbook recipe |
 | Aside contradicts or complicates the main procedure | Restructure the procedure; the conflict is a sign the page has a clarity problem |
+| Aside targets a different persona than the page's reader | Do not add it. Place the content on the page whose reader needs it instead |
+
+**Persona mismatch is the most common agent mistake.** A coding agent that finds a related problem (e.g., missing redirect URI config) will try to fix it by adding an Aside to whatever page it is already editing — even when that page is read by a different persona (e.g., an IT admin configuring an IdP, not a developer registering callback URLs). Before adding any content to a page, ask: *who reads this page, and is this content for them?* If not, the content belongs on a different page — find that page and put it there, or flag it as a separate contribution.
 
 Pages that accumulate Asides become unmaintainable. Each new Aside adds reading tax for every future visitor. When in doubt, promote.
 
