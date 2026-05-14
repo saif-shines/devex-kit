@@ -34,6 +34,7 @@ Apply these to every **group** (`label` on a nested section) and **leaf** (page 
 | Focus | **Outcome- or object-focused** — what the reader does or what they configure |
 | Consistency with pages | **Match the page title’s meaning**; shorten for the sidebar when the title is long |
 | Specificity | **Avoid bare-noun labels** that could describe multiple unrelated pages. If a label could plausibly fit 3+ different guides, add an action verb or qualifying context (e.g. "Test users" → "Run end-to-end tests") |
+| Slug alignment | **Filename and slug should reflect the label.** When a label changes, rename the file to match (e.g. `test-users.mdx` → `run-e2e-tests.mdx`). A mismatched slug undermines the label's clarity in URLs and link previews |
 | Quickstarts | Use the pattern **`Quickstart: <Name>`** when the page is the primary onboarding path for that product or area |
 
 Avoid generic section titles that could mean anything (“Overview”, “Basics”, “More”) unless the product truly has a single hub page and the name is unavoidable — prefer journey language (“Getting started”, “Go Live”) or specific objects (“User authentication”, “Authorization”).
