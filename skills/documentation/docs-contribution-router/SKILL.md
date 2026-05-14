@@ -58,11 +58,15 @@ If the contributor wants to change what appears in the API reference (not just u
 
 Key facts:
 - To add setup instructions: create `_setup-<slug>.mdx` in the templates directory.
-- To add code examples: create `_usage-<slug>.mdx` in the same directory.
-- To inject a custom section at a specific position: create `_section-<hook>-<slug>-<topic>.mdx`.
-- Hand-edit only `_setup-*`, `_usage-*`, and `_section-*` template files — never generated pages or data files.
+- To add common workflows: create `_section-after-setup-<slug>-common-workflows.mdx` with `export const sectionTitle = 'Common workflows'` at the top.
+- To add a connector-specific quickstart: create `_quickstart-<slug>.mdx` (overrides the generic quickstart).
+- To inject a custom section at a specific position: create `_section-<hook>-<slug>-<topic>.mdx` with `export const sectionTitle = '...'` at the top.
+- To curate "What you can do" bullets: add an entry to `src/data/agent-connectors/capabilities.json`.
+- For non-OAuth connectors: create `_section-after-authentication-<slug>-auth.mdx` for a custom auth explanation.
+- Hand-edit only `_setup-*`, `_quickstart-*`, and `_section-*` template files — never generated pages or data files.
 - After editing templates, run the sync script to regenerate.
 - Review the git diff before committing. Question any unexpected connector removals or large-scale changes.
+- Template files also protect connector pages from orphan deletion when a provider is removed from the API.
 
 ---
 
