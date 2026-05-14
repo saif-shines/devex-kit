@@ -142,6 +142,16 @@ When a provider is removed from the API, the sync script deletes the generated `
 
 This means: if you create a template file for a connector before the connector is published to production, the hand-authored page will not be deleted when someone runs sync.
 
+## Build contract — all three pieces must exist together
+
+When a connector page references a template component, three things must be in sync:
+
+1. The template `.mdx` file exists in `src/components/templates/agent-connectors/`
+2. `index.ts` exports the component (done automatically by sync, or manually)
+3. The connector page imports and uses the component
+
+If any piece is missing, the build fails with a `Could not resolve` error. When adding templates without running sync (e.g., the connector is not live in production yet), ensure all three exist before pushing.
+
 ## Running the sync
 
 Prerequisites:
