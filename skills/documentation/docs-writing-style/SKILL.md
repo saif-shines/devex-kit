@@ -74,7 +74,9 @@ These apply regardless of mode. Violations in review mode are always FAIL.
 - Sentence case for all headings. No "Configure Your Auth Provider" — use "Configure your auth provider."
 - Page opens with a clear one-paragraph statement: what the reader will do and why.
 - Procedure steps use imperative verbs: "Install", "Run", "Configure" — not "Installing", "You should run."
-- H2 for major sections; H3 for subsections; H4 only inside `<Steps>`. Never use H1 in body content.
+- H2 for major sections; H3 for subsections. Never use H1 in body content.
+- **Step headings inside `<Steps>` must be H3 (`###`) or smaller** — never H2. H2 inside Steps creates oversized step titles that break visual hierarchy.
+- **Single-item lists are not lists.** If a section (e.g. Prerequisites) has only one bullet or numbered item, remove the list markup and write it as a plain paragraph or a smaller heading with prose.
 
 **Language**
 - Active voice: "Run the command" not "The command should be run."

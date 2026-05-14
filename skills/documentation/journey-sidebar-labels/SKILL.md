@@ -33,6 +33,8 @@ Apply these to every **group** (`label` on a nested section) and **leaf** (page 
 | Punctuation | **No** trailing periods or commas in labels |
 | Focus | **Outcome- or object-focused** — what the reader does or what they configure |
 | Consistency with pages | **Match the page title’s meaning**; shorten for the sidebar when the title is long |
+| Specificity | **Avoid bare-noun labels** that could describe multiple unrelated pages. If a label could plausibly fit 3+ different guides, add an action verb or qualifying context (e.g. "Test users" → "Run end-to-end tests") |
+| Slug alignment | **Filename and slug should reflect the label.** When a label changes, rename the file to match (e.g. `test-users.mdx` → `run-e2e-tests.mdx`). A mismatched slug undermines the label's clarity in URLs and link previews |
 | Quickstarts | Use the pattern **`Quickstart: <Name>`** when the page is the primary onboarding path for that product or area |
 
 Avoid generic section titles that could mean anything (“Overview”, “Basics”, “More”) unless the product truly has a single hub page and the name is unavoidable — prefer journey language (“Getting started”, “Go Live”) or specific objects (“User authentication”, “Authorization”).
@@ -68,7 +70,8 @@ Use `references/fsa-sidebar-journey.json` as a **checklist** when auditing anoth
 2. **Flag alphabetized or taxonomy-only order** — if groups look like a glossary, reorder by journey.
 3. **Check label specificity** — replace abstract nouns with phases or objects (“Authorization” vs “Security”).
 4. **Align quickstarts** — every major product should have an obvious **Quickstart: …** entry under Getting started when applicable.
-5. **Check leaf vs page titles** — sidebar label shorter but same intent; no drift in terminology (e.g. “SSO” vs “Enterprise SSO” across nav and H1).
+5. **Preview test** — for each leaf label, ask: “Can a reader predict the page’s purpose from this label alone?” If a bare-noun label (e.g. “Test users”, “Webhooks”, “Permissions”) could plausibly name 3+ different pages, it needs an action verb or qualifying context.
+6. **Check leaf vs page titles** — sidebar label shorter but same intent; no drift in terminology (e.g. “SSO” vs “Enterprise SSO” across nav and H1).
 
 ## What you do not do
 
