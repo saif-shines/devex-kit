@@ -1,0 +1,10 @@
+{
+  "name": "saif-shines/mcp-server-craft",
+  "version": "1.0.0",
+  "summary": "Build MCP servers that AI agents actually want to use. Covers tool design (naming, schemas, descriptions), resource design (URIs, templates), project structure, transport selection, security, error handling, and testing.",
+  "skills": {
+    "mcp-server-craft": {
+      "path": "SKILL.md"
+    }
+  }
+}

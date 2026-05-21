@@ -1,0 +1,10 @@
+{
+  "name": "saif-shines/devrel-tooling",
+  "version": "1.0.0",
+  "summary": "Build CLI tools and API utilities that developers on your platform actually use. Covers CLI design, argument parsing, shell completions, and Postman collection generation from Express, Next.js, Fastify, and Hono routes.",
+  "skills": {
+    "devrel-tooling": {
+      "path": "SKILL.md"
+    }
+  }
+}

@@ -4,7 +4,11 @@ A collection of agent skills for developer experience work.
 
 ## Skills
 
-### docs-contribution-router
+### Documentation
+
+Generic devrel skills for documentation workflows — useful to any devrel professional regardless of tech stack.
+
+#### docs-contribution-router
 
 Routes documentation contributions to the right content type, placement, template, and workflow — before the contributor writes a single line.
 
@@ -17,7 +21,7 @@ Five branches:
 
 Scalekit-specific paths are in `references/scalekit-*.json`. External consumers drop their own configs at `<docs-repo>/.devex-kit/` — no edits to SKILL.md required.
 
-### docs-writing-style
+#### docs-writing-style
 
 Two-mode writing guide.
 
@@ -26,13 +30,48 @@ Two-mode writing guide.
 
 Scalekit-specific prompt block in `references/scalekit-style-prompt-block.md`. Template for other sites in `references/_template-style-prompt-block.md`.
 
-### authoring-cookbooks
+#### authoring-cookbooks
 
 Diagnostic skill for documentation quality — skimmability, writing clarity, and reader helpfulness.
 
-### journey-sidebar-labels
+#### journey-sidebar-labels
 
 Assistive skill for **sidebar navigation**: group labels, item labels, and order should follow a **developer journey** (setup → core loop → scale → ship). Includes a reference model derived from Scalekit **Full stack auth** in [`sidebar.config.ts`](https://github.com/scalekit-inc/developer-docs/blob/main/src/configs/sidebar.config.ts) and label rules from the docs standards (concise, sentence case, outcome-focused).
+
+### Tooling
+
+Skills for building SDKs, CLI tools, and developer utilities — the artifacts devrel professionals ship to their developer communities.
+
+#### sdk-craft
+
+Design, build, document, and ship SDKs that developers love. Covers the full SDK lifecycle:
+
+- **Design** — API surface principles, progressive disclosure, error message framework, type safety patterns
+- **Build** — Client patterns (single, modular, factory), error hierarchies, HTTP internals, TypeScript implementation
+- **Document** — Inline docs, README quickstart, generated reference
+- **Ship** — Bundling (ESM/CJS), versioning, changelogs, migration guides, npm publishing
+
+Consolidates guidance from SDK design philosophy, TypeScript SDK development, and SDK documentation generation into one lifecycle skill. Includes language idiom guides for Python, JavaScript, Go, and Java.
+
+#### devrel-tooling
+
+Build CLI tools and API utilities that developers on your platform actually use. Two domains:
+
+- **CLI tools** — Command hierarchy design, argument parsing (commander/click/typer/cobra), configuration layers, shell completions, interactive prompts, progress indicators, cross-platform UX
+- **API collection generation** — Postman Collection v2.1 generation from Express, Next.js, Fastify, Hono, NestJS, and Koa routes
+
+Includes framework-specific scanner implementations and UX pattern references.
+
+#### mcp-server-craft
+
+Build MCP servers that AI agents actually want to use. Covers the full lifecycle:
+
+- **Design** — Tool naming (verb-noun, 64-char limit), schema design (Zod/Pydantic Field descriptions), resource URI patterns, LLM-readable descriptions
+- **Build** — Project structure (TypeScript and Python), transport selection (stdio vs Streamable HTTP), async patterns
+- **Harden** — Input validation, path traversal prevention, code execution sandboxing, rate limiting, authentication
+- **Test** — Unit, integration, contract, and agent workflow testing
+
+Sources: [AWS MCP Design Guidelines](https://github.com/awslabs/mcp/blob/main/DESIGN_GUIDELINES.md), [MCP Best Practices](https://modelcontextprotocol.info/docs/best-practices/).
 
 ---
 
@@ -45,6 +84,9 @@ Once installed, invoke any skill with its slash command directly in Claude Code:
 /docs-writing-style
 /authoring-cookbooks
 /journey-sidebar-labels
+/sdk-craft
+/devrel-tooling
+/mcp-server-craft
 ```
 
 Example sessions:
@@ -70,6 +112,20 @@ about how session tokens are revoked when an org is disabled. Where does this go
 /journey-sidebar-labels Review these sidebar labels for sentence case and journey order: [paste]
 ```
 
+```
+/sdk-craft I'm building a TypeScript SDK for our REST API. Start with design phase — help me
+define the public API surface.
+```
+
+```
+/devrel-tooling Build a CLI tool for our SDK that scaffolds new projects. Node.js, commander.
+```
+
+```
+/mcp-server-craft I'm building an MCP server to expose our search API to AI agents.
+Help me design the tool schemas.
+```
+
 Claude Code loads the skill and routes your request automatically. You do not need to explain the skill's rules — just describe what you are trying to do.
 
 ---
@@ -89,6 +145,9 @@ npx skills add saif-shines/devex-kit --skill docs-contribution-router --yes
 npx skills add saif-shines/devex-kit --skill docs-writing-style --yes
 npx skills add saif-shines/devex-kit --skill authoring-cookbooks --yes
 npx skills add saif-shines/devex-kit --skill journey-sidebar-labels --yes
+npx skills add saif-shines/devex-kit --skill sdk-craft --yes
+npx skills add saif-shines/devex-kit --skill devrel-tooling --yes
+npx skills add saif-shines/devex-kit --skill mcp-server-craft --yes
 
 # Inspect without installing
 npx skills add saif-shines/devex-kit --list
@@ -103,6 +162,9 @@ tessl install saif-shines/docs-contribution-router --yes
 tessl install saif-shines/docs-writing-style --yes
 tessl install saif-shines/authoring-cookbooks --yes
 tessl install saif-shines/journey-sidebar-labels --yes
+tessl install saif-shines/sdk-craft --yes
+tessl install saif-shines/devrel-tooling --yes
+tessl install saif-shines/mcp-server-craft --yes
 ```
 
 ### Try locally (no install)
@@ -120,6 +182,9 @@ Then in Claude Code:
 /skills load ./skills/documentation/docs-writing-style/SKILL.md
 /skills load ./skills/documentation/authoring-cookbooks/SKILL.md
 /skills load ./skills/documentation/journey-sidebar-labels/SKILL.md
+/skills load ./skills/tooling/sdk-craft/SKILL.md
+/skills load ./skills/tooling/devrel-tooling/SKILL.md
+/skills load ./skills/tooling/mcp-server-craft/SKILL.md
 ```
 
 ---
@@ -212,6 +277,72 @@ Our product sidebar is alphabetical; reorder it as an implementation journey.
 
 ```
 Review these sidebar group labels for sentence case and journey order: [paste config excerpt]
+```
+
+### sdk-craft
+
+Use when designing, building, or shipping an SDK or client library.
+
+**Design phase — API surface:**
+```
+I'm building a TypeScript SDK for our REST API. Help me design the public API
+surface — I have users, organizations, and webhooks resources.
+```
+
+**Build phase — implementation:**
+```
+I have my API surface designed. Now help me implement the modular client pattern
+with proper error handling and retry logic.
+```
+
+**Ship phase — publishing:**
+```
+My SDK is ready to publish. Walk me through the tsup config, package.json exports,
+and npm publishing checklist.
+```
+
+The skill covers the full lifecycle — state which phase you're in, or describe what you're building.
+
+### devrel-tooling
+
+Use when building CLI tools or generating API collections.
+
+**Build a CLI:**
+```
+Build a CLI tool for our SDK that scaffolds new projects. Node.js with commander,
+needs init, config, and deploy subcommands.
+```
+
+**Generate a Postman collection:**
+```
+Generate a Postman collection from my Express routes in ./src/routes/. Group by
+resource and include auth configuration.
+```
+
+**Add shell completions:**
+```
+My CLI tool is working but I need to add bash/zsh/fish completions. Using cobra in Go.
+```
+
+### mcp-server-craft
+
+Use when building or reviewing an MCP server.
+
+**Design tool schemas:**
+```
+I'm building an MCP server to expose our GitHub integration to AI agents.
+Help me design the tool names, descriptions, and input schemas.
+```
+
+**Harden for production:**
+```
+My MCP server executes user-provided Python code to generate diagrams.
+What security patterns do I need?
+```
+
+**Test with agents:**
+```
+How do I test that an LLM agent actually picks the right tools from my MCP server?
 ```
 
 ---
