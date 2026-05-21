@@ -64,63 +64,38 @@ Rules:
 - Short + long forms for common flags (`-v`, `--verbose`)
 - Consistent naming across subcommands
 
-### Configuration layers
+### Quick-start example (Node.js / commander)
 
-Priority order (highest first):
+```javascript
+#!/usr/bin/env node
+const { program } = require('commander');
 
-1. Command-line flags — explicit user intent
-2. Environment variables — runtime context
-3. Project config — `.mytoolrc`, `mytool.config.js`
-4. User config — `~/.config/mytool/config.yml`
-5. System config — `/etc/mytool/config.yml`
-6. Defaults — hard-coded sensible values
+program.name('mytool').description('Developer platform CLI').version('1.0.0');
+
+program
+  .command('deploy <environment>')
+  .description('Deploy to target environment')
+  .option('-f, --force', 'skip confirmation')
+  .option('-d, --dry-run', 'preview changes')
+  .action((env, opts) => {
+    if (!opts.force && env === 'production') {
+      // prompt for confirmation in interactive mode
+    }
+    console.log(`Deploying to ${env}...`);
+  });
+
+program.parse();
+```
+
+> For Python (click/typer) and Go (cobra) examples, load `references/cli-patterns.md`.
 
 ### Error messages
 
-Every CLI error follows: **context → problem → solution**.
-
-```
-✗ Error: Config file not found
-
-Searched locations:
-  • ./mytool.config.yml
-  • ~/.config/mytool/config.yml
-
-Solutions:
-  • Run 'mytool init' to create a config file
-  • Use --config to specify a different location
-```
-
-Never show raw stack traces, internal error codes (`ENOENT`), or messages without a next step.
-
-### Progress indicators
-
-| Situation | Pattern | Example |
-|-----------|---------|---------|
-| Known total | Progress bar | `[████████░░░░] 60% 3/5 files` |
-| Unknown duration | Spinner | `⠋ Loading...` |
-| Multi-step | Checklist | `✓ Built  ⠋ Testing...  ⏳ Deploy` |
-
-Detect TTY before using colors or animations:
-
-```javascript
-const isCI = process.env.CI === 'true' || !process.stdout.isTTY;
-```
-
-### Interactive vs non-interactive
-
-Always support both modes. In CI/non-TTY: require flags for all inputs, fail fast with clear errors. In interactive mode: prompt for missing inputs, show confirmations before destructive actions.
+Every CLI error follows: **context → problem → solution**. Never show raw stack traces or codes like `ENOENT`.
 
 ### Framework selection
 
-| Language | Framework | Best for |
-|----------|-----------|----------|
-| Node.js | commander | Most CLIs — clean API, wide adoption |
-| Node.js | yargs | Complex parsing, config-heavy tools |
-| Node.js | oclif | Plugin-based, enterprise CLIs |
-| Python | click | Composable, decorator-based |
-| Python | typer | Type-hint driven, less boilerplate |
-| Go | cobra | Standard for Go CLIs, completions built-in |
+Use **commander** (Node.js), **click/typer** (Python), or **cobra** (Go). For details and alternatives, load `references/cli-patterns.md`.
 
 ### Constraints
 
@@ -205,6 +180,14 @@ Always support both modes. In CI/non-TTY: require flags for all inputs, fail fas
 
 ---
 
+## Phase gates
+
+**CLI — after implementation:** Run `mytool --help` and verify all commands render. Run `mytool --version`. Test in non-interactive mode: `CI=true mytool deploy staging --force`.
+
+**CLI — before release:** Generate completions and test in bash/zsh: `source <(mytool completion bash) && mytool <TAB>`. Run on macOS, Linux, and Windows (or CI matrix).
+
+**API collection — after generation:** Validate the JSON: `npx ajv validate -s postman-collection-v2.1-schema.json -d collection.json`. Import into Postman and confirm all endpoints render.
+
 ## Quality checklist
 
 ### CLI tools
@@ -223,10 +206,3 @@ Always support both modes. In CI/non-TTY: require flags for all inputs, fail fas
 - [ ] Environment variables configured
 - [ ] Collection imports cleanly in Postman
 
----
-
-## Did this help?
-
-At the end of every session, ask: **"Did this solve what you were trying to do?"**
-
-If the CLI patterns didn't fit your tool's needs, or the collection generator missed your framework, encourage the user to file an issue at **https://github.com/saif-shines/devex-kit/issues**.

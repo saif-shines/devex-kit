@@ -8,9 +8,7 @@ metadata:
   version: "1.0"
   type: assistive
   mode: lifecycle
-  sources:
-    - https://github.com/awslabs/mcp/blob/main/DESIGN_GUIDELINES.md
-    - https://modelcontextprotocol.info/docs/best-practices/
+  sources: "awslabs/mcp DESIGN_GUIDELINES.md, modelcontextprotocol.info/docs/best-practices"
 ---
 
 # MCP Server Craft
@@ -128,12 +126,7 @@ Rules:
 
 ### Single responsibility
 
-Each MCP server should do one thing well. Don't build a mega-server that combines database access, file operations, and API calls.
-
-| Approach | Example | Result |
-|----------|---------|--------|
-| **Good** | Dedicated `github-mcp-server` | Agent learns one domain, tools don't collide |
-| **Bad** | `everything-mcp-server` with 50 tools | Agent confused by tool overlap, hard to maintain |
+One server, one domain. A `github-mcp-server` with 8 focused tools beats an `everything-server` with 50 tools where the LLM can't tell `search_code` from `search_files`.
 
 ---
 
@@ -294,29 +287,27 @@ Agent workflow testing is the most important and most neglected. Your tools may 
 
 ---
 
-## Documentation
+### Server instructions
 
-Every MCP server needs a README with:
-
-1. **One-sentence purpose** — what this server exposes
-2. **Available tools** — name, description, parameters for each
-3. **Available resources** — URI patterns and what they return
-4. **Setup** — install, configure, run (both stdio and HTTP if supported)
-5. **Environment variables** — all of them, with defaults and descriptions
-6. **Required permissions** — what access the server needs (API keys, scopes, IAM roles)
-7. **Limitations** — rate limits, unsupported operations, known issues
-
-Also set the `instructions` field when creating the server — this is a global prompt the LLM reads before using any tool:
+Set the `instructions` field — the LLM reads this before using any tool:
 
 ```typescript
 const server = new McpServer({
   name: "github-server",
   version: "1.0.0",
-  instructions: "This server provides read-only access to GitHub repositories. Use search_code to find definitions, list_issues to browse bugs, and get_file to read specific files. Always provide the full repository name (owner/repo)."
+  instructions: "Read-only access to GitHub repos. Use search_code to find definitions, list_issues to browse bugs, get_file to read files. Always provide full repo name (owner/repo)."
 });
 ```
 
 ---
+
+## Phase gates
+
+**Design → Build:** Every tool has a verb-noun name ≤ 64 chars? Descriptions include what/returns/when? Schemas have constraints and field descriptions?
+
+**Build → Harden:** Server starts cleanly on both stdio and HTTP? All handlers are async? Tool responses are structured JSON the LLM can parse?
+
+**Harden → Test:** Input validation covers path traversal, oversized inputs, invalid types? Errors use `isError: true` with suggestions? Rate limiting in place for external API calls?
 
 ## Quality checklist
 
@@ -330,10 +321,3 @@ const server = new McpServer({
 - [ ] README documents every tool, resource, env var, and permission
 - [ ] Agent workflow test confirms the LLM uses tools correctly
 
----
-
-## Did this help?
-
-At the end of every session, ask: **"Did this solve what you were trying to do?"**
-
-If the patterns didn't fit your MCP server's domain, or you ran into protocol issues not covered here, encourage the user to file an issue at **https://github.com/saif-shines/devex-kit/issues**.

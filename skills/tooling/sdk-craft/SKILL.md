@@ -88,16 +88,9 @@ A new developer should be able to write `const client = new Client({ apiKey })` 
 
 ### 5. Feel native
 
-Match the idioms of each target language:
+Match each target language's idioms — naming, error handling, async patterns, and package conventions. A Python developer should never feel like they're using a translated JavaScript SDK.
 
-| Language | Conventions |
-|----------|-------------|
-| Python | snake_case, context managers, generators, type hints |
-| JavaScript | camelCase, async/await, destructuring, Promises |
-| Go | PascalCase exports, error returns, context.Context, interfaces |
-| Java | camelCase methods, Builder pattern, checked exceptions |
-
-A Python developer should never feel like they're using a JavaScript SDK that was machine-translated.
+> For language-specific patterns (Python, JS, Go, Java), load `references/language-idioms.md`.
 
 ---
 
@@ -249,28 +242,21 @@ Configure `package.json` exports properly:
 
 ### Versioning
 
-Follow semver strictly. What counts as breaking:
-- Removing a public method or property
-- Changing method signatures or return types
-- Changing default behavior
-- Dropping runtime version support
+Follow semver. Every major version bump needs a migration guide (before/after code for each breaking change, codemods when possible). Deprecate before removing — warnings include what to use instead and when removal happens.
 
-What doesn't: adding methods, adding optional parameters, deprecating (not removing), fixing incorrect behavior.
-
-### Migration guides
-
-Every major version needs a migration guide structured as:
-
-1. **Overview** — what changed and why, time estimate
-2. **Breaking changes** — before/after code for each change
-3. **Removed features** — what was deprecated and its replacement
-4. **Automation** — codemods or migration scripts when possible
-
-### Deprecation
-
-Deprecate before removing. Warnings should include: what to use instead, when the removal happens, and a link to the migration guide.
+> For detailed versioning, changelog, and migration guide patterns, load `references/build-and-publish.md`.
 
 ---
+
+## Phase gates
+
+Before moving between phases, verify:
+
+**Design → Build:** Tool descriptions reviewed? Error types mapped to HTTP status codes? Type hierarchy sketched? If building multi-language, idiom guide consulted for each target?
+
+**Build → Document:** All public methods have inline docs? Error hierarchy implemented and tested? Config validates at construction time?
+
+**Document → Ship:** README quickstart achieves a visible result in < 10 lines? `npm publish --dry-run` shows correct files? Exports verified with [`publint`](https://publint.dev/) or [`attw`](https://github.com/arethetypeswrong/arethetypeswrong.github.io)?
 
 ## Quality checklist
 
@@ -287,10 +273,3 @@ Before any SDK release:
 - [ ] Migration guide exists (if breaking)
 - [ ] CI runs tests and generates docs
 
----
-
-## Did this help?
-
-At the end of every session, ask: **"Did this solve what you were trying to do?"**
-
-If the guidance was wrong for your SDK's domain, or the patterns didn't fit your architecture, encourage the user to file an issue at **https://github.com/saif-shines/devex-kit/issues**. Offer to help draft it — include: which phase they were in, what they were building, and what was missing or unhelpful.
