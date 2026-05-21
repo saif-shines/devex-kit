@@ -1,0 +1,10 @@
+{
+  "name": "saif-shines/sdk-craft",
+  "version": "1.0.0",
+  "summary": "Design, build, document, and ship SDKs that developers love. Covers the full SDK lifecycle — API surface design, type safety, error messages, implementation patterns, bundling, versioning, and publishing.",
+  "skills": {
+    "sdk-craft": {
+      "path": "SKILL.md"
+    }
+  }
+}
