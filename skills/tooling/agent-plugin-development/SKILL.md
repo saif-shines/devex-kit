@@ -41,6 +41,8 @@ These five points define current best practice. Every decision in this skill and
 
 Internalize these before you write a single line of a new SKILL.md or agent.
 
+The official Claude Code docs also provide a clear decision table for **plugins vs standalone `.claude/` configuration**. Load the details (including when to start in `.claude/` and when to convert) from `references/plugin-structure.md`.
+
 ---
 
 ## Plugin Structure (Modern Skills-First)
@@ -65,7 +67,7 @@ my-plugin/
 └── tile.json               # When shipping via devex-kit
 ```
 
-> For the complete tree, plugin.json example, legacy-vs-restructured comparison table, and rules about empty dirs, load `references/plugin-structure.md`.
+> For the complete tree, plugin.json example, legacy-vs-restructured comparison table, rules about empty dirs, **official plugin vs standalone guidance**, local development with `--plugin-dir`, `claude plugin init`, complex components (LSP/monitors/settings), and migration steps, load `references/plugin-structure.md`.
 
 Empty `commands/` and `agents/` directories are correct and intentional. They satisfy Claude Code layout expectations while signaling that logic lives in skills/.
 
@@ -120,7 +122,7 @@ Many excellent plugins have zero agents (see docs-engineering). Add agents only 
 3. Extract the first large decision table or checklist into a sibling or references/ file and replace with a load call.
 4. Populate a minimal README that names the 5 principles and points to the skill.
 5. Add `tile.json` if this skill will live in devex-kit.
-6. Test immediately: place it in a test Claude Code project and invoke `/your-skill-name`.
+6. Test immediately using official tooling: run `claude --plugin-dir ./your-plugin` (or point at a zip), then invoke the namespaced skill (`/your-plugin:your-skill-name`). Use `/reload-plugins` after edits. See the full local testing workflow and `--plugin-url` / multi-plugin options in `references/examples-and-packaging.md`.
 
 ### Refactoring an existing command-heavy plugin (pr-review-toolkit style)
 1. Identify the command that contains real workflow logic.
@@ -160,7 +162,7 @@ Required artifacts:
 - At least one skill with `examples/` demonstrating good usage.
 - Cross-links that use the load-references pattern or relative paths into `docs/`.
 
-> For the two primary study examples (pr-review-toolkit as agents+skill instead of command; docs-engineering as skills+refs+examples), the full authstack restructure trees, the packaging checklist, and instructions for adding a skill to this devex-kit, load `references/examples-and-packaging.md`.
+> For the two primary study examples (pr-review-toolkit as agents+skill instead of command; docs-engineering as skills+refs+examples), the full authstack restructure trees, the packaging checklist, **official quickstart**, detailed local testing with `--plugin-dir` / `/reload-plugins` / `--plugin-url`, and migration from standalone `.claude/`, load `references/examples-and-packaging.md`.
 
 ## Phase Gates
 
@@ -184,7 +186,7 @@ Before declaring the plugin or skill complete:
 - [ ] At least one skill demonstrates the examples/ sibling pattern
 - [ ] Plugin README documents the 5 principles and canonical vs adapter layers
 - [ ] Cross-references to pr-review-toolkit (agents + orchestration) and docs-engineering (skills + refs + examples) appear in the content
-- [ ] The plugin was tested by actually invoking the skill and any agents inside real Claude Code
+- [ ] The plugin was tested by actually invoking the skill and any agents inside real Claude Code using the official local development workflow (`claude --plugin-dir ./plugin`, `/reload-plugins`, namespaced `/plugin:skill` invocations, and optionally `--plugin-url` or multiple `--plugin-dir` flags). Run `claude plugin validate` before distribution.
 - [ ] No duplication of concerns already covered by existing devex-kit skills (sdk-craft, mcp-server-craft, docs-writing-style, etc.)
 
 ## Did this help?
@@ -198,7 +200,7 @@ At the end of every session, ask: **"Did this solve what you were trying to do?"
 
 ## Adapt and Evolve
 
-This skill itself follows the model it teaches. The authoritative patterns live in the `references/` directory and in the live restructured plugins (authstack, skillkit examples). When official Claude Code plugin guidance or devex-kit conventions change, update the references first, then the orchestration in this SKILL.md.
+This skill itself follows the model it teaches. The authoritative patterns live in the `references/` directory and in the live restructured plugins (authstack, skillkit examples). When official Claude Code plugin guidance (https://code.claude.com/docs/en/plugins, full index at https://code.claude.com/docs/llms.txt) or devex-kit conventions change, update the references first, then the orchestration in this SKILL.md.
 
 When you create a new plugin using this skill, you are also contributing to the living catalog of good examples. Add it to the references when it demonstrates a new successful variation.
 

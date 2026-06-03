@@ -185,6 +185,8 @@ Then in Claude Code:
 /skills load ./skills/tooling/sdk-craft/SKILL.md
 /skills load ./skills/tooling/devrel-tooling/SKILL.md
 /skills load ./skills/tooling/mcp-server-craft/SKILL.md
+/skills load ./skills/tooling/agent-plugin-development/SKILL.md
+/skills load ./skills/tooling/scalekit-code-doctor/SKILL.md
 ```
 
 ---

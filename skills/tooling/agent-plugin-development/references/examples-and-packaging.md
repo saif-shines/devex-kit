@@ -79,7 +79,7 @@ Use this in addition to the quality checklist in the main SKILL.md.
 - [ ] Cross-links use the `> For expanded... load `references/...`` pattern or relative `../../docs/` links
 - [ ] "Did this help?" feedback instruction present in main skills
 - [ ] No duplication of content that belongs in an existing devex-kit skill (sdk-craft, mcp-server-craft, docs-writing-style, etc.)
-- [ ] Tested end-to-end: install the plugin (or use the local path), invoke the skill, exercise load references, spawn any agents, verify output quality and context size
+- [ ] Tested end-to-end: use `claude --plugin-dir ./my-plugin` (or `--plugin-dir ./my-plugin.zip`), run `/reload-plugins`, invoke the skill with its namespaced name, exercise load references / spawn agents, verify output quality and context size. Run `claude plugin validate` before publishing or submitting to marketplaces.
 
 ## plugin.json and Marketplace Considerations
 
@@ -94,6 +94,104 @@ Use this in addition to the quality checklist in the main SKILL.md.
 2. Include SKILL.md + tile.json + references/ (at minimum one reference explaining the domain).
 3. Add a short section to the root README.md under the appropriate heading with one-sentence summary + example invocation.
 4. The skill is now part of the canonical collection and can be referenced by future "agent-plugin-development" sessions.
+
+## Official Quickstart (Claude Code)
+
+This is the current recommended path from the official Claude Code plugin docs. Use it for the mechanical steps, then apply the 5 restructure principles and devex-kit patterns on top.
+
+1. Create the plugin directory and manifest:
+
+   ```
+   mkdir my-first-plugin
+   mkdir my-first-plugin/.claude-plugin
+   ```
+
+   `my-first-plugin/.claude-plugin/plugin.json`:
+
+   ```json
+   {
+     "name": "my-first-plugin",
+     "description": "A greeting plugin to learn the basics",
+     "version": "1.0.0",
+     "author": { "name": "Your Name" }
+   }
+   ```
+
+2. Add a skill:
+
+   ```
+   mkdir -p my-first-plugin/skills/hello
+   ```
+
+   `my-first-plugin/skills/hello/SKILL.md` (minimal starting point):
+
+   ```markdown
+   ---
+   description: Greet the user with a friendly message
+   disable-model-invocation: true
+   ---
+
+   Greet the user warmly and ask how you can help them today.
+   ```
+
+   Make it dynamic with `$ARGUMENTS`:
+
+   ```markdown
+   ---
+   description: Greet the user with a personalized message
+   ---
+
+   # Hello Skill
+
+   Greet the user named "$ARGUMENTS" warmly and ask how you can help them today.
+   ```
+
+3. Test locally:
+
+   ```
+   claude --plugin-dir ./my-first-plugin
+   ```
+
+   Then inside the session:
+
+   ```
+   /my-first-plugin:hello Alex
+   ```
+
+   Run `/reload-plugins` after edits. Run `/help` to see the namespaced skill.
+
+> For the complete official quickstart, namespacing details, $ARGUMENTS, and prerequisites, see https://code.claude.com/docs/en/plugins.
+
+## Test your plugins locally (official)
+
+The primary development loop uses the `--plugin-dir` flag (or `--plugin-url` for remote zips). Local copies take precedence over installed marketplace plugins of the same name (with the noted exception for settings force-enable/disable).
+
+Key commands:
+
+- `claude --plugin-dir ./my-plugin` — load a directory
+- `claude --plugin-dir ./my-plugin.zip` — load a zip (v2.1.128+)
+- `claude --plugin-url https://.../my-plugin.zip` — fetch and load a remote zip for the session only
+- Inside Claude Code: `/reload-plugins` — hot-reload skills, agents, hooks, MCP, LSP, etc. without restarting
+- Load several at once: `claude --plugin-dir ./one --plugin-dir ./two`
+
+To test a plugin you already have installed, the local `--plugin-dir` version wins for that launch.
+
+After changes, test:
+- Skills with the namespaced name (`/plugin-name:skill-name`)
+- Agents in `/agents`
+- Hooks by performing the triggering actions
+
+See the "Debug plugin issues" section in the official docs (and `references/plugin-structure.md` in this skill) for common structure problems.
+
+## Migrate from standalone `.claude/` to a plugin
+
+1. Scaffold the plugin dir + `.claude-plugin/plugin.json` (name + description + version).
+2. Copy `commands/`, `agents/`, and `skills/` from `.claude/` to the plugin root.
+3. For hooks: create `hooks/hooks.json` at the plugin root and move the hooks configuration (the format is the same as what lived in settings JSON).
+4. Test with `claude --plugin-dir ./my-migrated-plugin`.
+5. Once verified, remove the duplicated files from the original `.claude/` (the plugin takes precedence).
+
+This makes the functionality shareable via marketplaces or internal team repos while preserving the restructured skills-first layout.
 
 ## Final Packaging Note
 
