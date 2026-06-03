@@ -114,3 +114,13 @@ Audit existing series by running every item through this list. If you cannot ans
 This reference, together with dx-journey.md and content-taxonomy.md, directly counters the RED baseline failures of product-first titles, funnel-stage "jobs", puffery numbers, and content plans that never define the dev's technical problem or the first-success artifact.
 
 Cite specific sections ("per content-jobs.md: Start With Technical Problems", "Technical Engagement System stage 3", "the DIY instinct paragraph") in every plan or audit.
+
+**Rationalization Counter Table additions (REFACTOR, cross-ref with taxonomy table)**
+
+| Observed Rationalization (from RED/GREEN) | Counter Rule (cite) | Where Documented |
+|-------------------------------------------|---------------------|------------------|
+| "The series is for launch awareness, product-tilted titles are standard, we can make the body problem-first later" | Every artifact a human reads outside the team is a content moment. The opening must name the technical problem in the dev's language. "We'll fix body later" is exactly the rationalization the 7-step practice and translator role exist to kill. | content-jobs.md "Start With Technical Problems" + 7-step list + "Search Solutions, Not Products" |
+| "Under launch week pressure we can ship the comparison content first as a milestone; first-success sample ships in parallel or right after" | Stage order in the Technical Engagement System is not optional. Solution Patterns (comparisons) only after stage 3 first success has occurred for the audience. Shipping early increases paralysis for the exact persona who fears the basics. | content-jobs.md Technical Engagement System (stages 2 before 3? No: 3 first success anchors evaluation) + content-taxonomy.md anti-pattern on jumping to Solution Patterns |
+| "The 7-step is a lot; for this one post I can use 'awareness' as the job name and move fast" | If you cannot name the persona + exact technical situation + before/after change in their world, you are producing output, not content with a job. Awareness of the product is not a job for the dev. | content-jobs.md "Good Content Has a Job" + the 7-step "1. Name the dev persona... 2. Name the job (before/after)" |
+
+Cite the combined Rationalization Counter Tables from content-taxonomy.md and this file under any time or "comprehensive" pressure.

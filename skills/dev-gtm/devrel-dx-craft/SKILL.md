@@ -65,7 +65,7 @@ First impression is reputation and discovery; first success must be use-case dri
 - Using Recipe/Snippet when the value requires seeing the full system working together (use Sample App).
 - Jumping to Solution Patterns before the dev has a first success to compare against.
 
-> Load `references/content-taxonomy.md` for the EXACT MD note table, the full expanded decision criteria, when-to-use rules per pattern, anti-patterns, and the explicit counters for rationalizations such as "Auth is sensitive so recipe is safer" or "Recipe is faster to ship under deadline".
+> Load `references/content-taxonomy.md` for the EXACT MD note table, the full expanded decision criteria, when-to-use rules per pattern, anti-patterns, and the explicit counters for rationalizations such as "Auth is sensitive so recipe is safer" or "Recipe is faster to ship under deadline". The Rationalization Counter Table (REFACTOR) must be cited under pressure.
 
 ## Content Jobs & Strategy (Review or Generate)
 
@@ -78,7 +78,7 @@ First impression is reputation and discovery; first success must be use-case dri
 
 You are a translator between the product's capabilities and the dev's daily technical reality. Good content has a job.
 
-> Load `references/content-jobs.md` for "You Are a Translator", "Start With Technical Problems", "Good Content Has a Job", the full 5-stage Technical Engagement System, "Understand the DIY Instinct", "Search Solutions, Not Products", "The Lingua Franca", "Numbers That Matter", and the exact 7-step mapping practice that must be followed before any content is planned or written.
+> Load `references/content-jobs.md` for "You Are a Translator", "Start With Technical Problems", "Good Content Has a Job", the full 5-stage Technical Engagement System, "Understand the DIY Instinct", "Search Solutions, Not Products", "The Lingua Franca", "Numbers That Matter", and the exact 7-step mapping practice that must be followed before any content is planned or written. Cite the combined Rationalization Counter Tables from content-jobs.md and content-taxonomy.md.
 
 ## Phase Gates
 
@@ -94,13 +94,17 @@ Before moving between areas, verify:
 
 ## REFACTOR Hardening (pressure-specific rules added after GREEN re-tests)
 
-When the user adds time pressure, "just pick one", "features list is fine for now", "long onboarding is what we have":
+When the user adds time pressure, "just pick one", "features list is fine for now", "long onboarding is what we have", "ship the comparison for awareness, sample can come later":
 
 - First-success is non-negotiable: you may not recommend a taxonomy or generate content plans until a concrete Sample Application (or justified alternative) that delivers a real use-case win is defined.
 - "Just list the features for the getting started page" is always rejected. Restart with the problem the dev has and the sample that lets them solve it.
 - Never use "sample app" for anything smaller than an end-to-end runnable use case that proves the value. Cite the table.
 - The job comes before the content type. If the job is unclear, stop and define the technical problem + DIY pain first (per content-jobs.md).
 - Under any "audit this bad getting started quickly", still run the full dx-journey checklist and taxonomy audit before suggesting "improvements" that leave the core gaps.
+- Comparisons and "best practices" (Solution Patterns) may not be generated or recommended until the audience has a first-success baseline (see content-taxonomy.md Rationalization Counter Table row on "ship the comparison now").
+- "The tiny sample is basically a recipe" — label by the job and table criteria (multiple components in one runnable context = Sample Application), not by code size.
+- Even after taxonomy is "settled", every artifact must still obey dx-journey "no features list first" and content-jobs "start with technical problem". "We can fix the body later" is rejected.
+- Cite the full Rationalization Counter Table rows from content-taxonomy.md and content-jobs.md by number when any shortcut temptation appears.
 
 All agents must cite the Rationalization Counter Table in content-taxonomy.md and content-jobs.md when they feel the urge to shortcut.
 
@@ -113,7 +117,7 @@ Before declaring the session complete for any area:
 - [ ] All heavy content externalized to references/ with load blockquotes for dx-journey.md, content-taxonomy.md, and content-jobs.md.
 - [ ] The MD note table for 3 patterns is used EXACTLY in content-taxonomy.md, with expanded decision criteria, examples, and anti-patterns synthesized from the books.
 - [ ] DX journey stages + first success via samples, "share knowledge not features", translator, content has a job, Technical Engagement System, DIY instinct are synthesized actionable checklists (not pasted book text).
-- [ ] Explicit counters for rationalizations ("Features list before first success? Delete... No exceptions.") are present and referenced in outputs. Rationalization Counter Table present in references.
+- [ ] Explicit counters for rationalizations ("Features list before first success? Delete... No exceptions.") are present and referenced in outputs. Rationalization Counter Table present in references (REFACTOR hardened).
 - [ ] Phase gates are stated and enforced in the response.
 - [ ] Integration graph + "When to switch skills" + "Did this help?" present.
 - [ ] writing-skills TDD baselines passed (RED captured in tmp/, GREEN showed compliance, REFACTOR closed loopholes with table + re-tests); agents comply under pressure and cite sections.
