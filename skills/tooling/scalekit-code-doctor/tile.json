@@ -1,0 +1,10 @@
+{
+  "name": "saif-shines/scalekit-code-doctor",
+  "version": "1.1.0",
+  "summary": "Generate, review, validate, or fix any code that uses Scalekit APIs or SDKs. Covers all four SDKs (Node, Python, Go, Java), raw REST API calls, and both product suites — SaaSKit (SSO, sessions, RBAC, SCIM) and AgentKit (connections, tool calling, MCP auth, framework integrations).",
+  "skills": {
+    "scalekit-code-doctor": {
+      "path": "SKILL.md"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "saif-shines/agent-plugin-development",
+  "version": "1.0.0",
+  "summary": "Design, build, and ship modern Claude Code plugins using the skills-first + agents + externalized references pattern from devex-kit and authstack restructures. Covers lean SKILL.md orchestration, high-agency specialists, de-emphasized commands, aggressive reference externalization, plugin layout, packaging, and current examples (pr-review-toolkit agents, docs-engineering skills+refs+examples).",
+  "skills": {
+    "agent-plugin-development": {
+      "path": "SKILL.md"
+    }
+  }
+}
