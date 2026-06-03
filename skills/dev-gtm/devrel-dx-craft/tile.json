@@ -1,0 +1,10 @@
+{
+  "name": "saif-shines/devrel-dx-craft",
+  "version": "1.0.0",
+  "summary": "Design DX for first success and adoption, choose the right content types (Sample Applications, Code Snippets/Recipes, Solution Patterns), apply \"content has a job\" and translator principles, and run an effective technical engagement system (from Developer Marketing Does Not Exist + Technical Content Strategy Decoded + MD note).",
+  "skills": {
+    "devrel-dx-craft": {
+      "path": "SKILL.md"
+    }
+  }
+}
