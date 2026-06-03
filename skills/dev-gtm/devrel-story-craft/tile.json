@@ -1,0 +1,10 @@
+{
+  "name": "saif-shines/devrel-story-craft",
+  "version": "1.0.0",
+  "summary": "Design authentic stories, TABs, presence, and dev-friendly packaging for early-stage developer-facing startups (from Alchemist GTM playbook).",
+  "skills": {
+    "devrel-story-craft": {
+      "path": "SKILL.md"
+    }
+  }
+}
