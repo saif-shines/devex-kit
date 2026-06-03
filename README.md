@@ -73,6 +73,18 @@ Build MCP servers that AI agents actually want to use. Covers the full lifecycle
 
 Sources: [AWS MCP Design Guidelines](https://github.com/awslabs/mcp/blob/main/DESIGN_GUIDELINES.md), [MCP Best Practices](https://modelcontextprotocol.info/docs/best-practices/).
 
+### Dev GTM
+
+Developer go-to-market strategy skills for dev-facing products and early-stage startups — authentic storytelling, technical advisory boards, DX for adoption, and content strategy that actually resonates with technical audiences. (Distilled from the source playbooks you referenced.)
+
+#### devrel-story-craft
+
+Design authentic stories, recruit and run TABs, avoid the 12 most common story mistakes, build dev influencer presence, and define dev-friendly packaging for early-stage developer-facing startups and products.
+
+#### devrel-dx-craft
+
+Design DX for first success and adoption, choose the right content types (Sample Applications, Code Snippets/Recipes, Solution Patterns), apply "content has a job" and translator principles, and run an effective technical engagement system.
+
 ---
 
 ## Using in Claude Code
@@ -87,6 +99,8 @@ Once installed, invoke any skill with its slash command directly in Claude Code:
 /sdk-craft
 /devrel-tooling
 /mcp-server-craft
+/devrel-story-craft
+/devrel-dx-craft
 ```
 
 Example sessions:
@@ -148,6 +162,8 @@ npx skills add saif-shines/devex-kit --skill journey-sidebar-labels --yes
 npx skills add saif-shines/devex-kit --skill sdk-craft --yes
 npx skills add saif-shines/devex-kit --skill devrel-tooling --yes
 npx skills add saif-shines/devex-kit --skill mcp-server-craft --yes
+npx skills add saif-shines/devex-kit --skill devrel-story-craft --yes
+npx skills add saif-shines/devex-kit --skill devrel-dx-craft --yes
 
 # Inspect without installing
 npx skills add saif-shines/devex-kit --list
@@ -165,6 +181,8 @@ tessl install saif-shines/journey-sidebar-labels --yes
 tessl install saif-shines/sdk-craft --yes
 tessl install saif-shines/devrel-tooling --yes
 tessl install saif-shines/mcp-server-craft --yes
+tessl install saif-shines/devrel-story-craft --yes
+tessl install saif-shines/devrel-dx-craft --yes
 ```
 
 ### Try locally (no install)
@@ -187,6 +205,8 @@ Then in Claude Code:
 /skills load ./skills/tooling/mcp-server-craft/SKILL.md
 /skills load ./skills/tooling/agent-plugin-development/SKILL.md
 /skills load ./skills/tooling/scalekit-code-doctor/SKILL.md
+/skills load ./skills/dev-gtm/devrel-story-craft/SKILL.md
+/skills load ./skills/dev-gtm/devrel-dx-craft/SKILL.md
 ```
 
 ---
@@ -346,6 +366,42 @@ What security patterns do I need?
 ```
 How do I test that an LLM agent actually picks the right tools from my MCP server?
 ```
+
+### devrel-story-craft
+
+Use when building stories, TABs, presence, or packaging for dev-facing GTM.
+
+**Review mode — audit a draft story:**
+
+```
+/devrel-story-craft review mode. Here's my draft launch story for the new connectors...
+```
+
+**Plan mode — TAB + story canvas:**
+
+```
+/devrel-story-craft plan TAB for connectors. Help me recruit and draft the first call questions.
+```
+
+The skill outputs: reviewed story with specific mistake flags + fixes, TAB plan with exact 3 questions + email template, or packaging audit.
+
+### devrel-dx-craft
+
+Use when designing first-success DX or content taxonomy/jobs.
+
+**Review mode — audit DX or taxonomy choice:**
+
+```
+/devrel-dx-craft review mode. Here's my getting-started plan and content outline for the new auth feature.
+```
+
+**Plan mode — first success + taxonomy:**
+
+```
+/devrel-dx-craft plan first-success. For the connectors feature, choose Sample Application vs Recipe vs Pattern and outline the DX path.
+```
+
+The skill outputs: DX audit against first-success criteria, taxonomy decision with the exact 3-pattern table from the MD note + justification, content job mapping using the 7-step process.
 
 ---
 
