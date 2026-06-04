@@ -1,0 +1,10 @@
+{
+  "name": "saif-shines/using-devex-kit",
+  "version": "1.0.0",
+  "summary": "Gateway router skill for devex-kit. Invoke first (like using-superpowers) on any devrel, docs, SDK, CLI, MCP, or GTM task to be routed to the exact right skill with ready-to-paste slash command and sequencing advice.",
+  "skills": {
+    "using-devex-kit": {
+      "path": "SKILL.md"
+    }
+  }
+}

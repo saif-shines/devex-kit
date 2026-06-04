@@ -4,6 +4,22 @@ A collection of agent skills for developer experience work.
 
 ## Skills
 
+### Meta / Entry point
+
+#### using-devex-kit
+
+The canonical starting skill (inspired by superpowers' `using-superpowers`). 
+
+**Always invoke first** on any devex-kit-eligible task:
+
+```
+/using-devex-kit <describe the work>
+```
+
+It classifies intent, returns the exact target skill + copy/paste invocation, handles sequencing for multi-skill flows (story → DX → authoring is common), and gives local load instructions. Treat it as the router that makes every other skill discoverable and correctly applied.
+
+Install it individually or as part of the full kit — then start every relevant session by typing `/using-devex-kit`.
+
 ### Documentation
 
 Generic devrel skills for documentation workflows — useful to any devrel professional regardless of tech stack.
@@ -91,6 +107,13 @@ Design DX for first success and adoption, choose the right content types (Sample
 
 Once installed, invoke any skill with its slash command directly in Claude Code:
 
+**Start with the router (recommended):**
+```
+/using-devex-kit I need to design the DX for a new auth feature and choose between sample app vs recipe
+```
+
+Then follow its recommendation. Direct invocations also work:
+
 ```
 /docs-contribution-router
 /docs-writing-style
@@ -99,11 +122,18 @@ Once installed, invoke any skill with its slash command directly in Claude Code:
 /sdk-craft
 /devrel-tooling
 /mcp-server-craft
+/agent-plugin-development
 /devrel-story-craft
 /devrel-dx-craft
 ```
 
 Example sessions:
+
+```
+/using-devex-kit I need to document a new connector and also choose the right content pattern for the getting-started material
+```
+
+The router will reply with the sequence (e.g. docs-contribution-router first for placement, then devrel-dx-craft for taxonomy) and the exact commands.
 
 ```
 /docs-contribution-router I have a customer issue to document — users are confused
@@ -154,7 +184,8 @@ Installs from this repo's `SKILL.md` files (all skills are discovered).
 # Install everything
 npx skills add saif-shines/devex-kit --yes
 
-# Or pick one skill
+# Or pick one skill (start with the router)
+npx skills add saif-shines/devex-kit --skill using-devex-kit --yes
 npx skills add saif-shines/devex-kit --skill docs-contribution-router --yes
 npx skills add saif-shines/devex-kit --skill docs-writing-style --yes
 npx skills add saif-shines/devex-kit --skill authoring-cookbooks --yes
@@ -162,6 +193,7 @@ npx skills add saif-shines/devex-kit --skill journey-sidebar-labels --yes
 npx skills add saif-shines/devex-kit --skill sdk-craft --yes
 npx skills add saif-shines/devex-kit --skill devrel-tooling --yes
 npx skills add saif-shines/devex-kit --skill mcp-server-craft --yes
+npx skills add saif-shines/devex-kit --skill agent-plugin-development --yes
 npx skills add saif-shines/devex-kit --skill devrel-story-craft --yes
 npx skills add saif-shines/devex-kit --skill devrel-dx-craft --yes
 
@@ -174,6 +206,7 @@ npx skills add saif-shines/devex-kit --list
 Each skill is published as its own tile (`tile.json` next to `SKILL.md`).
 
 ```bash
+tessl install saif-shines/using-devex-kit --yes
 tessl install saif-shines/docs-contribution-router --yes
 tessl install saif-shines/docs-writing-style --yes
 tessl install saif-shines/authoring-cookbooks --yes
@@ -181,6 +214,7 @@ tessl install saif-shines/journey-sidebar-labels --yes
 tessl install saif-shines/sdk-craft --yes
 tessl install saif-shines/devrel-tooling --yes
 tessl install saif-shines/mcp-server-craft --yes
+tessl install saif-shines/agent-plugin-development --yes
 tessl install saif-shines/devrel-story-craft --yes
 tessl install saif-shines/devrel-dx-craft --yes
 ```
@@ -196,6 +230,7 @@ git clone https://github.com/saif-shines/devex-kit
 Then in Claude Code:
 
 ```
+/skills load ./skills/tooling/using-devex-kit/SKILL.md
 /skills load ./skills/documentation/docs-contribution-router/SKILL.md
 /skills load ./skills/documentation/docs-writing-style/SKILL.md
 /skills load ./skills/documentation/authoring-cookbooks/SKILL.md
@@ -204,7 +239,6 @@ Then in Claude Code:
 /skills load ./skills/tooling/devrel-tooling/SKILL.md
 /skills load ./skills/tooling/mcp-server-craft/SKILL.md
 /skills load ./skills/tooling/agent-plugin-development/SKILL.md
-/skills load ./skills/tooling/scalekit-code-doctor/SKILL.md
 /skills load ./skills/dev-gtm/devrel-story-craft/SKILL.md
 /skills load ./skills/dev-gtm/devrel-dx-craft/SKILL.md
 ```
@@ -212,6 +246,18 @@ Then in Claude Code:
 ---
 
 ## Use the skills
+
+### using-devex-kit
+
+**Start here.** This is the invocable router that makes the rest of the kit usable.
+
+```
+ /using-devex-kit I'm about to write a launch story for our new MCP server connectors and need to design the first-success DX at the same time
+```
+
+Output: clear recommendation of order (devrel-story-craft → devrel-dx-craft → authoring-cookbooks), plus the exact next slash commands with arguments you can copy.
+
+Use it exactly like `/using-superpowers` — at the beginning of the conversation, before you touch any of the domain skills. It prevents the "I picked the wrong skill" and "I forgot the sequencing" problems.
 
 ### docs-contribution-router
 
