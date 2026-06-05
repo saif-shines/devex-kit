@@ -1,0 +1,10 @@
+{
+  "name": "saif-shines/create-skill",
+  "version": "1.0.0",
+  "summary": "Create new skills and iteratively improve existing ones using devex-kit conventions. Covers intent capture, lean SKILL.md authoring with progressive disclosure, testing/iteration, description optimization, and packaging.",
+  "skills": {
+    "create-skill": {
+      "path": "SKILL.md"
+    }
+  }
+}

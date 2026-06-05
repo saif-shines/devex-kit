@@ -89,6 +89,19 @@ Build MCP servers that AI agents actually want to use. Covers the full lifecycle
 
 Sources: [AWS MCP Design Guidelines](https://github.com/awslabs/mcp/blob/main/DESIGN_GUIDELINES.md), [MCP Best Practices](https://modelcontextprotocol.info/docs/best-practices/).
 
+#### create-skill
+
+Create new skills and iteratively improve existing ones. The general (non-plugin) entry point for turning repeated workflows into reusable SKILL.md files.
+
+Covers:
+- **Capture** — Intent extraction, user interview, success criteria, test-case decision
+- **Draft** — Lean devex-kit frontmatter + body, imperative style, progressive disclosure via references/, quality checklist
+- **Test & Iterate** — Realistic cases, with/without baselines, review, feedback-driven improvement (lightweight; full harness lives in the upstream /skill-creator)
+- **Optimize** — Description tuning for reliable auto-triggering
+- **Package** — Validation, tile.json, distribution via skills.sh / tessl
+
+Always start with `/using-devex-kit` or invoke directly when the task is "turn this into a skill" or "improve my skill".
+
 ### Dev GTM
 
 Developer go-to-market strategy skills for dev-facing products and early-stage startups — authentic storytelling, technical advisory boards, DX for adoption, and content strategy that actually resonates with technical audiences. (Distilled from the source playbooks you referenced.)
@@ -122,6 +135,7 @@ Then follow its recommendation. Direct invocations also work:
 /sdk-craft
 /devrel-tooling
 /mcp-server-craft
+/create-skill
 /agent-plugin-development
 /devrel-story-craft
 /devrel-dx-craft
@@ -193,6 +207,7 @@ npx skills add saif-shines/devex-kit --skill journey-sidebar-labels --yes
 npx skills add saif-shines/devex-kit --skill sdk-craft --yes
 npx skills add saif-shines/devex-kit --skill devrel-tooling --yes
 npx skills add saif-shines/devex-kit --skill mcp-server-craft --yes
+npx skills add saif-shines/devex-kit --skill create-skill --yes
 npx skills add saif-shines/devex-kit --skill agent-plugin-development --yes
 npx skills add saif-shines/devex-kit --skill devrel-story-craft --yes
 npx skills add saif-shines/devex-kit --skill devrel-dx-craft --yes
@@ -214,6 +229,7 @@ tessl install saif-shines/journey-sidebar-labels --yes
 tessl install saif-shines/sdk-craft --yes
 tessl install saif-shines/devrel-tooling --yes
 tessl install saif-shines/mcp-server-craft --yes
+tessl install saif-shines/create-skill --yes
 tessl install saif-shines/agent-plugin-development --yes
 tessl install saif-shines/devrel-story-craft --yes
 tessl install saif-shines/devrel-dx-craft --yes
@@ -238,6 +254,7 @@ Then in Claude Code:
 /skills load ./skills/tooling/sdk-craft/SKILL.md
 /skills load ./skills/tooling/devrel-tooling/SKILL.md
 /skills load ./skills/tooling/mcp-server-craft/SKILL.md
+/skills load ./skills/tooling/create-skill/SKILL.md
 /skills load ./skills/tooling/agent-plugin-development/SKILL.md
 /skills load ./skills/dev-gtm/devrel-story-craft/SKILL.md
 /skills load ./skills/dev-gtm/devrel-dx-craft/SKILL.md
@@ -412,6 +429,22 @@ What security patterns do I need?
 ```
 How do I test that an LLM agent actually picks the right tools from my MCP server?
 ```
+
+### create-skill
+
+Use when turning a workflow into a reusable skill or improving an existing SKILL.md (general case).
+
+**Start a new skill:**
+```
+/create-skill I keep writing the same 4-step release checklist in every PR. Turn the release process into a skill.
+```
+
+**Improve or review:**
+```
+/create-skill Here's my current draft SKILL.md for a pdf helper. Make it leaner and add a references/ section for the edge cases.
+```
+
+The skill walks capture → draft (with devex-kit style) → optional test/iterate → description optimization → packaging. For plugin restructure work also load `agent-plugin-development`.
 
 ### devrel-story-craft
 
