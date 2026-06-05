@@ -1,8 +1,8 @@
 # devex-kit
 
-A collection of agent skills for developer experience work.
+A collection of agent skills for developer experience work — distributed as both a **Claude Code plugin marketplace** and **skills.sh**-compatible skill repo.
 
-## Skills
+## Plugins
 
 ### Meta / Entry point
 
@@ -190,9 +190,24 @@ Claude Code loads the skill and routes your request automatically. You do not ne
 
 ## Try it
 
+### Install as Claude Code plugin marketplace (recommended)
+
+```bash
+# Add the marketplace
+/plugin marketplace add saif-shines/devex-kit
+
+# Install all three plugins
+/plugin install documentation@devex-kit
+/plugin install tooling@devex-kit
+/plugin install dev-gtm@devex-kit
+
+# Or install just what you need
+/plugin install tooling@devex-kit
+```
+
 ### Install via [skills.sh](https://skills.sh) (Vercel Skills CLI)
 
-Installs from this repo's `SKILL.md` files (all skills are discovered).
+Discovers all `SKILL.md` files recursively — works with the plugin directory layout.
 
 ```bash
 # Install everything
@@ -246,18 +261,18 @@ git clone https://github.com/saif-shines/devex-kit
 Then in Claude Code:
 
 ```
-/skills load ./skills/tooling/using-devex-kit/SKILL.md
-/skills load ./skills/documentation/docs-contribution-router/SKILL.md
-/skills load ./skills/documentation/docs-writing-style/SKILL.md
-/skills load ./skills/documentation/authoring-cookbooks/SKILL.md
-/skills load ./skills/documentation/journey-sidebar-labels/SKILL.md
-/skills load ./skills/tooling/sdk-craft/SKILL.md
-/skills load ./skills/tooling/devrel-tooling/SKILL.md
-/skills load ./skills/tooling/mcp-server-craft/SKILL.md
-/skills load ./skills/tooling/create-skill/SKILL.md
-/skills load ./skills/tooling/agent-plugin-development/SKILL.md
-/skills load ./skills/dev-gtm/devrel-story-craft/SKILL.md
-/skills load ./skills/dev-gtm/devrel-dx-craft/SKILL.md
+/skills load ./plugins/tooling/skills/using-devex-kit/SKILL.md
+/skills load ./plugins/documentation/skills/docs-contribution-router/SKILL.md
+/skills load ./plugins/documentation/skills/docs-writing-style/SKILL.md
+/skills load ./plugins/documentation/skills/authoring-cookbooks/SKILL.md
+/skills load ./plugins/documentation/skills/journey-sidebar-labels/SKILL.md
+/skills load ./plugins/tooling/skills/sdk-craft/SKILL.md
+/skills load ./plugins/tooling/skills/devrel-tooling/SKILL.md
+/skills load ./plugins/tooling/skills/mcp-server-craft/SKILL.md
+/skills load ./plugins/tooling/skills/create-skill/SKILL.md
+/skills load ./plugins/tooling/skills/agent-plugin-development/SKILL.md
+/skills load ./plugins/dev-gtm/skills/devrel-story-craft/SKILL.md
+/skills load ./plugins/dev-gtm/skills/devrel-dx-craft/SKILL.md
 ```
 
 ---

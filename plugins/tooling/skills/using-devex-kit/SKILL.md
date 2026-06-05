@@ -92,14 +92,14 @@ Then immediately follow the returned recommendation, e.g. paste the suggested `/
 
 **Local development (no install):**
 ```
-/skills load ./skills/tooling/using-devex-kit/SKILL.md
+/skills load ./plugins/tooling/skills/using-devex-kit/SKILL.md
 /using-devex-kit I need to design a new SDK...
 ```
 (The load only needs to happen once per session or after edits.)
 
 **After the router responds, load the target the same way:**
 ```
-/skills load ./skills/tooling/sdk-craft/SKILL.md
+/skills load ./plugins/tooling/skills/sdk-craft/SKILL.md
 /sdk-craft ...
 ```
 

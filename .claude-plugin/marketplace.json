@@ -1,0 +1,29 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "devex-kit",
+  "description": "Agent skills for developer experience — documentation workflows, SDK/CLI/MCP tooling, and dev-facing go-to-market.",
+  "owner": {
+    "name": "saif-shines",
+    "url": "https://github.com/saif-shines"
+  },
+  "plugins": [
+    {
+      "name": "documentation",
+      "description": "Documentation contribution routing, writing style, cookbook quality, and sidebar navigation skills.",
+      "source": "./plugins/documentation",
+      "category": "Documentation"
+    },
+    {
+      "name": "tooling",
+      "description": "Skills for building SDKs, CLI tools, MCP servers, agent plugins, and the devex-kit router.",
+      "source": "./plugins/tooling",
+      "category": "Developer Tooling"
+    },
+    {
+      "name": "dev-gtm",
+      "description": "Developer go-to-market skills — authentic storytelling, TABs, DX for first success, and content taxonomy.",
+      "source": "./plugins/dev-gtm",
+      "category": "Dev GTM"
+    }
+  ]
+}

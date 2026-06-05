@@ -1,0 +1,10 @@
+{
+  "name": "documentation",
+  "description": "Documentation contribution routing, writing style enforcement, cookbook quality audits, and sidebar navigation design.",
+  "version": "1.0.0",
+  "author": { "name": "saif-shines" },
+  "homepage": "https://github.com/saif-shines/devex-kit",
+  "repository": "https://github.com/saif-shines/devex-kit",
+  "license": "MIT",
+  "keywords": ["documentation", "writing-style", "devrel", "docs", "sidebar"]
+}

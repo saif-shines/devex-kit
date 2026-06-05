@@ -1,0 +1,10 @@
+{
+  "name": "dev-gtm",
+  "description": "Developer go-to-market skills — authentic storytelling, TAB playbooks, DX for first success, and content taxonomy.",
+  "version": "1.0.0",
+  "author": { "name": "saif-shines" },
+  "homepage": "https://github.com/saif-shines/devex-kit",
+  "repository": "https://github.com/saif-shines/devex-kit",
+  "license": "MIT",
+  "keywords": ["devrel", "gtm", "storytelling", "dx", "content-strategy"]
+}
