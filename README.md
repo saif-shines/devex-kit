@@ -89,6 +89,17 @@ Build MCP servers that AI agents actually want to use. Covers the full lifecycle
 
 Sources: [AWS MCP Design Guidelines](https://github.com/awslabs/mcp/blob/main/DESIGN_GUIDELINES.md), [MCP Best Practices](https://modelcontextprotocol.info/docs/best-practices/).
 
+#### pragmatic-fp
+
+Pragmatic 80/20 guide to functional programming in TypeScript with fp-ts, informed by the "Functional-Light" approach (Kyle Simpson's *Functional-Light JavaScript*). No category theory — just the patterns that matter in real code, with a strong emphasis on readable, "reasonable" code and knowing when *not* to reach for FP.
+
+- **Core 5** — pipe for linear flow (composition), Option for nullables, Either for explicit errors, map, and flatMap
+- **When to stop** — clear rules and examples for keeping code simple (optional chaining, loops, perf paths, team knowledge, communication)
+- **Quick wins + refactors** — before/after for nested ternaries, try/catch, validation, callback hell, and Promise chains
+- **Readability guardrail** — "Would a junior understand this?" + "reasonable code" mindset + cheat sheet
+
+Use when you want a practical starting point for fp-ts, need the 80/20 view, or are deciding whether introducing Option/Either/pipe will actually help humans read and maintain the code.
+
 #### create-skill
 
 Create new skills and iteratively improve existing ones. The general (non-plugin) entry point for turning repeated workflows into reusable SKILL.md files.
@@ -135,6 +146,7 @@ Then follow its recommendation. Direct invocations also work:
 /sdk-craft
 /devrel-tooling
 /mcp-server-craft
+/pragmatic-fp
 /create-skill
 /agent-plugin-development
 /devrel-story-craft
@@ -173,6 +185,10 @@ about how session tokens are revoked when an org is disabled. Where does this go
 ```
 /sdk-craft I'm building a TypeScript SDK for our REST API. Start with design phase — help me
 define the public API surface.
+```
+
+```
+/pragmatic-fp I have a chain of null checks and defensive ifs — give me the pragmatic fp-ts version or tell me to keep it simple.
 ```
 
 ```
