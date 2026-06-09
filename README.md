@@ -89,6 +89,17 @@ Build MCP servers that AI agents actually want to use. Covers the full lifecycle
 
 Sources: [AWS MCP Design Guidelines](https://github.com/awslabs/mcp/blob/main/DESIGN_GUIDELINES.md), [MCP Best Practices](https://modelcontextprotocol.info/docs/best-practices/).
 
+#### pragmatic-fp
+
+Pragmatic 80/20 guide to functional programming in TypeScript with fp-ts. No category theory — just the patterns that matter in real code:
+
+- **Core 5** — pipe for linear flow, Option for nullables, Either for explicit errors, map, and flatMap
+- **When to stop** — clear rules and examples for keeping code simple (optional chaining, loops, perf paths, team knowledge)
+- **Quick wins + refactors** — before/after for nested ternaries, try/catch, validation, callback hell, and Promise chains
+- **Readability guardrail** — "Would a junior understand this?" rule + cheat sheet
+
+Use when you want a practical starting point for fp-ts, need the 80/20 view, or are deciding whether introducing Option/Either/pipe will help or hurt.
+
 #### create-skill
 
 Create new skills and iteratively improve existing ones. The general (non-plugin) entry point for turning repeated workflows into reusable SKILL.md files.
@@ -101,6 +112,16 @@ Covers:
 - **Package** — Validation, tile.json, distribution via skills.sh / tessl
 
 Always start with `/using-devex-kit` or invoke directly when the task is "turn this into a skill" or "improve my skill".
+
+#### pragmatic-fp
+
+```
+/pragmatic-fp I'm writing some TypeScript and want the practical 80/20 on fp-ts without the theory.
+```
+
+```
+/pragmatic-fp I have a chain of null checks — should I reach for Option or keep optional chaining?
+```
 
 ### Dev GTM
 

@@ -1,0 +1,10 @@
+{
+  "name": "saif-shines/pragmatic-fp",
+  "version": "1.0.0",
+  "summary": "Pragmatic 80/20 guide to functional programming in TypeScript with fp-ts. Pipe, Option, Either, map, flatMap — and exactly when to skip FP. No category theory.",
+  "skills": {
+    "pragmatic-fp": {
+      "path": "SKILL.md"
+    }
+  }
+}
