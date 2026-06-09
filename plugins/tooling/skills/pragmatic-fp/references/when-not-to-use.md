@@ -56,6 +56,8 @@ const sum = pipe(numbers, A.reduce(0, (acc, n) => acc + n))
 
 If you're the only one who can read the code, it's not good code.
 
+*Functional-Light JavaScript* (Ch. 1) stresses that FP should increase **communication** and **confidence** across the team. If introducing Option/Either/pipe makes stand-ups, code review, or onboarding harder, you have not found the right balance yet. Start with the simplest form that still solves the problem. Teach the "why" (explicit effects, readable pipelines) before the "how" (specific combinators). The goal is a team that writes more reasonable code together, not a team that performs FP rituals.
+
 ```typescript
 // If your team knows this pattern
 async function getUser(id: string): Promise<User | null> {

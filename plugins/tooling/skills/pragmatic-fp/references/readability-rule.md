@@ -2,6 +2,8 @@
 
 Before using any FP pattern, ask: **"Would a junior developer understand this?"**
 
+This rule is directly inspired by the "Functional-Light" perspective in Kyle Simpson's *Functional-Light JavaScript* (Chapter 1: "Readability", "Communication", "Confidence", and "How to Find Balance"). The goal of FP is not cleverness or purity for its own sake — it is *reasonable code*: code that is easier for humans to read, reason about, communicate about, and maintain over time. "Light" FP means applying these ideas only where they actually help humans.
+
 ## Too Clever (Avoid)
 
 ```typescript
@@ -34,6 +36,17 @@ const result = pipe(
   total => total > threshold ? O.some(total) : O.none
 )
 ```
+
+## Reasonable Code (Functional-Light Mindset)
+
+From *Functional-Light JavaScript*:
+
+- **Readability first**: Code is written for humans. If the FP version requires the reader to mentally "unfold" a long pipeline or hold many higher-order functions in their head, it has failed.
+- **Communication**: Good code lets teammates (and future you) talk about *what* it does, not just *how* the combinators are wired.
+- **Confidence**: FP should reduce fear of changing code, not increase it through cleverness.
+- **Balance**: Use FP where it increases these qualities. Drop it (or use the imperative/middle-ground form) where it decreases them. This is the heart of "light" FP.
+
+The examples above show the progression from too-clever → middle-ground (often the sweet spot) → plain JS when that communicates best.
 
 ---
 

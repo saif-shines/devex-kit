@@ -2,6 +2,8 @@
 
 These five patterns give you most of the benefits. Master these before exploring anything else.
 
+This selection is heavily influenced by the practical "Functional-Light" approach in Kyle Simpson's *Functional-Light JavaScript* (especially Chapters 4 "Composing Functions" and 5 "Reducing Side Effects"). The focus is on readable composition ("output becomes input") and making effects (including errors and missing values) explicit rather than hidden on the side.
+
 ## 1. Pipe: Chain Operations Clearly
 
 Instead of nesting function calls or creating intermediate variables, chain operations in reading order.
@@ -27,17 +29,21 @@ const result = pipe(
 ```
 
 **When to use pipe:**
-- 3+ transformations on the same data
+- 3+ transformations on the same data (this is "general composition" — output of one becomes input of the next, as described in FLJS Ch. 4).
 - You find yourself naming throwaway variables
-- Logic reads better top-to-bottom
+- Logic reads better top-to-bottom (the pipeline itself communicates the *story* of the data)
 
 **When to skip pipe:**
-- Just 1-2 operations (direct call is fine)
-- The operations don't naturally chain
+- Just 1-2 operations (direct call or a simple expression is usually clearer)
+- The operations don't naturally chain or the intermediate names would actually help the reader
+
+> For deeper thinking on composition, abstraction levels, and when point-free style helps vs. hurts, the FLJS manuscript (Ch. 4) is excellent reading.
 
 ## 2. Option: Handle Missing Values Without null Checks
 
 Stop writing `if (x !== null && x !== undefined)` everywhere.
+
+In Functional-Light terms (FLJS Ch. 5), `null`/`undefined` are *side effects* leaking into your logic. Option makes the "maybe absent" effect explicit and contained so the rest of your code can stay focused on the happy path.
 
 ```typescript
 import * as O from 'fp-ts/Option'
@@ -69,6 +75,8 @@ const getUserCity = (user: User | null): string =>
 ## 3. Either: Make Errors Explicit
 
 Stop throwing exceptions for expected failures. Return errors as values.
+
+Exceptions are another classic "side effect on the side" (FLJS Ch. 5). Either brings the error case into the type and the data flow, so callers are forced to acknowledge it. This is "purifying" the function signature — the effect is no longer hidden.
 
 ```typescript
 import * as E from 'fp-ts/Either'

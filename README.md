@@ -91,14 +91,14 @@ Sources: [AWS MCP Design Guidelines](https://github.com/awslabs/mcp/blob/main/DE
 
 #### pragmatic-fp
 
-Pragmatic 80/20 guide to functional programming in TypeScript with fp-ts. No category theory — just the patterns that matter in real code:
+Pragmatic 80/20 guide to functional programming in TypeScript with fp-ts, informed by the "Functional-Light" approach (Kyle Simpson's *Functional-Light JavaScript*). No category theory — just the patterns that matter in real code, with a strong emphasis on readable, "reasonable" code and knowing when *not* to reach for FP.
 
-- **Core 5** — pipe for linear flow, Option for nullables, Either for explicit errors, map, and flatMap
-- **When to stop** — clear rules and examples for keeping code simple (optional chaining, loops, perf paths, team knowledge)
+- **Core 5** — pipe for linear flow (composition), Option for nullables, Either for explicit errors, map, and flatMap
+- **When to stop** — clear rules and examples for keeping code simple (optional chaining, loops, perf paths, team knowledge, communication)
 - **Quick wins + refactors** — before/after for nested ternaries, try/catch, validation, callback hell, and Promise chains
-- **Readability guardrail** — "Would a junior understand this?" rule + cheat sheet
+- **Readability guardrail** — "Would a junior understand this?" + "reasonable code" mindset + cheat sheet
 
-Use when you want a practical starting point for fp-ts, need the 80/20 view, or are deciding whether introducing Option/Either/pipe will help or hurt.
+Use when you want a practical starting point for fp-ts, need the 80/20 view, or are deciding whether introducing Option/Either/pipe will actually help humans read and maintain the code.
 
 #### create-skill
 
