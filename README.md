@@ -113,16 +113,6 @@ Covers:
 
 Always start with `/using-devex-kit` or invoke directly when the task is "turn this into a skill" or "improve my skill".
 
-#### pragmatic-fp
-
-```
-/pragmatic-fp I'm writing some TypeScript and want the practical 80/20 on fp-ts without the theory.
-```
-
-```
-/pragmatic-fp I have a chain of null checks — should I reach for Option or keep optional chaining?
-```
-
 ### Dev GTM
 
 Developer go-to-market strategy skills for dev-facing products and early-stage startups — authentic storytelling, technical advisory boards, DX for adoption, and content strategy that actually resonates with technical audiences. (Distilled from the source playbooks you referenced.)
@@ -156,6 +146,7 @@ Then follow its recommendation. Direct invocations also work:
 /sdk-craft
 /devrel-tooling
 /mcp-server-craft
+/pragmatic-fp
 /create-skill
 /agent-plugin-development
 /devrel-story-craft
@@ -194,6 +185,10 @@ about how session tokens are revoked when an org is disabled. Where does this go
 ```
 /sdk-craft I'm building a TypeScript SDK for our REST API. Start with design phase — help me
 define the public API surface.
+```
+
+```
+/pragmatic-fp I have a chain of null checks and defensive ifs — give me the pragmatic fp-ts version or tell me to keep it simple.
 ```
 
 ```

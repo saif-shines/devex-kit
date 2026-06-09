@@ -1,7 +1,7 @@
 ---
 name: using-devex-kit
 description: |
-  Route tasks and route the user to the correct devex-kit skill before any work begins. Use when starting conversations or tasks that may involve documentation contributions, writing style, cookbook quality, sidebar navigation, SDK design/build/ship, CLI or API tooling, MCP server craft, agent plugin or skill development, devrel storytelling, DX first-success and content taxonomy, or when the user says "using devex-kit", "which devex-kit skill should I use", "help me pick the right skill from the kit", "route this to the right devex skill", or is unsure which /docs-* /sdk-* /mcp-* /devrel-* skill applies. Activates at the start of relevant sessions just like using-superpowers.
+  Route tasks and route the user to the correct devex-kit skill before any work begins. Use when starting conversations or tasks that may involve documentation contributions, writing style, cookbook quality, sidebar navigation, SDK design/build/ship, CLI or API tooling, MCP server craft, pragmatic code patterns and idioms (e.g. functional programming in TypeScript), agent plugin or skill development, devrel storytelling, DX first-success and content taxonomy, or when the user says "using devex-kit", "which devex-kit skill should I use", "help me pick the right skill from the kit", "route this to the right devex skill", or is unsure which /docs-* /sdk-* /mcp-* /devrel-* skill applies. Activates at the start of relevant sessions just like using-superpowers.
 license: MIT
 metadata:
   author: saif-shines
