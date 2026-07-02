@@ -1,0 +1,10 @@
+{
+  "name": "saif-shines/code-style-patterns",
+  "version": "1.0.0",
+  "summary": "Curated code style patterns and idioms from popular GitHub developers and open source leaders. Apply real-world community patterns with before/after examples and clear guidance on when to use them.",
+  "skills": {
+    "code-style-patterns": {
+      "path": "SKILL.md"
+    }
+  }
+}
