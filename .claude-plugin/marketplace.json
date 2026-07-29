@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "documentation",
-      "description": "Documentation contribution routing, writing style, cookbook quality, and sidebar navigation skills.",
+      "description": "Documentation contribution routing, writing style, cookbook quality, sidebar navigation, and freeCodeCamp publication style skills.",
       "source": "./plugins/documentation",
       "category": "Documentation"
     },

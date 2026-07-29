@@ -1,0 +1,10 @@
+{
+  "name": "saif-shines/freecodecamp-style",
+  "version": "0.1.0",
+  "summary": "Author, review, and dual-submit freeCodeCamp publication tutorials against the official style guide and Hashnode workflow (headlines, substance, integrity, ToC, editorial email).",
+  "skills": {
+    "freecodecamp-style": {
+      "path": "SKILL.md"
+    }
+  }
+}

@@ -16,6 +16,7 @@ Documentation workflow skills for devrel professionals — routing contributions
 | docs-contribution-router | `/docs-contribution-router` | Routes docs contributions to the right content type, placement, template, and workflow |
 | docs-writing-style | `/docs-writing-style` | Handoff mode (style prompt for your agent) or review mode (quality rubric against a draft) |
 | authoring-cookbooks | `/authoring-cookbooks` | Diagnoses documentation quality — skimmability, writing clarity, reader helpfulness |
+| freecodecamp-style | `/freecodecamp-style` | Author, review, and dual-submit freeCodeCamp /news tutorials (style guide + Hashnode workflow) |
 | journey-sidebar-labels | `/journey-sidebar-labels` | Sidebar navigation labels and order following a developer journey |
 
 ## Usage
@@ -35,3 +36,12 @@ Documentation workflow skills for devrel professionals — routing contributions
 ```
 /journey-sidebar-labels Review these sidebar labels for sentence case and journey order: [paste]
 ```
+
+```
+/freecodecamp-style review mode. [paste tutorial draft]
+```
+
+```
+/freecodecamp-style author: How to Build a REST API with FastAPI handbook outline
+```
+
