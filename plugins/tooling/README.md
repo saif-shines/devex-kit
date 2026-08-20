@@ -18,6 +18,7 @@ Skills for building the artifacts devrel professionals ship — SDKs, CLI tools,
 | devrel-tooling | `/devrel-tooling` | Build CLI tools and generate API collections |
 | mcp-server-craft | `/mcp-server-craft` | Build MCP servers — tool design, security, testing |
 | pragmatic-fp | `/pragmatic-fp` | Pragmatic 80/20 fp-ts in TypeScript (pipe, Option, Either + when to skip) |
+| code-style-patterns | `/code-style-patterns` | Apply community code styles (shadcn, sindresorhus, ahmadawais) |
 | create-skill | `/create-skill` | Create new skills or improve existing SKILL.md files |
 | agent-plugin-development | `/agent-plugin-development` | Design, build, and restructure Claude Code plugins |
 

@@ -76,6 +76,7 @@ All of the above mean: invoke `/using-devex-kit` (or the specific skill) before 
 | "Build a CLI tool", "add shell completions", "generate Postman collection from routes", "developer-facing CLI", "commander / click / typer / cobra" | devrel-tooling | `/devrel-tooling Build a CLI tool for our SDK that scaffolds new projects. Node.js, commander.` |
 | "Building an MCP server", "design MCP tools", "MCP security / auth", "test MCP with agents", "stdio vs Streamable HTTP" | mcp-server-craft | `/mcp-server-craft I'm building an MCP server to expose our search API to AI agents. Help me design the tool schemas.` |
 | "Pragmatic FP in TypeScript", "80/20 fp-ts", "functional light", "FLJS", "reasonable code", "when to use functional programming", "pipe Option Either for null and errors", "don't use FP if harder to read", "pragmatic functional programming" | pragmatic-fp | `/pragmatic-fp I'm writing some TypeScript and want the practical 80/20 on fp-ts without the theory (inspired by Functional-Light JS).`<br>`/pragmatic-fp I have a chain of null checks — should I reach for Option or keep optional chaining?` |
+| "shadcn style", "sindresorhus style", "ahmadawais CLI", "community code styles", "write like shadcn" | code-style-patterns | `/code-style-patterns Apply shadcn style to this Next.js component.` |
 | "Creating a new skill", "writing SKILL.md", "improve a skill", "package a skill", "create-skill" | create-skill | `/create-skill I'm turning this repeated workflow into a reusable skill. Start with capture.`<br>`/create-skill Review the draft I just wrote.` |
 | "restructure a plugin", "5 principles", "build spawnable agents", "externalize references", "plugin skill layout", "agent-plugin-development" | agent-plugin-development | `/agent-plugin-development I'm restructuring the pr-review-toolkit plugin to the skills-first model. Start with the model phase.` |
 | "Launch story", "TAB playbook", "dev influencer presence", "packaging and pricing for devs", "authentic dev story", "12 story mistakes" | devrel-story-craft | `/devrel-story-craft plan TAB for connectors. Help me recruit and draft the first call questions.`<br>`/devrel-story-craft review mode. Here's my draft launch story...` |
@@ -106,8 +107,8 @@ Then immediately follow the returned recommendation, e.g. paste the suggested `/
 
 See the root README for the full list of load paths for every skill.
 
-**Grok / other environments that surface .agents/skills:**
-Skills under `.agents/skills/` are auto-discovered. The `/using-devex-kit` and `/<skill-name>` shorthands work directly when the user message starts with the slash (per your system rules). The router still provides the same value: it forces explicit choice and sequencing before you begin.
+**Grok / other agents:**
+Install via `npx skills add saif-shines/devex-kit` or load a path under `plugins/<plugin>/skills/`. There is no `.agents/skills/` tree in this repo.
 
 ## Multi-skill Workflows (common patterns)
 

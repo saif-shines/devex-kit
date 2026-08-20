@@ -100,6 +100,10 @@ Pragmatic 80/20 guide to functional programming in TypeScript with fp-ts, inform
 
 Use when you want a practical starting point for fp-ts, need the 80/20 view, or are deciding whether introducing Option/Either/pipe will actually help humans read and maintain the code.
 
+#### code-style-patterns
+
+Apply real coding styles from well-known open source developers: shadcn, sindresorhus, and ahmadawais. Load the matching reference, then adapt the pattern to the current codebase.
+
 #### create-skill
 
 Create new skills and iteratively improve existing ones. The general (non-plugin) entry point for turning repeated workflows into reusable SKILL.md files.
@@ -147,6 +151,7 @@ Then follow its recommendation. Direct invocations also work:
 /devrel-tooling
 /mcp-server-craft
 /pragmatic-fp
+/code-style-patterns
 /create-skill
 /agent-plugin-development
 /devrel-story-craft
@@ -238,6 +243,7 @@ npx skills add saif-shines/devex-kit --skill journey-sidebar-labels --yes
 npx skills add saif-shines/devex-kit --skill sdk-craft --yes
 npx skills add saif-shines/devex-kit --skill devrel-tooling --yes
 npx skills add saif-shines/devex-kit --skill mcp-server-craft --yes
+npx skills add saif-shines/devex-kit --skill code-style-patterns --yes
 npx skills add saif-shines/devex-kit --skill create-skill --yes
 npx skills add saif-shines/devex-kit --skill agent-plugin-development --yes
 npx skills add saif-shines/devex-kit --skill devrel-story-craft --yes
@@ -260,6 +266,7 @@ tessl install saif-shines/journey-sidebar-labels --yes
 tessl install saif-shines/sdk-craft --yes
 tessl install saif-shines/devrel-tooling --yes
 tessl install saif-shines/mcp-server-craft --yes
+tessl install saif-shines/code-style-patterns --yes
 tessl install saif-shines/create-skill --yes
 tessl install saif-shines/agent-plugin-development --yes
 tessl install saif-shines/devrel-story-craft --yes
@@ -285,6 +292,7 @@ Then in Claude Code:
 /skills load ./plugins/tooling/skills/sdk-craft/SKILL.md
 /skills load ./plugins/tooling/skills/devrel-tooling/SKILL.md
 /skills load ./plugins/tooling/skills/mcp-server-craft/SKILL.md
+/skills load ./plugins/tooling/skills/code-style-patterns/SKILL.md
 /skills load ./plugins/tooling/skills/create-skill/SKILL.md
 /skills load ./plugins/tooling/skills/agent-plugin-development/SKILL.md
 /skills load ./plugins/dev-gtm/skills/devrel-story-craft/SKILL.md

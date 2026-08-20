@@ -42,7 +42,7 @@ These are non-negotiable for skills and plugins in the devex-kit ecosystem and m
    - The gold standard: SKILL.md tells the agent "Before doing anything else, read the reference files in this skill's `references/` directory" then provides mode detection, checklists, and output formats.
    - All the "what is correct" data lives in the references so it can be updated without touching orchestration logic, and so it can be consumed by non-Claude tools.
    - Every complex skill (reviewers, generators, doctors, routers with large decision trees) should follow this split.
-   - The devex-kit `scalekit-code-doctor/` in tooling/ is intentionally a stub (tile only) because the real massive reference lives in the installed skill; the pattern is what matters.
+   - The Scalekit-only doctor lives in skillkit. This kit does not ship it. The pattern is what matters.
 
 ## Migration Tactics
 
