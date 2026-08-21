@@ -28,15 +28,14 @@ Generic devrel skills for documentation workflows — useful to any devrel profe
 
 Routes documentation contributions to the right content type, placement, template, and workflow — before the contributor writes a single line.
 
-Four branches:
+Three branches:
 - **API reference** — docs-side flow for landing a regenerated spec (does not cover the upstream source repo)
 - **Content placement** — decision tree: cookbook / how-to / concept / reference / quickstart; explicit Aside anti-pattern rule
 - **Integration guide** — section skeleton, frontmatter starter, screenshot workflow (VS Code paste-image extension)
-- **Escalation** — severity-tagged (low → critical) for IA/tooling/override changes; maps to CODEOWNERS paths
 
-Scalekit-specific paths are in `references/scalekit-*.json`. External consumers drop their own configs at `<docs-repo>/.devex-kit/` — no edits to SKILL.md required.
+Scalekit-specific placement maps can live at `<docs-repo>/.devex-kit/`. This kit does not ship Scalekit review policy.
 
-Scalekit agent-connector docs (generated pages, `_setup-*` templates, `pnpm run sync-agent-connectors`) live in [skillkit](https://github.com/saif-shines/skillkit), not in this kit.
+Scalekit agent-connector docs and escalation / CODEOWNERS review rules live in [skillkit](https://github.com/saif-shines/skillkit) `docs-engineering`, not in this kit.
 
 #### docs-writing-style
 
@@ -384,13 +383,7 @@ I'm writing an integration guide for connecting Okta as an SSO provider. Give me
 the template and tell me where the file goes.
 ```
 
-**Escalation check:**
-```
-I want to add a new top-level section to the sidebar called "Workflows". Is that
-something I can just do or does it need review?
-```
-
-The skill outputs: content type, file path, frontmatter starter, sidebar label suggestion, and an escalation flag with severity and required PR description content.
+The skill outputs: content type, file path, frontmatter starter, and a sidebar label suggestion.
 
 ### docs-writing-style
 
@@ -566,10 +559,6 @@ The skill outputs: DX audit against first-success criteria, taxonomy decision wi
 
 ## Adapting to your docs site
 
-`docs-contribution-router` and `docs-writing-style` ship with Scalekit-specific reference data (placement maps, escalation trigger paths, style prompt). To use them on a different docs site:
+`docs-writing-style` can take a site style block at `<your-docs-repo>/.devex-kit/style-prompt-block.md`. `docs-contribution-router` can take a placement map at `<your-docs-repo>/.devex-kit/placement-map.json`.
 
-1. Copy the `_template-*.json` / `_template-*.md` files from the skill's `references/` directory.
-2. Fill in your own paths, conventions, and CODEOWNERS configuration.
-3. Drop the filled-in files at `<your-docs-repo>/.devex-kit/`.
-
-The skills check for local overrides first and fall back to the bundled Scalekit samples with a note.
+Scalekit escalation triggers and agent-connector flows stay in skillkit.

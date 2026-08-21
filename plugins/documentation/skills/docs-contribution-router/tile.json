@@ -1,7 +1,7 @@
 {
   "name": "saif-shines/docs-contribution-router",
   "version": "1.0.0",
-  "summary": "Route documentation contributions to the right content type, placement, template, and escalation path before writing begins. Covers API reference updates, agent connector docs, content placement decisions, integration guides, and IA-change escalation.",
+  "summary": "Route documentation contributions to the right content type, placement, and template before writing begins. Covers API reference updates, content placement, and integration guides.",
   "skills": {
     "docs-contribution-router": {
       "path": "SKILL.md"
