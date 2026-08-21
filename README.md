@@ -2,6 +2,8 @@
 
 A collection of agent skills for developer experience work — distributed as both a **Claude Code plugin marketplace** and **skills.sh**-compatible skill repo.
 
+Humans pick a skill from [docs/skills.md](docs/skills.md). There is no per-skill page.
+
 ## Plugins
 
 ### Meta / Entry point

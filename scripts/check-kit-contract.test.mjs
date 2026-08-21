@@ -24,11 +24,81 @@ async function makeKit(mutate) {
   await mkdir(join(root, "in-progress"), { recursive: true });
   await mkdir(join(root, ".changeset"), { recursive: true });
   await writeFile(join(root, ".changeset/config.json"), "{}\n");
+  await mkdir(join(root, "docs"), { recursive: true });
+  await writeFile(
+    join(root, "docs/skills.md"),
+    "| Skill |\n| [ask-devex] |\n| [code-style-patterns] |\n",
+  );
   if (mutate) {
     await mutate(root);
   }
   return root;
 }
+
+test("fails when the human skills table is missing", async () => {
+  const root = await makeKit();
+  await rm(join(root, "docs/skills.md"));
+  try {
+    const result = checkKitContract(root);
+    assert.equal(result.ok, false);
+    assert.match(result.failures.join("\n"), /docs\/skills\.md/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("fails when a shipped skill is missing from the human skills table", async () => {
+  const root = await makeKit(async (kit) => {
+    await writeFile(join(kit, "docs/skills.md"), "| Skill |\n| [ask-devex] |\n");
+  });
+  try {
+    const result = checkKitContract(root);
+    assert.equal(result.ok, false);
+    assert.match(result.failures.join("\n"), /code-style-patterns/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("fails when authoring-cookbooks is over the lean cap", async () => {
+  const root = await makeKit(async (kit) => {
+    const dir = join(kit, "plugins/documentation/skills/authoring-cookbooks");
+    await mkdir(dir, { recursive: true });
+    const words = Array.from({ length: 2001 }, () => "word").join(" ");
+    await writeFile(join(dir, "SKILL.md"), `---\nname: authoring-cookbooks\n---\n${words}\n`);
+    await writeFile(
+      join(kit, "docs/skills.md"),
+      "| Skill |\n| [ask-devex] |\n| [code-style-patterns] |\n| [authoring-cookbooks] |\n",
+    );
+  });
+  try {
+    const result = checkKitContract(root);
+    assert.equal(result.ok, false);
+    assert.match(result.failures.join("\n"), /authoring-cookbooks/);
+    assert.match(result.failures.join("\n"), /2000/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("fails when authoring-cookbooks has no load blockquote", async () => {
+  const root = await makeKit(async (kit) => {
+    const dir = join(kit, "plugins/documentation/skills/authoring-cookbooks");
+    await mkdir(dir, { recursive: true });
+    await writeFile(join(dir, "SKILL.md"), "---\nname: authoring-cookbooks\n---\nDiagnose cookbooks.\n");
+    await writeFile(
+      join(kit, "docs/skills.md"),
+      "| Skill |\n| [ask-devex] |\n| [code-style-patterns] |\n| [authoring-cookbooks] |\n",
+    );
+  });
+  try {
+    const result = checkKitContract(root);
+    assert.equal(result.ok, false);
+    assert.match(result.failures.join("\n"), /references/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
 
 test("fails when a shipped skill is missing a Codex invocation file", async () => {
   const root = await makeKit(async (kit) => {

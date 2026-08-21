@@ -1,4 +1,5 @@
-docs/
+docs/*
+!docs/skills.md
 .agents/
 skills-lock.json
 node_modules/

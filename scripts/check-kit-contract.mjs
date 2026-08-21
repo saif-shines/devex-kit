@@ -4,6 +4,9 @@ import { pathToFileURL } from "node:url";
 
 const CLAUDE_MD = "CLAUDE.md";
 const AGENTS_MD = "AGENTS.md";
+const HUMAN_INDEX = join("docs", "skills.md");
+const COOKBOOK_SKILL = join("plugins", "documentation", "skills", "authoring-cookbooks", "SKILL.md");
+const COOKBOOK_WORD_CAP = 2000;
 const ORCHESTRATORS = new Set(["ask-devex", "docs-contribution-router", "create-skill"]);
 
 function pluginNames(rootDir) {
@@ -205,6 +208,37 @@ export function checkKitContract(rootDir) {
       if (!ORCHESTRATORS.has(name) && forbidsImplicit) {
         failures.push(`${name} is a craft skill and must allow implicit invocation`);
       }
+    }
+  }
+  const indexPath = join(rootDir, HUMAN_INDEX);
+  if (!existsSync(indexPath)) {
+    failures.push("docs/skills.md is missing; the kit needs one human skills table");
+  } else {
+    const index = readFileSync(indexPath, "utf8");
+    if (!index.includes("| [ask-devex]")) {
+      failures.push("docs/skills.md must list ask-devex");
+    }
+    for (const name of skillNames(rootDir)) {
+      if (!index.includes(`| [${name}]`)) {
+        failures.push(`${name} is shipped but missing from docs/skills.md`);
+      }
+    }
+    for (const name of skillNames(rootDir)) {
+      if (existsSync(join(rootDir, "docs", "skills", `${name}.md`))) {
+        failures.push(`${name} has a per-skill human page; keep one table only`);
+      }
+    }
+  }
+  const cookbookPath = join(rootDir, COOKBOOK_SKILL);
+  if (existsSync(cookbookPath)) {
+    const cookbook = readFileSync(cookbookPath, "utf8");
+    const body = cookbook.replace(/^---[\s\S]*?---\s*/, "");
+    const words = body.trim().split(/\s+/).filter(Boolean).length;
+    if (words > COOKBOOK_WORD_CAP) {
+      failures.push(`authoring-cookbooks body is ${words} words; keep it at ${COOKBOOK_WORD_CAP} or fewer`);
+    }
+    if (!/^>\s+.*load `references\//m.test(cookbook)) {
+      failures.push("authoring-cookbooks must load extra text from references");
     }
   }
   return { ok: failures.length === 0, failures };
