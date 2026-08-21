@@ -92,7 +92,7 @@ Triggering note: simple one-step tasks often bypass skills even with perfect des
 ## Packaging & Distribution
 - Validate first (frontmatter, structure, naming, references exist, description quality).
 - `python -m scripts.package_skill <path-to-skill-dir>` (or the upstream package_skill.py) produces a `.skill` zip.
-- For kit skills: write drafts in `in-progress/<name>/`. Promote to `plugins/<plugin>/skills/<name>/`. Do not add a second tree. Follow the promotion checklist in the root contracts (`CLAUDE.md` / `AGENTS.md`).
+- For kit skills: write drafts in `in-progress/<name>/`. Promote to `plugins/<plugin>/skills/<name>/`. Do not add a second tree. Follow the promotion checklist in the root contracts (`CLAUDE.md` / `AGENTS.md`). Run `dora review <skill-dir> --quick` (or `npx @hacksmith/doraval review <skill-dir> --quick`) and wait for exit 0.
 
 For updating an installed skill later: copy to /tmp first (installed locations can be read-only), edit the copy, re-package.
 

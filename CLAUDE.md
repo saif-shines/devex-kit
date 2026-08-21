@@ -19,6 +19,7 @@ A skill is not shipped until every item is done:
 5. Kit router table: add or update the row so the next skill name stays true
 6. Codex invocation file: `agents/openai.yaml` in that skill directory
 7. Changeset for the plugin version (`npm run changeset`)
+8. `dora review <skill-dir> --quick` exits 0 (`npx @hacksmith/doraval` if `dora` is missing)
 
 Draft skills live in repo-root `in-progress/`. Do not put drafts under a plugin `skills/` folder.
 Apply recorded bumps with `npm run version`.
