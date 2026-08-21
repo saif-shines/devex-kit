@@ -228,7 +228,7 @@ Claude Code loads the skill and routes your request automatically. You do not ne
 
 ### Install via [skills.sh](https://skills.sh) (Vercel Skills CLI)
 
-Discovers all `SKILL.md` files recursively — works with the plugin directory layout.
+Discovers all `SKILL.md` files recursively under the plugin tree and `in-progress/`. Install a shipped skill by name. Do not pass a draft name until it is promoted.
 
 ```bash
 # Install everything
@@ -297,6 +297,19 @@ Then in Claude Code:
 /skills load ./plugins/tooling/skills/agent-plugin-development/SKILL.md
 /skills load ./plugins/dev-gtm/skills/devrel-story-craft/SKILL.md
 /skills load ./plugins/dev-gtm/skills/devrel-dx-craft/SKILL.md
+```
+
+## Drafts
+
+Unfinished skills live in [`in-progress/`](./in-progress/). They are not part of a plugin. Promote a draft by moving it under `plugins/<plugin>/skills/` and completing the checklist in `CLAUDE.md`.
+
+## Versioning
+
+Plugin versions bump from Changesets, not from a silent edit of `plugin.json`.
+
+```bash
+npm run changeset
+npm run version
 ```
 
 ---

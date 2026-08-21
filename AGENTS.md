@@ -18,9 +18,10 @@ A skill is not shipped until every item is done:
 4. Promotion list: add the skill to that plugin's `.claude-plugin/plugin.json` `skills` array
 5. Kit router table: add or update the row so the next skill name stays true
 6. Codex invocation file: `agents/openai.yaml` in that skill directory
-7. Changeset for the plugin version
+7. Changeset for the plugin version (`npm run changeset`)
 
 Draft skills live in repo-root `in-progress/`. Do not put drafts under a plugin `skills/` folder.
+Apply recorded bumps with `npm run version`.
 
 ## Kit-router update rule
 

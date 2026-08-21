@@ -15,6 +15,20 @@ function pluginNames(rootDir) {
     .map((entry) => entry.name);
 }
 
+function draftSkillNames(rootDir) {
+  const draftsDir = join(rootDir, "in-progress");
+  if (!existsSync(draftsDir)) {
+    return [];
+  }
+  const names = [];
+  for (const entry of readdirSync(draftsDir, { withFileTypes: true })) {
+    if (entry.isDirectory() && existsSync(join(draftsDir, entry.name, "SKILL.md"))) {
+      names.push(entry.name);
+    }
+  }
+  return names;
+}
+
 function skillNames(rootDir) {
   const names = [];
   for (const plugin of pluginNames(rootDir)) {
@@ -66,6 +80,36 @@ export function checkKitContract(rootDir) {
     readFileSync(claudePath, "utf8") !== readFileSync(agentsPath, "utf8")
   ) {
     failures.push("CLAUDE.md and AGENTS.md must be identical");
+  }
+  if (!existsSync(join(rootDir, "in-progress"))) {
+    failures.push("in-progress is missing; draft skills must live at the kit root");
+  }
+  if (!existsSync(join(rootDir, ".changeset", "config.json"))) {
+    failures.push(".changeset/config.json is missing; plugin versions must follow Changesets");
+  }
+  const shipped = new Set(skillNames(rootDir));
+  for (const name of draftSkillNames(rootDir)) {
+    if (shipped.has(name)) {
+      failures.push(`draft skill "${name}" is also under plugins; keep drafts in in-progress only`);
+    }
+  }
+  for (const plugin of pluginNames(rootDir)) {
+    const pluginManifest = join(rootDir, "plugins", plugin, ".claude-plugin", "plugin.json");
+    if (!existsSync(pluginManifest)) {
+      continue;
+    }
+    const packageManifest = join(rootDir, "plugins", plugin, "package.json");
+    if (!existsSync(packageManifest)) {
+      failures.push(`${plugin} is missing package.json; plugin versions must follow Changesets`);
+      continue;
+    }
+    const pluginVersion = JSON.parse(readFileSync(pluginManifest, "utf8")).version;
+    const packageVersion = JSON.parse(readFileSync(packageManifest, "utf8")).version;
+    if (pluginVersion !== packageVersion) {
+      failures.push(
+        `${plugin} plugin.json version ${pluginVersion} does not match package.json version ${packageVersion}`,
+      );
+    }
   }
   return { ok: failures.length === 0, failures };
 }

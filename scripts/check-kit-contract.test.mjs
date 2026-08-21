@@ -15,11 +15,75 @@ async function makeKit(mutate) {
   await writeFile(join(skillDir, "SKILL.md"), "---\nname: code-style-patterns\n---\n");
   await writeFile(join(root, "CLAUDE.md"), "kit contract\n");
   await writeFile(join(root, "AGENTS.md"), "kit contract\n");
+  await mkdir(join(root, "in-progress"), { recursive: true });
+  await mkdir(join(root, ".changeset"), { recursive: true });
+  await writeFile(join(root, ".changeset/config.json"), "{}\n");
   if (mutate) {
     await mutate(root);
   }
   return root;
 }
+
+test("fails when a plugin version does not match its package", async () => {
+  const root = await makeKit(async (kit) => {
+    await mkdir(join(kit, "plugins/tooling/.claude-plugin"), { recursive: true });
+    await writeFile(
+      join(kit, "plugins/tooling/.claude-plugin/plugin.json"),
+      JSON.stringify({ name: "tooling", version: "1.0.0" }),
+    );
+    await writeFile(
+      join(kit, "plugins/tooling/package.json"),
+      JSON.stringify({ name: "tooling", version: "2.0.0" }),
+    );
+  });
+  try {
+    const result = checkKitContract(root);
+    assert.equal(result.ok, false);
+    assert.match(result.failures.join("\n"), /version/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("fails when Changesets config is missing", async () => {
+  const root = await makeKit();
+  await rm(join(root, ".changeset"), { recursive: true, force: true });
+  try {
+    const result = checkKitContract(root);
+    assert.equal(result.ok, false);
+    assert.match(result.failures.join("\n"), /changeset/i);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("fails when a draft skill is also under plugins", async () => {
+  const root = await makeKit(async (kit) => {
+    const draft = join(kit, "in-progress/code-style-patterns");
+    await mkdir(draft, { recursive: true });
+    await writeFile(join(draft, "SKILL.md"), "---\nname: code-style-patterns\n---\n");
+  });
+  try {
+    const result = checkKitContract(root);
+    assert.equal(result.ok, false);
+    assert.match(result.failures.join("\n"), /code-style-patterns/);
+    assert.match(result.failures.join("\n"), /in-progress/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("fails when in-progress is missing", async () => {
+  const root = await makeKit();
+  await rm(join(root, "in-progress"), { recursive: true, force: true });
+  try {
+    const result = checkKitContract(root);
+    assert.equal(result.ok, false);
+    assert.match(result.failures.join("\n"), /in-progress/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
 
 test("fails when root contracts differ", async () => {
   const root = await makeKit(async (kit) => {

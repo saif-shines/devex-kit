@@ -108,7 +108,8 @@ Full mechanics and example queries are in `references/create-skill-methodology.m
 ## Package & Ship
 - Run validation (frontmatter, structure, description quality, referenced files exist).
 - Produce the `.skill` (or just commit for this kit).
-- For a kit skill: create `plugins/<plugin>/skills/<name>/` under documentation, tooling, or dev-gtm. That is the only live tree.
+- Write an unfinished kit skill in `in-progress/<name>/`. Do not put drafts under a plugin `skills/` folder.
+- For a shipped kit skill: move it to `plugins/<plugin>/skills/<name>/` under documentation, tooling, or dev-gtm. That is the only live tree.
 - Load the root contracts (`CLAUDE.md` / `AGENTS.md`) and complete the promotion checklist before calling the skill shipped.
 - Do not add skills under `.agents/` or any other second tree.
 

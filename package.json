@@ -1,0 +1,25 @@
+{
+  "name": "devex-kit",
+  "private": true,
+  "description": "Agent skills for developer experience work",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/saif-shines/devex-kit"
+  },
+  "license": "MIT",
+  "workspaces": [
+    "plugins/documentation",
+    "plugins/tooling",
+    "plugins/dev-gtm"
+  ],
+  "scripts": {
+    "test": "node --test scripts/check-kit-contract.test.mjs",
+    "check": "node scripts/check-kit-contract.mjs",
+    "changeset": "changeset",
+    "version": "changeset version && node scripts/sync-plugin-versions.mjs",
+    "check-plugin-versions": "node scripts/sync-plugin-versions.mjs --check"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.30.0"
+  }
+}

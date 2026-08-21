@@ -1,3 +1,4 @@
 docs/
 .agents/
 skills-lock.json
+node_modules/
