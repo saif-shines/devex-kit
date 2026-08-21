@@ -115,6 +115,7 @@ Before moving between phases, verify:
 
 Before any release / before calling done:
 - [ ] Item that is objectively checkable
+- [ ] `dora review <path> --format json` exits 0 (`npx @hacksmith/doraval` if `dora` is missing)
 - [ ] ...
 
 These become the agent's self-audit and the user's verification steps. See every tooling skill.
