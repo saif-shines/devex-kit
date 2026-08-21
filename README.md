@@ -305,12 +305,45 @@ Unfinished skills live in [`in-progress/`](./in-progress/). They are not part of
 
 ## Versioning
 
-Plugin versions bump from Changesets, not from a silent edit of `plugin.json`.
+Plugin versions bump from Changesets. Do not edit `plugin.json` version by hand.
+
+The three packages are `documentation`, `tooling`, and `dev-gtm`. Pick the plugin that changed.
+
+### Record a bump
+
+After a change that should ship, run:
 
 ```bash
 npm run changeset
+```
+
+Select the package. Choose `patch`, `minor`, or `major`. Write one short sentence about the change.
+
+That command writes a file under `.changeset/`. Commit that file with the work.
+
+Use `patch` for a fix or a small voice/docs change inside a shipped skill.
+Use `minor` for a new shipped skill or a new mark that installers must learn.
+Use `major` when a slash command or skill name goes away.
+
+If the change does not bump a plugin, run `npx changeset add --empty` and say why in the file.
+
+### Apply recorded bumps
+
+When it is time to release:
+
+```bash
 npm run version
 ```
+
+That updates each plugin `package.json` from the changeset files. It then copies those versions into `.claude-plugin/plugin.json`.
+
+Check that the two files still match:
+
+```bash
+npm run check-plugin-versions
+```
+
+The kit contract check also fails if a plugin version pair drifts.
 
 ---
 
