@@ -111,7 +111,13 @@ Full mechanics and example queries are in `references/skill-craft-methodology.md
 - Write an unfinished kit skill in `in-progress/<name>/`. Do not put drafts under a plugin `skills/` folder.
 - For a shipped kit skill: move it to `plugins/<plugin>/skills/<name>/` under documentation, tooling, or dev-gtm. That is the only live tree.
 - Load the root contracts (`CLAUDE.md` / `AGENTS.md`) and complete the promotion checklist before calling the skill shipped.
-- Run `dora review plugins/<plugin>/skills/<name> --quick` and wait for exit 0. If `dora` is missing, run `npx @hacksmith/doraval review plugins/<plugin>/skills/<name> --quick`.
+- Run the doraval gate on the skill directory. Do not report done while the exit code is 1 or 2. If `dora` is missing, use `npx @hacksmith/doraval` in place of `dora`.
+  1. `dora review <skill-dir> --format json`
+  2. On exit 1: `dora fix <skill-dir> --dry-run`, then `dora fix <skill-dir> --yes`. Hand-edit judgement items from `dora fix <skill-dir> --brief`.
+  3. Re-run `dora review <skill-dir> --format json` until exit 0.
+  4. For the kit ship check: `dora review <skill-dir> --quick` must also exit 0.
+  If review output says the judge was delegated, read the emitted rubric, judge the skill, and fix findings before reporting done.
+  > For the full review, fix, memory, and reconcile loop, load the installed `doraval` skill.
 - Do not add skills under `.agents/` or any other second tree.
 
 When updating an already-installed skill later, copy to a writable location first.
@@ -127,7 +133,7 @@ When updating an already-installed skill later, copy to a writable location firs
 
 **Optimize → Package:** Description updated with the optimized version? Scores shown to user?
 
-**Package:** skill is under `plugins/<plugin>/skills/<name>/`? Root-contract promotion checklist complete? `dora review` on that skill dir exits 0?
+**Package:** skill is under `plugins/<plugin>/skills/<name>/`? Root-contract promotion checklist complete? `dora review <skill-dir> --format json` and `--quick` both exit 0?
 
 ## Quality Checklist
 - [ ] Frontmatter has `name`, third-person `description` with concrete triggers, `license: MIT`, and the standard metadata block.
@@ -140,7 +146,7 @@ When updating an already-installed skill later, copy to a writable location firs
 - [ ] `tile.json` exists and follows the canonical shape.
 - [ ] The skill directory is `plugins/<plugin>/skills/<name>/`.
 - [ ] The root-contract promotion checklist is complete.
-- [ ] `dora review` on the skill directory exits 0.
+- [ ] `dora review <skill-dir> --format json` and `dora review <skill-dir> --quick` both exit 0 (use `npx @hacksmith/doraval` if `dora` is missing).
 
 ## Did this help?
 At the end of every session, ask: **"Did this solve what you were trying to do?"**

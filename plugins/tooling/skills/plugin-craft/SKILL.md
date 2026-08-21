@@ -164,6 +164,19 @@ Required artifacts:
 
 > For the two primary study examples (pr-review-toolkit as agents+skill instead of command; docs-engineering as skills+refs+examples), the full authstack restructure trees, the packaging checklist, **official quickstart**, detailed local testing with `--plugin-dir` / `/reload-plugins` / `--plugin-url`, and migration from standalone `.claude/`, load `references/examples-and-packaging.md`.
 
+After any write or edit of a skill or plugin, run the doraval gate. Do not report done while the exit code is 1 or 2. If `dora` is missing, use `npx @hacksmith/doraval` in place of `dora`.
+
+1. `dora review <path> --format json`
+2. On exit 1: `dora fix <path> --dry-run`, then `dora fix <path> --yes`. Hand-edit judgement items from `dora fix <path> --brief`.
+3. Re-run `dora review <path> --format json` until exit 0.
+4. For a kit skill ship check: `dora review <path> --quick` must also exit 0.
+
+`<path>` is the skill directory (the folder that holds `SKILL.md`) or the plugin root.
+
+If review output says the judge was delegated, read the emitted rubric, judge the skill, and fix findings before reporting done.
+
+> For the full review, fix, memory, and reconcile loop, load the installed `doraval` skill.
+
 ## Phase Gates
 
 **Model → Craft:** Have you classified every piece of functionality using the 5 principles? Is the primary deliverable a lean skill rather than a command or a monolithic agent?
@@ -172,7 +185,7 @@ Required artifacts:
 
 **Specialize → Structure:** Any agents have rich descriptions with concrete `<example>` blocks? Are they narrow enough that a one-sentence handoff produces reliable output? Commands/ and agents/ dirs intentionally minimal?
 
-**Structure → Package:** Plugin root has README explaining the layers and the 5 principles? `examples/` and `references/` populated? Empty dirs documented as intentional? Tile.json present if this is a devex-kit skill?
+**Structure → Package:** Plugin root has README explaining the layers and the 5 principles? `examples/` and `references/` populated? Empty dirs documented as intentional? Tile.json present if this is a devex-kit skill? `dora review <path> --format json` exits 0?
 
 ## Quality Checklist
 
@@ -187,6 +200,7 @@ Before declaring the plugin or skill complete:
 - [ ] Plugin README documents the 5 principles and canonical vs adapter layers
 - [ ] Cross-references to pr-review-toolkit (agents + orchestration) and docs-engineering (skills + refs + examples) appear in the content
 - [ ] The plugin was tested by actually invoking the skill and any agents inside real Claude Code using the official local development workflow (`claude --plugin-dir ./plugin`, `/reload-plugins`, namespaced `/plugin:skill` invocations, and optionally `--plugin-url` or multiple `--plugin-dir` flags). Run `claude plugin validate` before distribution.
+- [ ] `dora review <path> --format json` exits 0. On a kit skill, `dora review <path> --quick` also exits 0. Use `npx @hacksmith/doraval` if `dora` is missing.
 - [ ] No duplication of concerns already covered by existing devex-kit skills (sdk-craft, mcp-server-craft, docs-writing-style, etc.)
 
 ## Did this help?
