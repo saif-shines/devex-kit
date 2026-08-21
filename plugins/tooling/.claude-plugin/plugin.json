@@ -1,7 +1,7 @@
 {
   "name": "tooling",
   "description": "Skills for building SDKs, CLI tools, MCP servers, agent plugins, and skill creation — plus the ask-devex router.",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": { "name": "saif-shines" },
   "homepage": "https://github.com/saif-shines/devex-kit",
   "repository": "https://github.com/saif-shines/devex-kit",
