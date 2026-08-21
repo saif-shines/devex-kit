@@ -6,6 +6,8 @@ You install a plugin or a single skill. Then you type a slash command. The agent
 
 This kit is generic. Scalekit-only docs work (agent connectors, CODEOWNERS escalation) lives in [skillkit](https://github.com/saif-shines/skillkit) `docs-engineering`.
 
+Longer install examples and author notes: [saifshines.dev/devex-kit](https://saifshines.dev/devex-kit).
+
 ## What you need
 
 Nothing extra to read the skills.
