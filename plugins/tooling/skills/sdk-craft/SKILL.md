@@ -1,7 +1,7 @@
 ---
 name: sdk-craft
 description: |
-  Design, build, document, and ship SDKs that developers love. Covers the full SDK lifecycle — from API surface design and type safety through implementation, bundling, documentation, versioning, and publishing. Use this skill whenever someone is creating a new SDK, extracting shared code into a client library, improving SDK developer experience, planning a breaking change or migration guide, or reviewing an SDK for quality. Also activates for questions about error message design, client library patterns, type-safe API design, SDK packaging (ESM/CJS), or npm publishing.
+  Design, build, document, and ship SDKs that developers love. Covers the full SDK lifecycle: from API surface design and type safety through implementation, bundling, documentation, versioning, and publishing. Use this skill whenever someone is creating a new SDK, extracting shared code into a client library, improving SDK developer experience, planning a breaking change or migration guide, or reviewing an SDK for quality. Also activates for questions about error message design, client library patterns, type-safe API design, SDK packaging (ESM/CJS), or npm publishing.
 license: MIT
 metadata:
   author: saif-shines
@@ -12,7 +12,7 @@ metadata:
 
 # SDK Craft
 
-Build SDKs that developers can't stop talking about. Great SDK DX is a competitive advantage — developers choose tools that make them feel productive and competent.
+Build SDKs that developers can't stop talking about. Great SDK DX is a competitive advantage: developers choose tools that make them feel productive and competent.
 
 This skill covers the full SDK lifecycle:
 
@@ -23,7 +23,7 @@ This skill covers the full SDK lifecycle:
 | **Document** | Inline docs, README, generated reference | Can a developer succeed without asking for help? |
 | **Ship** | Versioning, changelog, publishing, migration | Can users upgrade without pain? |
 
-State which phase you're in, or describe what you're building — the skill routes accordingly.
+State which phase you're in, or describe what you're building: the skill routes accordingly.
 
 ---
 
@@ -39,13 +39,13 @@ The five design principles that separate great SDKs from mediocre ones:
 The most frequent operation should require the least code. Progressive disclosure reveals complexity only when the developer asks for it.
 
 ```python
-# Level 1 — simplest usage (80% of calls)
+# Level 1: simplest usage (80% of calls)
 client.messages.send("Hello", to="+1234567890")
 
-# Level 2 — common options
+# Level 2: common options
 client.messages.send("Hello", to="+1234567890", from_="+0987654321")
 
-# Level 3 — full control (rare)
+# Level 3: full control (rare)
 client.messages.send(body="Hello", to="+1234567890", from_="+0987654321",
                      status_callback="https://...", media_urls=["https://..."])
 ```
@@ -73,7 +73,7 @@ Create specific error types (`AuthenticationError`, `RateLimitError`, `NotFoundE
 
 ### 3. Type everything
 
-Types are documentation that never goes stale. Design for IDE autocomplete — after typing `client.users.`, the developer should see every available operation with full type information.
+Types are documentation that never goes stale. Design for IDE autocomplete: after typing `client.users.`, the developer should see every available operation with full type information.
 
 - Use literal/enum types for constrained values (not `string`)
 - Separate input types from output types (`CreateUserInput` vs `User`)
@@ -88,7 +88,7 @@ A new developer should be able to write `const client = new Client({ apiKey })` 
 
 ### 5. Feel native
 
-Match each target language's idioms — naming, error handling, async patterns, and package conventions. A Python developer should never feel like they're using a translated JavaScript SDK.
+Match each target language's idioms: naming, error handling, async patterns, and package conventions. A Python developer should never feel like they're using a translated JavaScript SDK.
 
 > For language-specific patterns (Python, JS, Go, Java), load `references/language-idioms.md`.
 
@@ -132,7 +132,7 @@ Choose based on API surface size:
 | **Factory function** | Tree-shaking critical | `const { users } = createClient(config)` |
 | **Builder** | Complex initialization | `new ClientBuilder().baseUrl(...).build()` |
 
-The modular pattern (`client.users.get()`) is the sweet spot for most SDKs — it namespaces logically, autocomplete works naturally, and it scales as you add resources.
+The modular pattern (`client.users.get()`) is the sweet spot for most SDKs: it namespaces logically, autocomplete works naturally, and it scales as you add resources.
 
 ### Error hierarchy
 
@@ -155,11 +155,11 @@ Every error carries: `message`, `code`, `cause`. API errors add `statusCode` and
 
 ## Document phase
 
-SDK documentation has three layers — all three are needed:
+SDK documentation has three layers: all three are needed:
 
 ### 1. Inline docs (JSDoc / docstrings)
 
-Every public method gets: one-line summary, parameter descriptions, return type, thrown errors, and a usage example. This powers IDE hover-tooltips — for many developers, this is the *only* documentation they read.
+Every public method gets: one-line summary, parameter descriptions, return type, thrown errors, and a usage example. This powers IDE hover-tooltips: for many developers, this is the *only* documentation they read.
 
 ```typescript
 /**
@@ -242,7 +242,7 @@ Configure `package.json` exports properly:
 
 ### Versioning
 
-Follow semver. Every major version bump needs a migration guide (before/after code for each breaking change, codemods when possible). Deprecate before removing — warnings include what to use instead and when removal happens.
+Follow semver. Every major version bump needs a migration guide (before/after code for each breaking change, codemods when possible). Deprecate before removing: warnings include what to use instead and when removal happens.
 
 > For detailed versioning, changelog, and migration guide patterns, load `references/build-and-publish.md`.
 

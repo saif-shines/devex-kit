@@ -1,7 +1,7 @@
 ---
 name: mcp-server-craft
 description: |
-  Build MCP servers that AI agents actually want to use. Covers the full lifecycle — tool design (naming, schemas, descriptions), resource design (URIs, templates, subscriptions), project structure, transport selection (stdio vs Streamable HTTP), security, error handling, and testing. Use this skill when building a new MCP server, adding tools or resources to an existing one, reviewing an MCP server for quality, choosing between stdio and HTTP transport, designing tool schemas for LLM consumption, or hardening an MCP server for production. Also activates for questions about tool naming conventions, Pydantic Field descriptions, Zod validation for MCP, resource URI schemes, or MCP server security patterns.
+  Build MCP servers that AI agents actually want to use. Covers the full lifecycle: tool design (naming, schemas, descriptions), resource design (URIs, templates, subscriptions), project structure, transport selection (stdio vs Streamable HTTP), security, error handling, and testing. Use this skill when building a new MCP server, adding tools or resources to an existing one, reviewing an MCP server for quality, choosing between stdio and HTTP transport, designing tool schemas for LLM consumption, or hardening an MCP server for production. Also activates for questions about tool naming conventions, Pydantic Field descriptions, Zod validation for MCP, resource URI schemes, or MCP server security patterns.
 license: MIT
 metadata:
   author: saif-shines
@@ -13,7 +13,7 @@ metadata:
 
 # MCP Server Craft
 
-Build MCP servers that LLMs and AI agents can use reliably. A good MCP server makes the agent feel competent — clear tool names, helpful descriptions, structured errors, and predictable behavior.
+Build MCP servers that LLMs and AI agents can use reliably. A good MCP server makes the agent feel competent: clear tool names, helpful descriptions, structured errors, and predictable behavior.
 
 This skill covers the full lifecycle:
 
@@ -32,7 +32,7 @@ State which phase you need, or describe what you're building.
 
 > For expanded tool and resource design patterns with examples, load `references/tool-design.md`.
 
-The most important thing about an MCP server is whether the LLM can figure out how to use it. Tool names, descriptions, and schemas are your API — the LLM reads them to decide what to call and how.
+The most important thing about an MCP server is whether the LLM can figure out how to use it. Tool names, descriptions, and schemas are your API: the LLM reads them to decide what to call and how.
 
 ### Tool naming
 
@@ -48,7 +48,7 @@ Rules:
 - **snake_case** preferred (aligns with MCP reference implementations)
 - Maximum **64 characters** for the fully qualified name
 - Start with a letter; only alphanumeric, `_`, or `-`
-- Be consistent within a server — don't mix `snake_case` and `kebab-case`
+- Be consistent within a server: don't mix `snake_case` and `kebab-case`
 - Verb-noun pattern: `search_code` not `code_search`
 
 ### Tool descriptions
@@ -102,7 +102,7 @@ async def search_issues(
 ```
 
 Key patterns:
-- Use `Field(...)` (required) vs `Field(default)` (optional) — never leave ambiguous
+- Use `Field(...)` (required) vs `Field(default)` (optional): never leave ambiguous
 - Add constraints (`ge`, `le`, `min`, `max`, `Literal`, `enum`) so the LLM knows valid ranges
 - Write descriptions that guide the model, not just document the type
 - For critical parameters, include explicit instructions: `"IMPORTANT: Provide the full absolute path, not relative"`
@@ -118,7 +118,7 @@ file:///workspace/config.yaml   → Project configuration
 ```
 
 Rules:
-- Clear, descriptive URI schemes — custom schemes are fine (`postgres://`, `jira://`)
+- Clear, descriptive URI schemes: custom schemes are fine (`postgres://`, `jira://`)
 - Set MIME types when known (`application/json`, `text/markdown`)
 - Use **resource templates** (RFC 6570) for parameterized content: `resource://schema/{table_name}`
 - Use **subscriptions** for frequently changing resources
@@ -171,9 +171,9 @@ mcp-server-myservice/
 ```
 
 Key rules:
-- **Single entry point** — one `main()` that creates the server and starts transport
-- **Separate transport from logic** — keep tool/resource handlers independent so you can plug in stdio or HTTP
-- **Models in their own file** — Pydantic models or TypeScript types separate from server logic
+- **Single entry point**: one `main()` that creates the server and starts transport
+- **Separate transport from logic**: keep tool/resource handlers independent so you can plug in stdio or HTTP
+- **Models in their own file**: Pydantic models or TypeScript types separate from server logic
 
 ### Transport selection
 
@@ -211,7 +211,7 @@ result_c = await fetch_issues(repo_c)
 
 ### Error handling
 
-Return errors inside tool results so the LLM can react — don't throw protocol-level exceptions that crash the conversation.
+Return errors inside tool results so the LLM can react: don't throw protocol-level exceptions that crash the conversation.
 
 ```typescript
 // Good: structured error the LLM can interpret
@@ -235,7 +235,7 @@ Error handling rules:
 
 ### Input validation
 
-Validate everything at the boundary. The LLM generates parameters — they will be wrong sometimes.
+Validate everything at the boundary. The LLM generates parameters: they will be wrong sometimes.
 
 - Validate types, ranges, and formats before processing
 - Sanitize file paths (prevent traversal: `../../../etc/passwd`)
@@ -247,11 +247,11 @@ Validate everything at the boundary. The LLM generates parameters — they will 
 
 If your server executes user-provided code (diagram generators, script runners):
 
-1. **AST scanning** — parse the code and reject dangerous patterns before execution
-2. **Allowlists** — only permit known-safe modules and functions
-3. **Sandboxing** — execute in a restricted namespace, never in the server process
-4. **Timeouts** — kill execution after a deadline (e.g., 30 seconds)
-5. **Resource cleanup** — always clean up temp files, processes, connections
+1. **AST scanning**: parse the code and reject dangerous patterns before execution
+2. **Allowlists**: only permit known-safe modules and functions
+3. **Sandboxing**: execute in a restricted namespace, never in the server process
+4. **Timeouts**: kill execution after a deadline (e.g., 30 seconds)
+5. **Resource cleanup**: always clean up temp files, processes, connections
 
 ### Rate limiting and access control
 
@@ -289,7 +289,7 @@ Agent workflow testing is the most important and most neglected. Your tools may 
 
 ### Server instructions
 
-Set the `instructions` field — the LLM reads this before using any tool:
+Set the `instructions` field: the LLM reads this before using any tool:
 
 ```typescript
 const server = new McpServer({

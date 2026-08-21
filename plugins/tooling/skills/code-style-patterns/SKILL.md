@@ -60,7 +60,7 @@ Key principles from the reference (internalize these):
 - Prefer modern, idiomatic platform primitives (Fetch API, TypeScript’s type system, Swift) over custom wrappers.
 - Aim for “tiny”, “elegant”, “human-friendly”, “minimal”, and “fast” in both code and docs.
 - Strong documentation hygiene: clear READMEs, contribution rules, templates, consistent formatting.
-- Be opinionated about quality — enforce standards especially in list/curated projects.
+- Be opinionated about quality: enforce standards especially in list/curated projects.
 - Favor reusable building blocks and polished primitives meant to be composed.
 
 Follow the "How To Use This Style" section in the reference when applying:
@@ -100,7 +100,7 @@ To add patterns from another popular GitHub developer:
 
 - Always attribute the style clearly ("following sindresorhus patterns from type-fest...", "shadcn/ui conventions...", "ahmadawais CLI patterns from create-node-cli...").
 - Prefer inspecting the real repos over hallucinating details.
-- Adapt — do not copy-paste entire files or structures unless the task explicitly asks for a template.
+- Adapt: do not copy-paste entire files or structures unless the task explicitly asks for a template.
 - When the user's stack differs, translate the spirit of the patterns rather than forcing the exact stack.
 
 ## Quality Checklist

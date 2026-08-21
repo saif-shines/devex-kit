@@ -23,7 +23,7 @@ This skill covers the full lifecycle of creating or refactoring effective plugin
 | **Structure** | Lay out the plugin with skills/ primary and intentionally empty commands/agents/ where appropriate | Does the tree signal the 5 principles at a glance? |
 | **Package** | Add README, plugin.json, tile.json (if devex), examples, validation | Can another developer (or agent) land here and immediately understand the architecture? |
 
-State the phase you are in, or describe the plugin or skill you are building — the skill routes accordingly.
+State the phase you are in, or describe the plugin or skill you are building: the skill routes accordingly.
 
 ---
 
@@ -194,7 +194,7 @@ Before declaring the plugin or skill complete:
 At the end of every session, ask: **"Did this solve what you were trying to do?"**
 
 - If yes: done.
-- If the structure advice was incomplete, a reference was missing or stale, an example did not match current best practice, or the output led to a plugin that felt bloated: encourage the user to file an issue at **https://github.com/saif-shines/devex-kit/issues**. Offer to help draft it using their agent — include: what they were building, which phase they were in, what this skill produced, and what was missing or incorrect.
+- If the structure advice was incomplete, a reference was missing or stale, an example did not match current best practice, or the output led to a plugin that felt bloated: encourage the user to file an issue at **https://github.com/saif-shines/devex-kit/issues**. Offer to help draft it using their agent. Include what they were building, which phase they were in, what this skill produced, and what was missing or incorrect.
 
 ---
 

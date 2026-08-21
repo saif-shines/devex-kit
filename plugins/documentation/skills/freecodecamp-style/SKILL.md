@@ -102,7 +102,7 @@ MUST NOT:
 ### Code and media
 - Code blocks with language for syntax highlighting (```lang or `/` → Code)
 - Inline code in single backticks
-- Live samples via CodeSandbox/CodePen embeds if needed — no raw JS that Hashnode will sanitize
+- Live samples via CodeSandbox/CodePen embeds if needed: no raw JS that Hashnode will sanitize
 - Math: MathJax only (no equation screenshots); preview with a MathJax viewer; tag `MathJax` last
 - Images: own work or no-attribution stock (Pexels, Unsplash, Wikipedia); download then upload; <1MB; informative alt text (no captions in Hashnode)
 
@@ -135,9 +135,9 @@ When rewriting: preserve technical accuracy; fix headline form, voice, length, s
 2. Score the draft; report:
 
 ```
-FAIL   <criterion> — <problem> → fix: <action>
-WARN   <criterion> — <borderline note>
-PASS   <criterion> — <brief note if useful>
+FAIL   <criterion>: <problem> → fix: <action>
+WARN   <criterion>: <borderline note>
+PASS   <criterion>: <brief note if useful>
 ```
 
 3. Order: FAIL first, WARN second, PASS last.
@@ -168,7 +168,7 @@ Checklist to output (mark each done / not done / blocked):
 Email body to hand the user (they send it):
 
 ```
-Subject: freeCodeCamp draft for review — <headline>
+Subject: freeCodeCamp draft for review: <headline>
 
 Hi editorial team,
 

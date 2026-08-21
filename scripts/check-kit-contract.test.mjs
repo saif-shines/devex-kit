@@ -30,6 +30,38 @@ async function makeKit(mutate) {
   return root;
 }
 
+test("fails when a shipped skill contains an em-dash", async () => {
+  const root = await makeKit(async (kit) => {
+    await writeFile(
+      join(kit, "plugins/tooling/skills/code-style-patterns/SKILL.md"),
+      "---\nname: code-style-patterns\n---\nDo this — not that.\n",
+    );
+  });
+  try {
+    const result = checkKitContract(root);
+    assert.equal(result.ok, false);
+    assert.match(result.failures.join("\n"), /em-dash/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("fails when a shipped skill starts with You are", async () => {
+  const root = await makeKit(async (kit) => {
+    await writeFile(
+      join(kit, "plugins/tooling/skills/code-style-patterns/SKILL.md"),
+      "---\nname: code-style-patterns\n---\n\n# Title\n\nYou are a style guide.\n",
+    );
+  });
+  try {
+    const result = checkKitContract(root);
+    assert.equal(result.ok, false);
+    assert.match(result.failures.join("\n"), /You are/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
 test("fails when ask-devex is not the kit router", async () => {
   const root = await makeKit();
   await rm(join(root, "plugins/tooling/skills/ask-devex"), {

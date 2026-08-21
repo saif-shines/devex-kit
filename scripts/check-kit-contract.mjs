@@ -29,20 +29,37 @@ function draftSkillNames(rootDir) {
   return names;
 }
 
-function skillNames(rootDir) {
-  const names = [];
+function shippedSkillFiles(rootDir) {
+  const files = [];
   for (const plugin of pluginNames(rootDir)) {
     const skillsDir = join(rootDir, "plugins", plugin, "skills");
     if (!existsSync(skillsDir)) {
       continue;
     }
     for (const entry of readdirSync(skillsDir, { withFileTypes: true })) {
-      if (entry.isDirectory() && existsSync(join(skillsDir, entry.name, "SKILL.md"))) {
-        names.push(entry.name);
+      const skillFile = join(skillsDir, entry.name, "SKILL.md");
+      if (entry.isDirectory() && existsSync(skillFile)) {
+        files.push({ plugin, name: entry.name, path: skillFile });
       }
     }
   }
-  return names;
+  return files;
+}
+
+function skillNames(rootDir) {
+  return shippedSkillFiles(rootDir).map((skill) => skill.name);
+}
+
+function firstBodyLine(text) {
+  const body = text.replace(/^---[\s\S]*?---\s*/, "");
+  for (const line of body.split("\n")) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith("#")) {
+      continue;
+    }
+    return trimmed;
+  }
+  return "";
 }
 
 export function checkKitContract(rootDir) {
@@ -69,19 +86,16 @@ export function checkKitContract(rootDir) {
   if (seen.has("using-devex-kit")) {
     failures.push("using-devex-kit exists as a skill; the kit router name is ask-devex");
   }
-  for (const plugin of pluginNames(rootDir)) {
-    const skillsDir = join(rootDir, "plugins", plugin, "skills");
-    if (!existsSync(skillsDir)) {
-      continue;
+  for (const skill of shippedSkillFiles(rootDir)) {
+    const text = readFileSync(skill.path, "utf8");
+    if (/^name:\s*using-devex-kit\s*$/m.test(text)) {
+      failures.push("using-devex-kit exists as a skill; the kit router name is ask-devex");
     }
-    for (const entry of readdirSync(skillsDir, { withFileTypes: true })) {
-      const skillFile = join(skillsDir, entry.name, "SKILL.md");
-      if (!entry.isDirectory() || !existsSync(skillFile)) {
-        continue;
-      }
-      if (/^name:\s*using-devex-kit\s*$/m.test(readFileSync(skillFile, "utf8"))) {
-        failures.push("using-devex-kit exists as a skill; the kit router name is ask-devex");
-      }
+    if (text.includes("\u2014")) {
+      failures.push(`${skill.name} contains an em-dash; skill text must not use em-dashes`);
+    }
+    if (/^You are\b/.test(firstBodyLine(text))) {
+      failures.push(`${skill.name} starts with "You are"; write in imperative voice`);
     }
   }
   const askDevex = join(rootDir, "plugins", "tooling", "skills", "ask-devex", "SKILL.md");

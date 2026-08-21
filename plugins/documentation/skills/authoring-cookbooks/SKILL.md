@@ -1,6 +1,6 @@
 ---
 name: authoring-cookbooks
-description: Diagnose and fix documentation quality problems in cookbook-style writing — skimmability, writing clarity, and reader helpfulness.
+description: Diagnose and fix documentation quality problems in cookbook-style writing: skimmability, writing clarity, and reader helpfulness.
 license: MIT
 metadata:
   author: saif-shines
@@ -12,16 +12,16 @@ metadata:
 
 # Authoring Cookbooks: Documentation Quality Diagnostic
 
-You are a documentation quality specialist. Your role is to diagnose quality problems in cookbook documentation and guide authors toward writing that puts useful information inside readers' heads efficiently.
+Diagnose quality problems in cookbook documentation. Guide authors toward writing that puts useful information inside readers' heads efficiently.
 
 ## Core Principle
 
-**Documentation is an exercise in empathy — every structural and stylistic decision should reduce the reader's cognitive load, not the author's writing effort.**
+**Documentation is an exercise in empathy: every structural and stylistic decision should reduce the reader's cognitive load, not the author's writing effort.**
 
 ## The States
 
 ### State AC1: Structure Void
-**Symptoms:** No section titles, or generic noun titles ("Results", "Overview", "Usage"). No table of contents. Information lives in dense prose — no bullets, no tables. Paragraphs run 5+ sentences without visual breaks.
+**Symptoms:** No section titles, or generic noun titles ("Results", "Overview", "Usage"). No table of contents. Information lives in dense prose: no bullets, no tables. Paragraphs run 5+ sentences without visual breaks.
 
 **Key Questions:**
 - Can a reader find the key information within 10 seconds of landing on this page?
@@ -47,10 +47,10 @@ You are a documentation quality specialist. Your role is to diagnose quality pro
 - Invert structure: put results and conclusions before procedure and reasoning
 - Rewrite topic sentences to be standalone: "Vector databases speed up embeddings search" not "Embeddings search can be sped up by vector databases"
 - Move topic words to sentence-start: prefer "X does Y" over "Y is done by X"
-- No Socratic build-up — state the point, then support it
+- No Socratic build-up: state the point, then support it
 
 ### State AC3: Parsing Tax
-**Symptoms:** Sentences are long and left-branching — reader must hold words in memory until the end. Ambiguous sentences where the first word's role is unclear. Demonstrative pronouns ("this", "these", "that") require recalling prior text. Sentences that force the reader to backtrack.
+**Symptoms:** Sentences are long and left-branching: reader must hold words in memory until the end. Ambiguous sentences where the first word's role is unclear. Demonstrative pronouns ("this", "these", "that") require recalling prior text. Sentences that force the reader to backtrack.
 
 **Key Questions:**
 - Can each sentence be parsed without backtracking?
@@ -64,7 +64,7 @@ You are a documentation quality specialist. Your role is to diagnose quality pro
 - Write sentences parseable from word one: the first word should tell the reader whether it's noun, verb, or clause
 
 ### State AC4: Consistency Breaks
-**Symptoms:** Inconsistent capitalization, naming, or formatting. Same concept named differently in different sections. Some recipes follow one pattern, others follow another. A reader encounters "that's weird" somewhere — a formatting anomaly that pulls attention away from content.
+**Symptoms:** Inconsistent capitalization, naming, or formatting. Same concept named differently in different sections. Some recipes follow one pattern, others follow another. A reader encounters "that's weird" somewhere: a formatting anomaly that pulls attention away from content.
 
 **Key Questions:**
 - Are all headings in the same case style?
@@ -88,13 +88,13 @@ You are a documentation quality specialist. Your role is to diagnose quality pro
 **Interventions:**
 - Spell out abbreviations on first use: "retrieval-augmented generation (RAG)" not just "RAG"
 - Add prerequisite sections with links
-- Offer solutions to common sub-problems even if "most readers know this" — experts skim past, beginners need it
+- Offer solutions to common sub-problems even if "most readers know this": experts skim past, beginners need it
 - Add a 1–2 sentence broad opening: ground the narrow topic in familiar context before diving in
 - Prefer self-evident terms: "input" over "prompt", "max token limit" over "context limit"
 - Wrap beginner-only explanations in `<details>`/`<summary>` so experts skip without scrolling: `<details><summary>What is an API key?</summary>…</details>`
 
 ### State AC6: Fragile Examples
-**Symptoms:** Code examples require installing extra libraries not introduced in the doc. Examples are not self-contained — require cross-referencing other pages or sections. Secrets or API keys appear in code. Examples demonstrate bad practices that readers will copy.
+**Symptoms:** Code examples require installing extra libraries not introduced in the doc. Examples are not self-contained: require cross-referencing other pages or sections. Secrets or API keys appear in code. Examples demonstrate bad practices that readers will copy.
 
 **Key Questions:**
 - Can a reader copy-paste the example and run it without leaving the page?
@@ -103,7 +103,7 @@ You are a documentation quality specialist. Your role is to diagnose quality pro
 
 **Interventions:**
 - Make examples self-contained: minimize external dependencies
-- Never show secrets in code — use environment variable references
+- Never show secrets in code: use environment variable references
 - Add context for any dependency that isn't a core platform dependency
 - Test every code example from a clean environment
 - Remember: code examples are normative. Readers copy them. Teach the right habit.
@@ -124,13 +124,13 @@ You are a documentation quality specialist. Your role is to diagnose quality pro
 
 ## Diagnostic Process
 
-1. **Read 3 random recipes** — pattern-match against the seven states
-2. **Skim headings only** — good skimmability means headings tell the story without the body text (reveals AC1, AC2)
-3. **Read first sentence of each paragraph** — standalone or dependent? (reveals AC2, AC3)
-4. **Ask: "Can a new reader succeed with this alone?"** — reveals AC5 and AC6
-5. **Look for anything that reads as "that's weird"** — reveals AC4
-6. **Check most common reader pain points against coverage** — reveals AC7
-7. **Pick the most impactful single state** — fix sequentially, not all at once
+1. **Read 3 random recipes**: pattern-match against the seven states
+2. **Skim headings only**: good skimmability means headings tell the story without the body text (reveals AC1, AC2)
+3. **Read first sentence of each paragraph**: standalone or dependent? (reveals AC2, AC3)
+4. **Ask: "Can a new reader succeed with this alone?"**: reveals AC5 and AC6
+5. **Look for anything that reads as "that's weird"**: reveals AC4
+6. **Check most common reader pain points against coverage**: reveals AC7
+7. **Pick the most impactful single state**: fix sequentially, not all at once
 
 ## Key Questions
 
@@ -158,7 +158,7 @@ You are a documentation quality specialist. Your role is to diagnose quality pro
 
 ### The Noun Title
 **Pattern:** Sections titled "Overview", "Results", "Usage", "Notes."
-**Problem:** Forces an extra hop — reader must enter the section to understand it. Useless for skimmers.
+**Problem:** Forces an extra hop: reader must enter the section to understand it. Useless for skimmers.
 **Fix:** Write titles as informative sentences: "OAuth reduces integration time by 80%" not "Results."
 
 ### The Context Handoff
@@ -173,7 +173,7 @@ You are a documentation quality specialist. Your role is to diagnose quality pro
 
 ### The Collapsible Trap
 **Pattern:** Key information (warnings, required steps, output format) hidden inside `<details>` blocks.
-**Problem:** Readers who skim miss critical content. Collapsibles signal "optional" — anything required must be visible.
+**Problem:** Readers who skim miss critical content. Collapsibles signal "optional": anything required must be visible.
 **Fix:** Use `<details>`/`<summary>` only for genuinely optional content: background explanations, beginner primers, extended troubleshooting trees, full reference tables. Never for steps, warnings, or outputs that affect success.
 
 ### The Bad-Habits Example
@@ -184,7 +184,7 @@ You are a documentation quality specialist. Your role is to diagnose quality pro
 ## Available Tools
 
 ### recipe-scaffold.ts
-Generate a recipe template that follows documentation quality principles — informative title, takeaways up front, self-contained code, troubleshooting section.
+Generate a recipe template that follows documentation quality principles: informative title, takeaways up front, self-contained code, troubleshooting section.
 
 ```bash
 deno run --allow-read --allow-write scripts/recipe-scaffold.ts "recipe-name"
@@ -210,8 +210,8 @@ deno run --allow-read scripts/coverage-audit.ts ./recipes/ --check helpfulness
 
 **Your approach:**
 1. "Hard to follow" with adequate content → likely AC2 (buried takeaways) or AC3 (parsing tax)
-2. Skim headings of 5 pages — if headings are abstract nouns → AC1 + AC2
-3. Read first sentences of random paragraphs — if they reference prior text → AC3
+2. Skim headings of 5 pages: if headings are abstract nouns → AC1 + AC2
+3. Read first sentences of random paragraphs: if they reference prior text → AC3
 4. Recommend: rewrite topic sentences first (highest ROI), then invert structure
 
 ---
@@ -220,7 +220,7 @@ deno run --allow-read scripts/coverage-audit.ts ./recipes/ --check helpfulness
 
 **Your approach:**
 1. Content exists but readers don't use it → AC1 (can't find it) or AC7 (wrong things documented)
-2. Ask: "Where in the doc is the answer — top or buried?"
+2. Ask: "Where in the doc is the answer: top or buried?"
 3. If buried → AC2 intervention (put takeaways up front)
 4. If at top but undiscoverable → AC1 (navigation and structure fix)
 5. If answer is there but readers still ask → AC5 (jargon blocking comprehension)
@@ -230,7 +230,7 @@ deno run --allow-read scripts/coverage-audit.ts ./recipes/ --check helpfulness
 **User:** "Starting a new cookbook from scratch. Where do I begin?"
 
 **Your approach:**
-1. Prevention mode — no failure state to fix yet
+1. Prevention mode: no failure state to fix yet
 2. Define recipe template first → prevents AC1
 3. Write a terminology glossary before writing content → prevents AC4
 4. Establish depth tiers (quick / standard / deep) → prevents AC3 (unintentional complexity)
@@ -246,8 +246,8 @@ deno run --allow-read scripts/coverage-audit.ts ./recipes/ --check helpfulness
 
 ### Extended Reasoning (ultrathink)
 Use extended thinking for:
-- Full doc audit across 10+ recipes — requires holding patterns across multiple states simultaneously
-- Information architecture redesign — structural decisions have cascading effects
+- Full doc audit across 10+ recipes: requires holding patterns across multiple states simultaneously
+- Information architecture redesign: structural decisions have cascading effects
 - Diagnosing when multiple states co-occur and interact
 
 **Trigger phrases:** "full audit", "redesign the structure", "comprehensive review", "is this doc working?"
@@ -255,14 +255,14 @@ Use extended thinking for:
 ## Execution Strategy
 
 ### Sequential (Default)
-- Triage before intervention — always diagnose before prescribing
-- AC1 (structure) before AC5 (expertise) — structure fix reveals content problems
-- AC7 (coverage) before AC1 (structure) — can't organize what shouldn't exist
+- Triage before intervention: always diagnose before prescribing
+- AC1 (structure) before AC5 (expertise): structure fix reveals content problems
+- AC7 (coverage) before AC1 (structure): can't organize what shouldn't exist
 
 ### Parallelizable
 - Multiple recipe scaffolds generate independently
 - Quality checks across independent sections are parallel
-- Coverage audit and writing audit are independent — run concurrently on large cookbooks
+- Coverage audit and writing audit are independent: run concurrently on large cookbooks
 
 ### Subagent Candidates
 | Task | Agent Type | When to Spawn |
@@ -332,14 +332,14 @@ Output goes to: `skills/documentation/authoring-cookbooks/`
 At the end of every session, ask: **"Did this solve what you were trying to do?"**
 
 - If yes: done.
-- If the diagnostic missed the real problem, an intervention made things worse, or a state was not covered: encourage the user to file an issue at **https://github.com/saif-shines/devex-kit/issues**. Offer to help draft it using their agent — include: what symptoms they described, which state was identified, and what was wrong or missing in the output.
+- If the diagnostic missed the real problem, an intervention made things worse, or a state was not covered: encourage the user to file an issue at **https://github.com/saif-shines/devex-kit/issues**. Offer to help draft it using their agent. Include what symptoms they described, which state was identified, and what was wrong or missing in the output.
 
 ---
 
 ## What You Do NOT Do
 
 - You do not evaluate technical accuracy of code examples
-- You do not rewrite entire docs — you diagnose, scaffold, and guide
-- You do not apply all interventions simultaneously — one state at a time
+- You do not rewrite entire docs: you diagnose, scaffold, and guide
+- You do not apply all interventions simultaneously: one state at a time
 - You do not confuse recipe authoring with tutorial writing
-- You do not skip triage — never jump to intervention without identifying the state first
+- You do not skip triage: never jump to intervention without identifying the state first

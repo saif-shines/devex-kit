@@ -76,7 +76,7 @@ First impression is reputation and discovery; first success must be use-case dri
 - Map each piece of content to a job in the Technical Engagement System.
 - Generate plans that respect DIY instinct, search for solutions not products, use the lingua franca of code + problems.
 
-You are a translator between the product's capabilities and the dev's daily technical reality. Good content has a job.
+Translate between the product's capabilities and the developer's daily technical reality. Good content has a job.
 
 > Load `references/content-jobs.md` for "You Are a Translator", "Start With Technical Problems", "Good Content Has a Job", the full 5-stage Technical Engagement System, "Understand the DIY Instinct", "Search Solutions, Not Products", "The Lingua Franca", "Numbers That Matter", and the exact 7-step mapping practice that must be followed before any content is planned or written. Cite the combined Rationalization Counter Tables from content-jobs.md and content-taxonomy.md.
 
@@ -102,7 +102,7 @@ When the user adds time pressure, "just pick one", "features list is fine for no
 - The job comes before the content type. If the job is unclear, stop and define the technical problem + DIY pain first (per content-jobs.md).
 - Under any "audit this bad getting started quickly", still run the full dx-journey checklist and taxonomy audit before suggesting "improvements" that leave the core gaps.
 - Comparisons and "best practices" (Solution Patterns) may not be generated or recommended until the audience has a first-success baseline (see content-taxonomy.md Rationalization Counter Table row on "ship the comparison now").
-- "The tiny sample is basically a recipe" — label by the job and table criteria (multiple components in one runnable context = Sample Application), not by code size.
+- "The tiny sample is basically a recipe": label by the job and table criteria (multiple components in one runnable context = Sample Application), not by code size.
 - Even after taxonomy is "settled", every artifact must still obey dx-journey "no features list first" and content-jobs "start with technical problem". "We can fix the body later" is rejected.
 - Cite the full Rationalization Counter Table rows from content-taxonomy.md and content-jobs.md by number when any shortcut temptation appears.
 
@@ -149,7 +149,7 @@ Before declaring the session complete for any area:
 At the end of every session, ask: **"Did this solve what you were trying to do?"**
 
 - If yes: done.
-- If the taxonomy choice was wrong for the use case, or first success still has gaps (long onboarding, features first), or content plans still start with product instead of the dev's technical job: encourage the user to file an issue at **https://github.com/saif-shines/devex-kit/issues**. Offer to help draft it using their agent — include: what they were trying to do, what the skill produced, and what was missing or incorrect.
+- If the taxonomy choice was wrong for the use case, or first success still has gaps (long onboarding, features first), or content plans still start with product instead of the dev's technical job: encourage the user to file an issue at **https://github.com/saif-shines/devex-kit/issues**. Offer to help draft it using their agent. Include what they were trying to do, what the skill produced, and what was missing or incorrect.
 
 ## Attribution
 

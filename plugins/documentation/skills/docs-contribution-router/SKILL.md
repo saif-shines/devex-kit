@@ -1,6 +1,6 @@
 ---
 name: docs-contribution-router
-description: Route documentation contributions to the right content type, placement, template, and escalation path — before the contributor writes a single line.
+description: Route documentation contributions to the right content type, placement, template, and escalation path: before the contributor writes a single line.
 license: MIT
 metadata:
   author: saif-shines
@@ -32,7 +32,7 @@ Map contributor intent to a branch. Ask one clarifying question only if the inte
 | Write an integration guide / add screenshots | [Integration guide](#integration-guide) |
 | Change sidebar structure / nav / redirects / Astro plugins / page overrides / visual shell | [Escalation](#escalation) |
 
-When intent spans two branches (e.g., a new integration guide that also adds a sidebar group), handle each branch in order — escalation last.
+When intent spans two branches (e.g., a new integration guide that also adds a sidebar group), handle each branch in order: escalation last.
 
 ---
 
@@ -42,7 +42,7 @@ When intent spans two branches (e.g., a new integration guide that also adds a s
 
 Key facts:
 - API specs are **generated upstream**; the docs repo consumes the output.
-- The contributor should receive a regenerated spec file — they should not hand-edit spec files in the docs repo.
+- The contributor should receive a regenerated spec file: they should not hand-edit spec files in the docs repo.
 - Direct edits to spec files are overwritten on the next generation run.
 - After dropping the spec, run search-index regeneration and verify the site builds cleanly.
 
@@ -54,7 +54,7 @@ If the contributor wants to change what appears in the API reference (not just u
 
 > Load `references/agent-connector-flow.md` for the full workflow.
 
-**HARD STOP**: If the contributor says they edited a generated connector page or tool-data file directly — stop them. Those files are overwritten by the sync script. Manual edits disappear on the next run.
+**HARD STOP**: If the contributor says they edited a generated connector page or tool-data file directly: stop them. Those files are overwritten by the sync script. Manual edits disappear on the next run.
 
 Key facts:
 - To add setup instructions: create `_setup-<slug>.mdx` in the templates directory.
@@ -63,7 +63,7 @@ Key facts:
 - To inject a custom section at a specific position: create `_section-<hook>-<slug>-<topic>.mdx` with `export const sectionTitle = '...'` at the top.
 - To curate "What you can do" bullets: add an entry to `src/data/agent-connectors/capabilities.json`.
 - For non-OAuth connectors: create `_section-after-authentication-<slug>-auth.mdx` for a custom auth explanation.
-- Hand-edit only `_setup-*`, `_quickstart-*`, and `_section-*` template files — never generated pages or data files.
+- Hand-edit only `_setup-*`, `_quickstart-*`, and `_section-*` template files: never generated pages or data files.
 - After editing templates, run the sync script to regenerate.
 - Review the git diff before committing. Question any unexpected connector removals or large-scale changes.
 - Template files also protect connector pages from orphan deletion when a provider is removed from the API.
@@ -85,7 +85,7 @@ Ask: *"What is the reader trying to accomplish when they land on this content?"*
 | Look up reference data (API shapes, errors, events) | Reference | `reference/<topic>.mdx` or API ref |
 | Get started with a product for the first time | Quickstart | `<product>/quickstart.mdx` |
 
-**Aside anti-pattern — promote when any of these is true:**
+**Aside anti-pattern: promote when any of these is true:**
 - The `<Aside>` exceeds 3 sentences.
 - The same Aside content appears on 2+ pages.
 - The Aside answers a recurring support question.
@@ -135,7 +135,7 @@ Frontmatter:
   title:           '<≤60 chars>'
   description:     '<≤160 chars>'
   sidebar.label:   '<1–3 words, sentence case>'
-Escalation: <none | medium | high | critical — reason>
+Escalation: <none | medium | high | critical: reason>
 ```
 
 Then: one short paragraph describing what the page should cover and how it fits the reader's journey.
@@ -147,7 +147,7 @@ Then: one short paragraph describing what the page should cover and how it fits 
 At the end of every session, ask: **"Did this solve what you were trying to do?"**
 
 - If yes: done.
-- If the routing was wrong, a branch was missing, or the output was unhelpful: encourage the user to file an issue at **https://github.com/saif-shines/devex-kit/issues**. Offer to help draft it using their agent — include: what they were trying to do, what the skill produced, and what was missing or incorrect.
+- If the routing was wrong, a branch was missing, or the output was unhelpful: encourage the user to file an issue at **https://github.com/saif-shines/devex-kit/issues**. Offer to help draft it using their agent. Include what they were trying to do, what the skill produced, and what was missing or incorrect.
 
 ---
 

@@ -144,7 +144,7 @@ When updating an already-installed skill later, copy to a writable location firs
 At the end of every session, ask: **"Did this solve what you were trying to do?"**
 
 - If yes: done.
-- If the structure, examples, or cross-links were incomplete, a reference was stale, or the output led to a skill that felt bloated or hard to trigger: encourage the user to file an issue at **https://github.com/saif-shines/devex-kit/issues**. Offer to help draft it — include what they were building, which phase, what this skill produced, and what felt missing or incorrect.
+- If the structure, examples, or cross-links were incomplete, a reference was stale, or the output led to a skill that felt bloated or hard to trigger: encourage the user to file an issue at **https://github.com/saif-shines/devex-kit/issues**. Offer to help draft it: include what they were building, which phase, what this skill produced, and what felt missing or incorrect.
 
 ## When to Switch Skills
 - You are inside a plugin and the task is about the 5 restructure principles, agents, empty commands/, or plugin.json → `agent-plugin-development`.
@@ -152,6 +152,6 @@ At the end of every session, ask: **"Did this solve what you were trying to do?"
 - You are doing non-skill work (SDK, docs, CLI, MCP, stories, DX) → `ask-devex` first, then the target skill.
 
 ## Relation to the Upstream Skill-Creator
-This skill distills the methodology into devex-kit form and keeps the orchestrator lean. The complete version (with every script, agent, viewer, and platform note) is the one you just replaced into `~/Downloads/SKILL.md` (and the installed `/skill-creator`). Use either — start here for anything that should follow the style of this kit.
+This skill distills the methodology into devex-kit form and keeps the orchestrator lean. The complete version (with every script, agent, viewer, and platform note) is the one you just replaced into `~/Downloads/SKILL.md` (and the installed `/skill-creator`). Use either: start here for anything that should follow the style of this kit.
 
 State the phase or describe the skill you are building. Load the references when told. Ship a good one.

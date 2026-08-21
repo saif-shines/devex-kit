@@ -63,7 +63,7 @@ Talking about the solution first? Delete the draft and restart with the pain. No
 - Perform post-call synthesis that updates the story canvas with direct quotes.
 - Only after 5+ diverse TAB members have validated do you proceed to presence or launch artifacts.
 
-If you have not run TAB calls, you have no story yet — only a hypothesis.
+If you have not run TAB calls, you have no story yet: only a hypothesis.
 
 ## Presence & Advocacy (Review or Generate)
 
@@ -148,7 +148,7 @@ Before declaring the session complete for any area:
 At the end of every session, ask: **"Did this solve what you were trying to do?"**
 
 - If yes: done.
-- If the story audit missed a mistake, or the TAB plan didn't use the 3 questions, or the packaging doesn't follow the value metric, or the agent still talked about the solution first under pressure: encourage the user to file an issue at **https://github.com/saif-shines/devex-kit/issues**. Offer to help draft it using their agent — include: what they were trying to do, what the skill produced, and what was missing or incorrect.
+- If the story audit missed a mistake, or the TAB plan didn't use the 3 questions, or the packaging doesn't follow the value metric, or the agent still talked about the solution first under pressure: encourage the user to file an issue at **https://github.com/saif-shines/devex-kit/issues**. Offer to help draft it using their agent. Include what they were trying to do, what the skill produced, and what was missing or incorrect.
 
 ## Attribution
 

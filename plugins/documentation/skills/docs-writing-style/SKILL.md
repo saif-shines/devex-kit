@@ -1,6 +1,6 @@
 ---
 name: docs-writing-style
-description: Two-mode writing guide — exports a paste-ready style prompt for coding agents (handoff mode) or reviews a draft against the documentation quality rubric (review mode).
+description: Two-mode writing guide: exports a paste-ready style prompt for coding agents (handoff mode) or reviews a draft against the documentation quality rubric (review mode).
 license: MIT
 metadata:
   author: saif-shines
@@ -16,8 +16,8 @@ Two modes. Choose one per session.
 
 | Mode | When to use | What you get |
 |---|---|---|
-| **Handoff** | Before writing — you want your coding agent (Claude/Cursor/Copilot) to match the existing voice | A self-contained prompt block to paste into your coding agent's system instructions |
-| **Review** | After drafting — you want to check your draft's tone, structure, and style before submitting | A rubric-based diagnosis: what passes, what needs fixing, in priority order |
+| **Handoff** | Before writing: you want your coding agent (Claude/Cursor/Copilot) to match the existing voice | A self-contained prompt block to paste into your coding agent's system instructions |
+| **Review** | After drafting: you want to check your draft's tone, structure, and style before submitting | A rubric-based diagnosis: what passes, what needs fixing, in priority order |
 
 State your mode at the start: "handoff" or "review."
 
@@ -25,7 +25,7 @@ State your mode at the start: "handoff" or "review."
 
 ## Core principle
 
-**Documentation voice is a contract with the reader.** Inconsistent tone makes docs feel untrustworthy. Consistent tone — even across many contributors — makes readers confident the information is accurate.
+**Documentation voice is a contract with the reader.** Inconsistent tone makes docs feel untrustworthy. Consistent tone, even across many contributors, makes readers confident the information is accurate.
 
 ---
 
@@ -36,10 +36,10 @@ State your mode at the start: "handoff" or "review."
 
 In handoff mode:
 1. Load the style prompt block for this docs site.
-2. Present it directly — the contributor pastes it into their coding agent's system instructions or project-level CLAUDE.md / `.cursorrules` / `.github/copilot-instructions.md`.
+2. Present it directly: the contributor pastes it into their coding agent's system instructions or project-level CLAUDE.md / `.cursorrules` / `.github/copilot-instructions.md`.
 3. Optionally: if the contributor describes what they are writing (e.g., "a how-to guide for agent auth"), append a 2–3 line supplement tailoring the prompt to that content type.
 
-The prompt block is self-contained. The contributor does not need to explain the docs site to their coding agent — the prompt does it for them.
+The prompt block is self-contained. The contributor does not need to explain the docs site to their coding agent: the prompt does it for them.
 
 ---
 
@@ -54,9 +54,9 @@ In review mode:
 3. Report findings in this format:
 
 ```
-PASS   <criterion> — <brief note if anything to mention>
-FAIL   <criterion> — <specific problem> → fix: <what to do>
-WARN   <criterion> — <borderline issue worth watching>
+PASS   <criterion>: <brief note if anything to mention>
+FAIL   <criterion>: <specific problem> → fix: <what to do>
+WARN   <criterion>: <borderline issue worth watching>
 ```
 
 4. Group by priority: fails first, warns second, passes last.
@@ -71,11 +71,11 @@ Do not flag style issues in code blocks. Code is reviewed separately.
 These apply regardless of mode. Violations in review mode are always FAIL.
 
 **Structure**
-- Sentence case for all headings. No "Configure Your Auth Provider" — use "Configure your auth provider."
+- Sentence case for all headings. No "Configure Your Auth Provider": use "Configure your auth provider."
 - Page opens with a clear one-paragraph statement: what the reader will do and why.
-- Procedure steps use imperative verbs: "Install", "Run", "Configure" — not "Installing", "You should run."
+- Procedure steps use imperative verbs: "Install", "Run", "Configure": not "Installing", "You should run."
 - H2 for major sections; H3 for subsections. Never use H1 in body content.
-- **Step headings inside `<Steps>` must be H3 (`###`) or smaller** — never H2. H2 inside Steps creates oversized step titles that break visual hierarchy.
+- **Step headings inside `<Steps>` must be H3 (`###`) or smaller**: never H2. H2 inside Steps creates oversized step titles that break visual hierarchy.
 - **Single-item lists are not lists.** If a section (e.g. Prerequisites) has only one bullet or numbered item, remove the list markup and write it as a plain paragraph or a smaller heading with prose.
 
 **Language**
@@ -93,7 +93,7 @@ These apply regardless of mode. Violations in review mode are always FAIL.
 - Examples must be runnable or explicitly marked as pseudocode.
 
 **Asides and callouts**
-- `<Aside>` is for incidental context only — cautions, tips, notes.
+- `<Aside>` is for incidental context only: cautions, tips, notes.
 - Never put required steps or critical information inside an `<Aside>`.
 - Use `type="caution"`, `type="tip"`, or `type="note"` with a `title` attribute.
 
@@ -108,7 +108,7 @@ These apply regardless of mode. Violations in review mode are always FAIL.
 At the end of every session, ask: **"Did this solve what you were trying to do?"**
 
 - If yes: done.
-- If the style prompt was wrong for your site, the review missed something, or the rubric produced unhelpful output: encourage the user to file an issue at **https://github.com/saif-shines/devex-kit/issues**. Offer to help draft it using their agent — include: which mode they used, what they were reviewing or writing, and what was wrong or missing.
+- If the style prompt was wrong for your site, the review missed something, or the rubric produced unhelpful output: encourage the user to file an issue at **https://github.com/saif-shines/devex-kit/issues**. Offer to help draft it using their agent. Include which mode they used, what they were reviewing or writing, and what was wrong or missing.
 
 ---
 

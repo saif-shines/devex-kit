@@ -1,6 +1,6 @@
 ---
 name: journey-sidebar-labels
-description: "Audit and design documentation sidebar labels and section order so navigation follows a clear developer journey — concise labels, sentence case, and phase-aligned groups (reference model: Full stack auth sidebar in Scalekit developer-docs)."
+description: "Audit and design documentation sidebar labels and section order so navigation follows a clear developer journey: concise labels, sentence case, and phase-aligned groups (reference model: Full stack auth sidebar in Scalekit developer-docs)."
 license: MIT
 metadata:
   author: saif-shines
@@ -15,8 +15,8 @@ You help authors and information architects align **sidebar group labels**, **it
 
 This skill is grounded in:
 
-- **Journey-focused docs** — product areas represent a developer’s path to shipping (see `references/fsa-sidebar-journey.json` for a structured reference).
-- **Sidebar label rules** — concise, scannable, sentence case, outcome- or object-focused, aligned with page titles but often shorter.
+- **Journey-focused docs**: product areas represent a developer’s path to shipping (see `references/fsa-sidebar-journey.json` for a structured reference).
+- **Sidebar label rules**: concise, scannable, sentence case, outcome- or object-focused, aligned with page titles but often shorter.
 
 ## Core principle
 
@@ -31,26 +31,26 @@ Apply these to every **group** (`label` on a nested section) and **leaf** (page 
 | Length | Prefer **1–3 words**; stretch only when clarity needs it (e.g. “Quickstart: Full stack auth”) |
 | Case | **Sentence case** (e.g. “Full stack auth”, “Manage users & orgs”) |
 | Punctuation | **No** trailing periods or commas in labels |
-| Focus | **Outcome- or object-focused** — what the reader does or what they configure |
+| Focus | **Outcome- or object-focused**: what the reader does or what they configure |
 | Consistency with pages | **Match the page title’s meaning**; shorten for the sidebar when the title is long |
 | Specificity | **Avoid bare-noun labels** that could describe multiple unrelated pages. If a label could plausibly fit 3+ different guides, add an action verb or qualifying context (e.g. "Test users" → "Run end-to-end tests") |
 | Slug alignment | **Filename and slug should reflect the label.** When a label changes, rename the file to match (e.g. `test-users.mdx` → `run-e2e-tests.mdx`). A mismatched slug undermines the label's clarity in URLs and link previews |
 | Quickstarts | Use the pattern **`Quickstart: <Name>`** when the page is the primary onboarding path for that product or area |
 
-Avoid generic section titles that could mean anything (“Overview”, “Basics”, “More”) unless the product truly has a single hub page and the name is unavoidable — prefer journey language (“Getting started”, “Go Live”) or specific objects (“User authentication”, “Authorization”).
+Avoid generic section titles that could mean anything (“Overview”, “Basics”, “More”) unless the product truly has a single hub page and the name is unavoidable: prefer journey language (“Getting started”, “Go Live”) or specific objects (“User authentication”, “Authorization”).
 
 ## Journey phases (how to think in order)
 
 Model groups so they follow a **plausible build order** for the product:
 
-1. **Getting started** — environment, first integration, code samples / copy-paste paths.
-2. **Core product loop** — the minimum vertical slice (for Full stack auth: user authentication — login, session, logout).
-3. **Configuration depth** — methods, providers, or modalities the reader adds after the loop works.
-4. **Scale-out concerns** — users, orgs, directory, provisioning (after sign-in exists).
-5. **Policy and enforcement** — authorization, roles, access control (after subjects and resources exist).
-6. **Topology / platform extras** — multi-app, APIs, M2M, as relevant.
-7. **Customization and integrations** — branding, domains, email, external catalogs.
-8. **Ship and operate** — checklists, logs, migration, production readiness.
+1. **Getting started**: environment, first integration, code samples / copy-paste paths.
+2. **Core product loop**: the minimum vertical slice (for Full stack auth: user authentication: login, session, logout).
+3. **Configuration depth**: methods, providers, or modalities the reader adds after the loop works.
+4. **Scale-out concerns**: users, orgs, directory, provisioning (after sign-in exists).
+5. **Policy and enforcement**: authorization, roles, access control (after subjects and resources exist).
+6. **Topology / platform extras**: multi-app, APIs, M2M, as relevant.
+7. **Customization and integrations**: branding, domains, email, external catalogs.
+8. **Ship and operate**: checklists, logs, migration, production readiness.
 
 Not every product needs every phase; **omit or merge** groups rather than forcing empty buckets. **Never** order alphabetically if that breaks the journey.
 
@@ -66,31 +66,31 @@ Use `references/fsa-sidebar-journey.json` as a **checklist** when auditing anoth
 
 ## Diagnostic process
 
-1. **List group labels in order** — read only labels (ignore URLs). Ask: does this read as a timeline from “new” to “production”?
-2. **Flag alphabetized or taxonomy-only order** — if groups look like a glossary, reorder by journey.
-3. **Check label specificity** — replace abstract nouns with phases or objects (“Authorization” vs “Security”).
-4. **Align quickstarts** — every major product should have an obvious **Quickstart: …** entry under Getting started when applicable.
-5. **Preview test** — for each leaf label, ask: “Can a reader predict the page’s purpose from this label alone?” If a bare-noun label (e.g. “Test users”, “Webhooks”, “Permissions”) could plausibly name 3+ different pages, it needs an action verb or qualifying context.
-6. **Check leaf vs page titles** — sidebar label shorter but same intent; no drift in terminology (e.g. “SSO” vs “Enterprise SSO” across nav and H1).
+1. **List group labels in order**: read only labels (ignore URLs). Ask: does this read as a timeline from “new” to “production”?
+2. **Flag alphabetized or taxonomy-only order**: if groups look like a glossary, reorder by journey.
+3. **Check label specificity**: replace abstract nouns with phases or objects (“Authorization” vs “Security”).
+4. **Align quickstarts**: every major product should have an obvious **Quickstart: …** entry under Getting started when applicable.
+5. **Preview test**: for each leaf label, ask: “Can a reader predict the page’s purpose from this label alone?” If a bare-noun label (e.g. “Test users”, “Webhooks”, “Permissions”) could plausibly name 3+ different pages, it needs an action verb or qualifying context.
+6. **Check leaf vs page titles**: sidebar label shorter but same intent; no drift in terminology (e.g. “SSO” vs “Enterprise SSO” across nav and H1).
 
 ## What you do not do
 
-- You do not dictate Starlight vs custom nav frameworks — you work with whatever `sidebar` structure the repo uses.
+- You do not dictate Starlight vs custom nav frameworks: you work with whatever `sidebar` structure the repo uses.
 - You do not change **secondary nav** or **routing** unless the user asks; focus on **labels and journey structure** inside the sidebar config.
-- You do not rewrite full page content — you recommend label and ordering changes.
+- You do not rewrite full page content: you recommend label and ordering changes.
 
 ## Example prompts
 
 - “We’re adding a new product to the docs. Order these sidebar groups for a journey.”
 - “Review our sidebar labels against sentence case and journey order.”
-- “This group is called ‘Advanced’ — suggest a journey-based name.”
+- “This group is called ‘Advanced’: suggest a journey-based name.”
 
 ## Did this help?
 
 At the end of every session, ask: **"Did this solve what you were trying to do?"**
 
 - If yes: done.
-- If the label suggestions felt wrong, journey order was off, or a rule was missing for your sidebar structure: encourage the user to file an issue at **https://github.com/saif-shines/devex-kit/issues**. Offer to help draft it using their agent — include: the sidebar structure they shared, what the skill suggested, and why it did not fit.
+- If the label suggestions felt wrong, journey order was off, or a rule was missing for your sidebar structure: encourage the user to file an issue at **https://github.com/saif-shines/devex-kit/issues**. Offer to help draft it using their agent. Include the sidebar structure they shared, what the skill suggested, and why it did not fit.
 
 ---
 

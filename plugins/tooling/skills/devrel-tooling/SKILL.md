@@ -12,7 +12,7 @@ metadata:
 
 # DevRel Tooling
 
-Build the tools your developers reach for daily — CLIs they tab-complete without thinking, API collections they import on day one.
+Build the tools your developers reach for daily: CLIs they tab-complete without thinking, API collections they import on day one.
 
 Two domains:
 
@@ -31,11 +31,11 @@ State which domain you need, or describe what you're building.
 
 ### Core workflow
 
-1. **Analyze UX** — Map user workflows, identify common tasks, plan command hierarchy
-2. **Design commands** — Subcommands, flags, arguments, configuration layers
-3. **Implement** — Build with the right framework for the language
-4. **Polish** — Completions, help text, error messages, progress indicators
-5. **Test** — Cross-platform smoke tests; target startup < 50ms
+1. **Analyze UX**: Map user workflows, identify common tasks, plan command hierarchy
+2. **Design commands**: Subcommands, flags, arguments, configuration layers
+3. **Implement**: Build with the right framework for the language
+4. **Polish**: Completions, help text, error messages, progress indicators
+5. **Test**: Cross-platform smoke tests; target startup < 50ms
 
 ### Command hierarchy
 
@@ -111,7 +111,7 @@ Use **commander** (Node.js), **click/typer** (Python), or **cobra** (Go). For de
 - Use colors when output is not a TTY
 - Require interactive input in CI environments
 - Break existing command signatures (treat flag renames as breaking changes)
-- Hardcode paths — use `os.homedir()` / `Path.home()` / `os.UserHomeDir()`
+- Hardcode paths: use `os.homedir()` / `Path.home()` / `os.UserHomeDir()`
 
 ---
 
@@ -121,12 +121,12 @@ Use **commander** (Node.js), **click/typer** (Python), or **cobra** (Go). For de
 
 ### Core workflow
 
-1. **Scan routes** — Find all API route definitions in the codebase
-2. **Extract metadata** — Methods, paths, params, request bodies, headers
-3. **Organize** — Group endpoints by resource or folder structure
-4. **Generate** — Create Postman Collection v2.1 JSON (or OpenAPI)
-5. **Add examples** — Include realistic request/response examples
-6. **Configure** — Environment variables for base URL, auth tokens
+1. **Scan routes**: Find all API route definitions in the codebase
+2. **Extract metadata**: Methods, paths, params, request bodies, headers
+3. **Organize**: Group endpoints by resource or folder structure
+4. **Generate**: Create Postman Collection v2.1 JSON (or OpenAPI)
+5. **Add examples**: Include realistic request/response examples
+6. **Configure**: Environment variables for base URL, auth tokens
 
 ### Supported frameworks
 
@@ -176,17 +176,17 @@ Use **commander** (Node.js), **click/typer** (Python), or **cobra** (Go). For de
 - Add endpoint descriptions explaining what each operation does
 - Configure collection-level auth (bearer, basic, or API key)
 - Create a matching environment template (dev, staging, production)
-- Commit the generated collection to the repo — regenerate on route changes in CI
+- Commit the generated collection to the repo: regenerate on route changes in CI
 
 ---
 
 ## Phase gates
 
-**CLI — after implementation:** Run `mytool --help` and verify all commands render. Run `mytool --version`. Test in non-interactive mode: `CI=true mytool deploy staging --force`.
+**CLI: after implementation:** Run `mytool --help` and verify all commands render. Run `mytool --version`. Test in non-interactive mode: `CI=true mytool deploy staging --force`.
 
-**CLI — before release:** Generate completions and test in bash/zsh: `source <(mytool completion bash) && mytool <TAB>`. Run on macOS, Linux, and Windows (or CI matrix).
+**CLI: before release:** Generate completions and test in bash/zsh: `source <(mytool completion bash) && mytool <TAB>`. Run on macOS, Linux, and Windows (or CI matrix).
 
-**API collection — after generation:** Validate the JSON: `npx ajv validate -s postman-collection-v2.1-schema.json -d collection.json`. Import into Postman and confirm all endpoints render.
+**API collection: after generation:** Validate the JSON: `npx ajv validate -s postman-collection-v2.1-schema.json -d collection.json`. Import into Postman and confirm all endpoints render.
 
 ## Quality checklist
 

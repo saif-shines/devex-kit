@@ -1,7 +1,7 @@
 ---
 name: pragmatic-fp
 description: |
-  Pragmatic 80/20 guide to functional programming in TypeScript with fp-ts, drawing from Functional-Light JavaScript principles. Master pipe, Option, Either, map, and flatMap — and know exactly when to skip FP entirely for readable, "reasonable" code. Use this skill for a pragmatic starting point for fp-ts or functional programming in TypeScript, when the task is exploratory or educational and needs the 80/20 view of what is actually worth adopting, deciding if FP helps or hurts readability, replacing defensive null checks and try-catch with Option/Either, or getting before-and-after refactors for real code. Also activates for questions about "pragmatic functional programming", "fp-ts pipe Option Either", "when not to use functional programming", "80/20 fp-ts", "functional light", "FLJS", "reasonable code", "Kyle Simpson FP", or "pragmatic fp in TypeScript".
+  Pragmatic 80/20 guide to functional programming in TypeScript with fp-ts, drawing from Functional-Light JavaScript principles. Master pipe, Option, Either, map, and flatMap: and know exactly when to skip FP entirely for readable, "reasonable" code. Use this skill for a pragmatic starting point for fp-ts or functional programming in TypeScript, when the task is exploratory or educational and needs the 80/20 view of what is actually worth adopting, deciding if FP helps or hurts readability, replacing defensive null checks and try-catch with Option/Either, or getting before-and-after refactors for real code. Also activates for questions about "pragmatic functional programming", "fp-ts pipe Option Either", "when not to use functional programming", "80/20 fp-ts", "functional light", "FLJS", "reasonable code", "Kyle Simpson FP", or "pragmatic fp in TypeScript".
 license: MIT
 metadata:
   author: saif-shines
@@ -16,7 +16,7 @@ metadata:
 
 This skill gives you the 80/20 of fp-ts in TypeScript, informed by the "Functional-Light" mindset from Kyle Simpson's *Functional-Light JavaScript*: focus on readable, "reasonable" code; use FP where it increases confidence and communication; stop where it hurts clarity.
 
-The five patterns deliver most of the benefit. Clear rules tell you when to use them — and, most importantly, when to keep code simple instead.
+The five patterns deliver most of the benefit. Clear rules tell you when to use them: and, most importantly, when to keep code simple instead.
 
 State what you're trying to do (e.g. "I have a chain of null checks" or "help me decide if I should introduce fp-ts here") or name the mode below.
 
@@ -34,7 +34,7 @@ State what you're trying to do (e.g. "I have a chain of null checks" or "help me
 
 > **If functional programming makes your code harder to read, don't use it.**
 
-This is the core of "Functional-Light" thinking (see Kyle Simpson's *Functional-Light JavaScript*, especially Chapter 1 on readability, confidence, and finding balance). FP is a tool for writing more *reasonable* code — code that is easier for humans (including future you and junior teammates) to understand, communicate about, and maintain. It is not a religion or an end in itself.
+This is the core of "Functional-Light" thinking (see Kyle Simpson's *Functional-Light JavaScript*, especially Chapter 1 on readability, confidence, and finding balance). FP is a tool for writing more *reasonable* code: code that is easier for humans (including future you and junior teammates) to understand, communicate about, and maintain. It is not a religion or an end in itself.
 
 Use the patterns below when they increase clarity and reduce surprises. Skip them (or use simpler idioms) when they add noise. The goal is better code, not "more FP."
 
@@ -66,4 +66,4 @@ Use the patterns below when they increase clarity and reduce surprises. Skip the
 At the end of every session, ask: **"Did this solve what you were trying to do?"**
 
 - If yes: done.
-- If the routing to a pattern was wrong, a "when not to use" case was missed, an example was confusing, or the advice led to harder-to-read code: encourage the user to file an issue at **https://github.com/saif-shines/devex-kit/issues**. Offer to help draft it — include what they were trying to do, what this skill produced, and what felt missing or incorrect.
+- If the routing to a pattern was wrong, a "when not to use" case was missed, an example was confusing, or the advice led to harder-to-read code: encourage the user to file an issue at **https://github.com/saif-shines/devex-kit/issues**. Offer to help draft it: include what they were trying to do, what this skill produced, and what felt missing or incorrect.
