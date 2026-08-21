@@ -1,564 +1,145 @@
-# devex-kit
+# DevEx Kit
 
-A collection of agent skills for developer experience work — distributed as both a **Claude Code plugin marketplace** and **skills.sh**-compatible skill repo.
+Skills for documentation, SDKs, CLIs, MCP servers, and developer go-to-market.
 
-Humans pick a skill from [docs/skills.md](docs/skills.md). There is no per-skill page.
+You install a plugin or a single skill. Then you type a slash command. The agent follows that skill.
 
-## Plugins
+This kit is generic. Scalekit-only docs work (agent connectors, CODEOWNERS escalation) lives in [skillkit](https://github.com/saif-shines/skillkit) `docs-engineering`.
 
-### Meta / Entry point
+Longer install examples and author notes: [saifshines.dev/devex-kit](https://saifshines.dev/devex-kit).
 
-#### ask-devex
+## What you need
 
-The kit router. The human starts it. The model does not auto-start it.
+Nothing extra to read the skills.
 
-```
-/ask-devex <describe the work>
-```
+To install and use them you need one of:
 
-It names the next kit skill and returns a copy/paste invocation. It also handles multi-skill order.
+- Claude Code, or
+- `npx` (for [skills.sh](https://skills.sh))
 
-Install it with the tooling plugin, then type `/ask-devex` to start.
+To change this kit you also need Node.js. Then run `npm install` in this repo.
 
-### Documentation
+## Install
 
-Generic devrel skills for documentation workflows — useful to any devrel professional regardless of tech stack.
+### Claude Code (plugins)
 
-#### docs-contribution-router
-
-Routes documentation contributions to the right content type, placement, template, and workflow — before the contributor writes a single line.
-
-Three branches:
-- **API reference** — docs-side flow for landing a regenerated spec (does not cover the upstream source repo)
-- **Content placement** — decision tree: cookbook / how-to / concept / reference / quickstart; explicit Aside anti-pattern rule
-- **Integration guide** — section skeleton, frontmatter starter, screenshot workflow (VS Code paste-image extension)
-
-Scalekit-specific placement maps can live at `<docs-repo>/.devex-kit/`. This kit does not ship Scalekit review policy.
-
-Scalekit agent-connector docs and escalation / CODEOWNERS review rules live in [skillkit](https://github.com/saif-shines/skillkit) `docs-engineering`, not in this kit.
-
-#### docs-writing-style
-
-Two-mode writing guide.
-
-- **Handoff mode** — exports a paste-ready style prompt for the contributor's coding agent (Claude / Cursor / Copilot). Includes voice rules, SDK variable naming, code standards, and content-type supplements.
-- **Review mode** — runs a quality rubric against a draft. Reports PASS / FAIL / WARN in priority order; ends with the single most impactful fix.
-
-Scalekit-specific prompt block in `references/scalekit-style-prompt-block.md`. Template for other sites in `references/_template-style-prompt-block.md`.
-
-#### authoring-cookbooks
-
-Diagnostic skill for documentation quality — skimmability, writing clarity, and reader helpfulness.
-
-#### journey-sidebar-labels
-
-Assistive skill for **sidebar navigation**: group labels, item labels, and order should follow a **developer journey** (setup → core loop → scale → ship). Includes a reference model derived from Scalekit **Full stack auth** in [`sidebar.config.ts`](https://github.com/scalekit-inc/developer-docs/blob/main/src/configs/sidebar.config.ts) and label rules from the docs standards (concise, sentence case, outcome-focused).
-
-### Tooling
-
-Skills for building SDKs, CLI tools, and developer utilities — the artifacts devrel professionals ship to their developer communities.
-
-#### sdk-craft
-
-Design, build, document, and ship SDKs that developers love. Covers the full SDK lifecycle:
-
-- **Design** — API surface principles, progressive disclosure, error message framework, type safety patterns
-- **Build** — Client patterns (single, modular, factory), error hierarchies, HTTP internals, TypeScript implementation
-- **Document** — Inline docs, README quickstart, generated reference
-- **Ship** — Bundling (ESM/CJS), versioning, changelogs, migration guides, npm publishing
-
-Consolidates guidance from SDK design philosophy, TypeScript SDK development, and SDK documentation generation into one lifecycle skill. Includes language idiom guides for Python, JavaScript, Go, and Java.
-
-#### devrel-tooling
-
-Build CLI tools and API utilities that developers on your platform actually use. Two domains:
-
-- **CLI tools** — Command hierarchy design, argument parsing (commander/click/typer/cobra), configuration layers, shell completions, interactive prompts, progress indicators, cross-platform UX
-- **API collection generation** — Postman Collection v2.1 generation from Express, Next.js, Fastify, Hono, NestJS, and Koa routes
-
-Includes framework-specific scanner implementations and UX pattern references.
-
-#### mcp-server-craft
-
-Build MCP servers that AI agents actually want to use. Covers the full lifecycle:
-
-- **Design** — Tool naming (verb-noun, 64-char limit), schema design (Zod/Pydantic Field descriptions), resource URI patterns, LLM-readable descriptions
-- **Build** — Project structure (TypeScript and Python), transport selection (stdio vs Streamable HTTP), async patterns
-- **Harden** — Input validation, path traversal prevention, code execution sandboxing, rate limiting, authentication
-- **Test** — Unit, integration, contract, and agent workflow testing
-
-Sources: [AWS MCP Design Guidelines](https://github.com/awslabs/mcp/blob/main/DESIGN_GUIDELINES.md), [MCP Best Practices](https://modelcontextprotocol.info/docs/best-practices/).
-
-#### pragmatic-fp
-
-Pragmatic 80/20 guide to functional programming in TypeScript with fp-ts, informed by the "Functional-Light" approach (Kyle Simpson's *Functional-Light JavaScript*). No category theory — just the patterns that matter in real code, with a strong emphasis on readable, "reasonable" code and knowing when *not* to reach for FP.
-
-- **Core 5** — pipe for linear flow (composition), Option for nullables, Either for explicit errors, map, and flatMap
-- **When to stop** — clear rules and examples for keeping code simple (optional chaining, loops, perf paths, team knowledge, communication)
-- **Quick wins + refactors** — before/after for nested ternaries, try/catch, validation, callback hell, and Promise chains
-- **Readability guardrail** — "Would a junior understand this?" + "reasonable code" mindset + cheat sheet
-
-Use when you want a practical starting point for fp-ts, need the 80/20 view, or are deciding whether introducing Option/Either/pipe will actually help humans read and maintain the code.
-
-#### code-style-patterns
-
-Apply real coding styles from well-known open source developers: shadcn, sindresorhus, and ahmadawais. Load the matching reference, then adapt the pattern to the current codebase.
-
-#### create-skill
-
-Create new skills and iteratively improve existing ones. The general (non-plugin) entry point for turning repeated workflows into reusable SKILL.md files.
-
-Covers:
-- **Capture** — Intent extraction, user interview, success criteria, test-case decision
-- **Draft** — Lean devex-kit frontmatter + body, imperative style, progressive disclosure via references/, quality checklist
-- **Test & Iterate** — Realistic cases, with/without baselines, review, feedback-driven improvement (lightweight; full harness lives in the upstream /skill-creator)
-- **Optimize** — Description tuning for reliable auto-triggering
-- **Package** — Validation, tile.json, distribution via skills.sh / tessl
-
-Always start with `/ask-devex` or invoke directly when the task is "turn this into a skill" or "improve my skill".
-
-### Dev GTM
-
-Developer go-to-market strategy skills for dev-facing products and early-stage startups — authentic storytelling, technical advisory boards, DX for adoption, and content strategy that actually resonates with technical audiences. (Distilled from the source playbooks you referenced.)
-
-#### devrel-story-craft
-
-Design authentic stories, recruit and run TABs, avoid the 12 most common story mistakes, build dev influencer presence, and define dev-friendly packaging for early-stage developer-facing startups and products.
-
-#### devrel-dx-craft
-
-Design DX for first success and adoption, choose the right content types (Sample Applications, Code Snippets/Recipes, Solution Patterns), apply "content has a job" and translator principles, and run an effective technical engagement system.
-
----
-
-## Using in Claude Code
-
-Once installed, invoke any skill with its slash command directly in Claude Code:
-
-**Start with the router (recommended):**
-```
-/ask-devex I need to design the DX for a new auth feature and choose between sample app vs recipe
-```
-
-Then follow its recommendation. Direct invocations also work:
+Add the marketplace once:
 
 ```
-/docs-contribution-router
-/docs-writing-style
-/authoring-cookbooks
-/journey-sidebar-labels
-/sdk-craft
-/devrel-tooling
-/mcp-server-craft
-/pragmatic-fp
-/code-style-patterns
-/create-skill
-/agent-plugin-development
-/devrel-story-craft
-/devrel-dx-craft
-```
-
-Example sessions:
-
-```
-/ask-devex I need to document a new connector and also choose the right content pattern for the getting-started material
-```
-
-The router will reply with the sequence (e.g. docs-contribution-router first for placement, then devrel-dx-craft for taxonomy) and the exact commands.
-
-```
-/docs-contribution-router I have a customer issue to document — users are confused
-about how session tokens are revoked when an org is disabled. Where does this go?
-```
-
-```
-/docs-writing-style handoff mode. I'm writing a how-to guide for agent auth in Node.js.
-```
-
-```
-/docs-writing-style review mode. [paste your MDX draft or give a file path]
-```
-
-```
-/authoring-cookbooks My cookbook has plenty of content but readers say it's hard to follow.
-```
-
-```
-/journey-sidebar-labels Review these sidebar labels for sentence case and journey order: [paste]
-```
-
-```
-/sdk-craft I'm building a TypeScript SDK for our REST API. Start with design phase — help me
-define the public API surface.
-```
-
-```
-/pragmatic-fp I have a chain of null checks and defensive ifs — give me the pragmatic fp-ts version or tell me to keep it simple.
-```
-
-```
-/devrel-tooling Build a CLI tool for our SDK that scaffolds new projects. Node.js, commander.
-```
-
-```
-/mcp-server-craft I'm building an MCP server to expose our search API to AI agents.
-Help me design the tool schemas.
-```
-
-Claude Code loads the skill and routes your request automatically. You do not need to explain the skill's rules — just describe what you are trying to do.
-
----
-
-## Try it
-
-### Install as Claude Code plugin marketplace (recommended)
-
-```bash
-# Add the marketplace
 /plugin marketplace add saif-shines/devex-kit
+```
 
-# Install all three plugins
+Install the plugins you want:
+
+```
+/plugin install tooling@devex-kit
 /plugin install documentation@devex-kit
-/plugin install tooling@devex-kit
 /plugin install dev-gtm@devex-kit
-
-# Or install just what you need
-/plugin install tooling@devex-kit
 ```
 
-### Install via [skills.sh](https://skills.sh) (Vercel Skills CLI)
+`tooling` includes the router (`ask-devex`). Start there if you are unsure.
 
-Discovers all `SKILL.md` files recursively under the plugin tree and `in-progress/`. Install a shipped skill by name. Do not pass a draft name until it is promoted.
+### Any agent (`npx skills`)
+
+Install the whole kit:
 
 ```bash
-# Install everything
 npx skills add saif-shines/devex-kit --yes
-
-# Or pick one skill (start with the router)
-npx skills add saif-shines/devex-kit --skill ask-devex --yes
-npx skills add saif-shines/devex-kit --skill docs-contribution-router --yes
-npx skills add saif-shines/devex-kit --skill docs-writing-style --yes
-npx skills add saif-shines/devex-kit --skill authoring-cookbooks --yes
-npx skills add saif-shines/devex-kit --skill journey-sidebar-labels --yes
-npx skills add saif-shines/devex-kit --skill sdk-craft --yes
-npx skills add saif-shines/devex-kit --skill devrel-tooling --yes
-npx skills add saif-shines/devex-kit --skill mcp-server-craft --yes
-npx skills add saif-shines/devex-kit --skill code-style-patterns --yes
-npx skills add saif-shines/devex-kit --skill create-skill --yes
-npx skills add saif-shines/devex-kit --skill agent-plugin-development --yes
-npx skills add saif-shines/devex-kit --skill devrel-story-craft --yes
-npx skills add saif-shines/devex-kit --skill devrel-dx-craft --yes
-
-# Inspect without installing
-npx skills add saif-shines/devex-kit --list
 ```
 
-### Install via [tessl](https://tessl.io)
-
-Each skill is published as its own tile (`tile.json` next to `SKILL.md`).
+Or install one skill:
 
 ```bash
-tessl install saif-shines/ask-devex --yes
-tessl install saif-shines/docs-contribution-router --yes
-tessl install saif-shines/docs-writing-style --yes
-tessl install saif-shines/authoring-cookbooks --yes
-tessl install saif-shines/journey-sidebar-labels --yes
-tessl install saif-shines/sdk-craft --yes
-tessl install saif-shines/devrel-tooling --yes
-tessl install saif-shines/mcp-server-craft --yes
-tessl install saif-shines/code-style-patterns --yes
-tessl install saif-shines/create-skill --yes
-tessl install saif-shines/agent-plugin-development --yes
-tessl install saif-shines/devrel-story-craft --yes
-tessl install saif-shines/devrel-dx-craft --yes
+npx skills add saif-shines/devex-kit --skill ask-devex --yes
 ```
 
-### Try locally (no install)
+List names first with `--list`. Do not install a name from `in-progress/`.
 
-Clone this repo and point your agent at the skill directly:
+### Local clone (no install)
 
 ```bash
 git clone https://github.com/saif-shines/devex-kit
 ```
 
-Then in Claude Code:
+Load one skill by path, for example:
 
 ```
 /skills load ./plugins/tooling/skills/ask-devex/SKILL.md
-/skills load ./plugins/documentation/skills/docs-contribution-router/SKILL.md
-/skills load ./plugins/documentation/skills/docs-writing-style/SKILL.md
-/skills load ./plugins/documentation/skills/authoring-cookbooks/SKILL.md
-/skills load ./plugins/documentation/skills/journey-sidebar-labels/SKILL.md
-/skills load ./plugins/tooling/skills/sdk-craft/SKILL.md
-/skills load ./plugins/tooling/skills/devrel-tooling/SKILL.md
-/skills load ./plugins/tooling/skills/mcp-server-craft/SKILL.md
-/skills load ./plugins/tooling/skills/code-style-patterns/SKILL.md
-/skills load ./plugins/tooling/skills/create-skill/SKILL.md
-/skills load ./plugins/tooling/skills/agent-plugin-development/SKILL.md
-/skills load ./plugins/dev-gtm/skills/devrel-story-craft/SKILL.md
-/skills load ./plugins/dev-gtm/skills/devrel-dx-craft/SKILL.md
 ```
 
-## Drafts
+The path for every skill is `plugins/<plugin>/skills/<name>/SKILL.md`.
 
-Unfinished skills live in [`in-progress/`](./in-progress/). They are not part of a plugin. Promote a draft by moving it under `plugins/<plugin>/skills/` and completing the checklist in `CLAUDE.md`.
+## Use
 
-## Versioning
+Type `/ask-devex` and state the job. The human starts this skill. The model does not.
 
-Plugin versions bump from Changesets. Do not edit `plugin.json` version by hand.
-
-The three packages are `documentation`, `tooling`, and `dev-gtm`. Pick the plugin that changed.
-
-### Record a bump
-
-After a change that should ship, run:
-
-```bash
-npm run changeset
+```
+/ask-devex I need to design first-success DX and then write the getting-started docs
 ```
 
-Select the package. Choose `patch`, `minor`, or `major`. Write one short sentence about the change.
+The router names the next skill and gives a command you can paste.
 
-That command writes a file under `.changeset/`. Commit that file with the work.
+You can also start a skill directly:
 
-Use `patch` for a fix or a small voice/docs change inside a shipped skill.
-Use `minor` for a new shipped skill or a new mark that installers must learn.
-Use `major` when a slash command or skill name goes away.
-
-If the change does not bump a plugin, run `npx changeset add --empty` and say why in the file.
-
-### Apply recorded bumps
-
-When it is time to release:
-
-```bash
-npm run version
+```
+/docs-contribution-router Where does this customer issue go?
+/docs-writing-style review mode. [paste draft]
+/sdk-craft Design the public API for our TypeScript SDK
 ```
 
-That updates each plugin `package.json` from the changeset files. It then copies those versions into `.claude-plugin/plugin.json`.
+The three user-started skills are `ask-devex`, `docs-contribution-router`, and `create-skill`. The rest may start from a description match.
 
-Check that the two files still match:
+Full list: [docs/skills.md](docs/skills.md).
+
+## The three plugins
+
+| Plugin | Use it for |
+|--------|------------|
+| `documentation` | Where a page goes, writing style, cookbooks, sidebar labels |
+| `tooling` | Router, SDKs, CLIs, MCP servers, skills, plugins, code style |
+| `dev-gtm` | Launch stories and first-success DX |
+
+## Adapt a docs site
+
+Optional. Drop site files in the docs repo:
+
+- `.devex-kit/placement-map.json` for `docs-contribution-router`
+- `.devex-kit/style-prompt-block.md` for `docs-writing-style`
+
+The skill uses those files when they exist.
+
+## Change this kit
+
+Read the contract first: [`CLAUDE.md`](CLAUDE.md) (same file as `AGENTS.md`).
+
+Drafts go in [`in-progress/`](in-progress/). A skill is not shipped until the promotion checklist in that contract is done.
+
+Check the kit:
 
 ```bash
+npm test
+npm run check
+```
+
+Record a plugin version bump with Changesets. Do not edit `plugin.json` version by hand.
+
+```bash
+npm run changeset          # record
+npm run version            # apply
 npm run check-plugin-versions
 ```
 
-The kit contract check also fails if a plugin version pair drifts.
+The three packages are `documentation`, `tooling`, and `dev-gtm`.
 
----
+Use `patch` for a small fix.
+Use `minor` for a new shipped skill.
+Use `major` when a slash command or skill name goes away.
+Use `npx changeset add --empty` when the change does not bump a plugin.
 
-## Use the skills
+Before you call a skill shipped, run:
 
-### ask-devex
-
-**Start here.** The human types this. The model does not auto-start it.
-
-```
- /ask-devex I'm about to write a launch story for our new MCP server connectors and need to design the first-success DX at the same time
-```
-
-Output: clear recommendation of order (devrel-story-craft → devrel-dx-craft → authoring-cookbooks), plus the exact next slash commands with arguments you can copy.
-
-Type it at the start of the conversation, before any domain skill. It prevents the "I picked the wrong skill" and "I forgot the sequencing" problems.
-
-### docs-contribution-router
-
-Invoke when starting any docs contribution. The skill identifies the branch from your stated intent.
-
-**Route a new piece of information:**
-```
-I have a customer issue to document — a user was confused about how session tokens
-are revoked when an organization is disabled. Where does this go and what type of
-page should it be?
+```bash
+dora review plugins/<plugin>/skills/<name> --quick
 ```
 
-**API reference update:**
-```
-I have a regenerated scalekit.scalar.yaml. What do I do to land it in the docs repo?
-```
-
-**Integration guide:**
-```
-I'm writing an integration guide for connecting Okta as an SSO provider. Give me
-the template and tell me where the file goes.
-```
-
-The skill outputs: content type, file path, frontmatter starter, and a sidebar label suggestion.
-
-### docs-writing-style
-
-Declare your mode at the start of the session.
-
-**Handoff mode — get a style prompt for your coding agent:**
-```
-Handoff mode. I'm writing a how-to guide for setting up agent auth in Node.js.
-Give me the style prompt to paste into my coding agent.
-```
-
-Paste the output into your agent's system instructions, `.cursorrules`, `CLAUDE.md`, or `.github/copilot-instructions.md`. Your agent will match the existing voice without you reading the full style guide.
-
-**Review mode — check a draft before submitting:**
-```
-Review mode. Here's my draft: [paste MDX or file path]
-```
-
-The skill reports PASS / FAIL / WARN per criterion and ends with the single most impactful fix.
-
-### authoring-cookbooks
-
-Activates when you describe a documentation quality problem.
-
-**Diagnose existing docs:**
-```
-My cookbook has plenty of content but readers say it's hard to follow. What's wrong?
-```
-
-**Start a new cookbook:**
-```
-I'm starting a new cookbook from scratch. How should I structure it?
-```
-
-**Audit a full directory:**
-```
-Audit all the recipes in ./docs/recipes/ for quality issues.
-```
-
-The skill maps issues to seven quality states and suggests prioritized interventions.
-
-### journey-sidebar-labels
-
-Use when restructuring or reviewing navigation labels.
-
-```
-Our product sidebar is alphabetical; reorder it as an implementation journey.
-```
-
-```
-Review these sidebar group labels for sentence case and journey order: [paste config excerpt]
-```
-
-### sdk-craft
-
-Use when designing, building, or shipping an SDK or client library.
-
-**Design phase — API surface:**
-```
-I'm building a TypeScript SDK for our REST API. Help me design the public API
-surface — I have users, organizations, and webhooks resources.
-```
-
-**Build phase — implementation:**
-```
-I have my API surface designed. Now help me implement the modular client pattern
-with proper error handling and retry logic.
-```
-
-**Ship phase — publishing:**
-```
-My SDK is ready to publish. Walk me through the tsup config, package.json exports,
-and npm publishing checklist.
-```
-
-The skill covers the full lifecycle — state which phase you're in, or describe what you're building.
-
-### devrel-tooling
-
-Use when building CLI tools or generating API collections.
-
-**Build a CLI:**
-```
-Build a CLI tool for our SDK that scaffolds new projects. Node.js with commander,
-needs init, config, and deploy subcommands.
-```
-
-**Generate a Postman collection:**
-```
-Generate a Postman collection from my Express routes in ./src/routes/. Group by
-resource and include auth configuration.
-```
-
-**Add shell completions:**
-```
-My CLI tool is working but I need to add bash/zsh/fish completions. Using cobra in Go.
-```
-
-### mcp-server-craft
-
-Use when building or reviewing an MCP server.
-
-**Design tool schemas:**
-```
-I'm building an MCP server to expose our GitHub integration to AI agents.
-Help me design the tool names, descriptions, and input schemas.
-```
-
-**Harden for production:**
-```
-My MCP server executes user-provided Python code to generate diagrams.
-What security patterns do I need?
-```
-
-**Test with agents:**
-```
-How do I test that an LLM agent actually picks the right tools from my MCP server?
-```
-
-### create-skill
-
-Use when turning a workflow into a reusable skill or improving an existing SKILL.md (general case).
-
-**Start a new skill:**
-```
-/create-skill I keep writing the same 4-step release checklist in every PR. Turn the release process into a skill.
-```
-
-**Improve or review:**
-```
-/create-skill Here's my current draft SKILL.md for a pdf helper. Make it leaner and add a references/ section for the edge cases.
-```
-
-The skill walks capture → draft (with devex-kit style) → optional test/iterate → description optimization → packaging. For plugin restructure work also load `agent-plugin-development`.
-
-### devrel-story-craft
-
-Use when building stories, TABs, presence, or packaging for dev-facing GTM.
-
-**Review mode — audit a draft story:**
-
-```
-/devrel-story-craft review mode. Here's my draft launch story for the new connectors...
-```
-
-**Plan mode — TAB + story canvas:**
-
-```
-/devrel-story-craft plan TAB for connectors. Help me recruit and draft the first call questions.
-```
-
-The skill outputs: reviewed story with specific mistake flags + fixes, TAB plan with exact 3 questions + email template, or packaging audit.
-
-### devrel-dx-craft
-
-Use when designing first-success DX or content taxonomy/jobs.
-
-**Review mode — audit DX or taxonomy choice:**
-
-```
-/devrel-dx-craft review mode. Here's my getting-started plan and content outline for the new auth feature.
-```
-
-**Plan mode — first success + taxonomy:**
-
-```
-/devrel-dx-craft plan first-success. For the connectors feature, choose Sample Application vs Recipe vs Pattern and outline the DX path.
-```
-
-The skill outputs: DX audit against first-success criteria, taxonomy decision with the exact 3-pattern table from the MD note + justification, content job mapping using the 7-step process.
-
----
-
-## Adapting to your docs site
-
-`docs-writing-style` can take a site style block at `<your-docs-repo>/.devex-kit/style-prompt-block.md`. `docs-contribution-router` can take a placement map at `<your-docs-repo>/.devex-kit/placement-map.json`.
-
-Scalekit escalation triggers and agent-connector flows stay in skillkit.
+If `dora` is missing, use `npx @hacksmith/doraval review plugins/<plugin>/skills/<name> --quick`.
