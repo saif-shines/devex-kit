@@ -1,10 +1,11 @@
 ---
 name: docs-contribution-router
-description: Route documentation contributions to the right content type, placement, template, and escalation path: before the contributor writes a single line.
+description: Ask which docs path a contribution should take. A user-started orchestrator.
+disable-model-invocation: true
 license: MIT
 metadata:
   author: saif-shines
-  version: "1.0"
+  version: "1.1"
   type: router
   mode: directive
   maturity_score: 10

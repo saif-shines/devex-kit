@@ -4,6 +4,7 @@ import { pathToFileURL } from "node:url";
 
 const CLAUDE_MD = "CLAUDE.md";
 const AGENTS_MD = "AGENTS.md";
+const ORCHESTRATORS = new Set(["ask-devex", "docs-contribution-router", "create-skill"]);
 
 function pluginNames(rootDir) {
   const pluginsDir = join(rootDir, "plugins");
@@ -48,6 +49,18 @@ function shippedSkillFiles(rootDir) {
 
 function skillNames(rootDir) {
   return shippedSkillFiles(rootDir).map((skill) => skill.name);
+}
+
+function pluginManifestSkills(pluginManifestPath) {
+  const manifest = JSON.parse(readFileSync(pluginManifestPath, "utf8"));
+  if (!Array.isArray(manifest.skills)) {
+    return null;
+  }
+  return manifest.skills;
+}
+
+function skillNameFromPromotionPath(entry) {
+  return String(entry).split("/").filter(Boolean).at(-1);
 }
 
 function firstBodyLine(text) {
@@ -147,6 +160,51 @@ export function checkKitContract(rootDir) {
       failures.push(
         `${plugin} plugin.json version ${pluginVersion} does not match package.json version ${packageVersion}`,
       );
+    }
+    const listed = pluginManifestSkills(pluginManifest);
+    if (!listed) {
+      failures.push(`${plugin} plugin.json must list shipped skills`);
+      continue;
+    }
+    const listedNames = new Set(listed.map((entry) => skillNameFromPromotionPath(entry)));
+    const folderNames = shippedSkillFiles(rootDir)
+      .filter((skill) => skill.plugin === plugin)
+      .map((skill) => skill.name);
+    for (const name of folderNames) {
+      if (!listedNames.has(name)) {
+        failures.push(`${name} is under ${plugin} but not on the promotion list`);
+      }
+    }
+    for (const name of listedNames) {
+      if (!folderNames.includes(name)) {
+        failures.push(`${plugin} promotion list names ${name} but that skill folder is missing`);
+        continue;
+      }
+      const skillDir = join(rootDir, "plugins", plugin, "skills", name);
+      const skillFile = join(skillDir, "SKILL.md");
+      const yamlFile = join(skillDir, "agents", "openai.yaml");
+      if (existsSync(skillFile)) {
+        const skillText = readFileSync(skillFile, "utf8");
+        const userInvoked = skillText.includes("disable-model-invocation: true");
+        if (ORCHESTRATORS.has(name) && !userInvoked) {
+          failures.push(`${name} must be user-invoked (disable-model-invocation: true)`);
+        }
+        if (!ORCHESTRATORS.has(name) && userInvoked) {
+          failures.push(`${name} is a craft skill and must stay model-invoked`);
+        }
+      }
+      if (!existsSync(yamlFile)) {
+        failures.push(`${name} is missing agents/openai.yaml`);
+        continue;
+      }
+      const yaml = readFileSync(yamlFile, "utf8");
+      const forbidsImplicit = /allow_implicit_invocation:\s*false/.test(yaml);
+      if (ORCHESTRATORS.has(name) && !forbidsImplicit) {
+        failures.push(`${name} Codex file must forbid implicit invocation`);
+      }
+      if (!ORCHESTRATORS.has(name) && forbidsImplicit) {
+        failures.push(`${name} is a craft skill and must allow implicit invocation`);
+      }
     }
   }
   return { ok: failures.length === 0, failures };

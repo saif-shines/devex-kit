@@ -1,0 +1,5 @@
+interface:
+  display_name: "Docs Contribution Router"
+  short_description: "Route a docs contribution"
+policy:
+  allow_implicit_invocation: false

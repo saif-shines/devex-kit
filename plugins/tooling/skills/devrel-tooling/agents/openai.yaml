@@ -1,0 +1,3 @@
+interface:
+  display_name: "DevRel Tooling"
+  short_description: "Build CLIs and API collections"

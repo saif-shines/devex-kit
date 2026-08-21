@@ -30,6 +30,114 @@ async function makeKit(mutate) {
   return root;
 }
 
+test("fails when a shipped skill is missing a Codex invocation file", async () => {
+  const root = await makeKit(async (kit) => {
+    await mkdir(join(kit, "plugins/tooling/.claude-plugin"), { recursive: true });
+    await writeFile(
+      join(kit, "plugins/tooling/.claude-plugin/plugin.json"),
+      JSON.stringify({
+        name: "tooling",
+        version: "1.0.0",
+        skills: ["./skills/ask-devex", "./skills/code-style-patterns"],
+      }),
+    );
+    await writeFile(
+      join(kit, "plugins/tooling/package.json"),
+      JSON.stringify({ name: "tooling", version: "1.0.0" }),
+    );
+  });
+  try {
+    const result = checkKitContract(root);
+    assert.equal(result.ok, false);
+    assert.match(result.failures.join("\n"), /openai\.yaml/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("fails when a craft skill is marked user-invoked", async () => {
+  const root = await makeKit(async (kit) => {
+    await writeFile(
+      join(kit, "plugins/tooling/skills/code-style-patterns/SKILL.md"),
+      "---\nname: code-style-patterns\ndisable-model-invocation: true\n---\n",
+    );
+    await mkdir(join(kit, "plugins/tooling/.claude-plugin"), { recursive: true });
+    await writeFile(
+      join(kit, "plugins/tooling/.claude-plugin/plugin.json"),
+      JSON.stringify({
+        name: "tooling",
+        version: "1.0.0",
+        skills: ["./skills/ask-devex", "./skills/code-style-patterns"],
+      }),
+    );
+    await writeFile(
+      join(kit, "plugins/tooling/package.json"),
+      JSON.stringify({ name: "tooling", version: "1.0.0" }),
+    );
+  });
+  try {
+    const result = checkKitContract(root);
+    assert.equal(result.ok, false);
+    assert.match(result.failures.join("\n"), /model-invoked/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("fails when create-skill is not user-invoked", async () => {
+  const root = await makeKit(async (kit) => {
+    const dir = join(kit, "plugins/tooling/skills/create-skill");
+    await mkdir(dir, { recursive: true });
+    await writeFile(join(dir, "SKILL.md"), "---\nname: create-skill\n---\n");
+    await mkdir(join(kit, "plugins/tooling/.claude-plugin"), { recursive: true });
+    await writeFile(
+      join(kit, "plugins/tooling/.claude-plugin/plugin.json"),
+      JSON.stringify({
+        name: "tooling",
+        version: "1.0.0",
+        skills: ["./skills/ask-devex", "./skills/code-style-patterns", "./skills/create-skill"],
+      }),
+    );
+    await writeFile(
+      join(kit, "plugins/tooling/package.json"),
+      JSON.stringify({ name: "tooling", version: "1.0.0" }),
+    );
+  });
+  try {
+    const result = checkKitContract(root);
+    assert.equal(result.ok, false);
+    assert.match(result.failures.join("\n"), /create-skill/);
+    assert.match(result.failures.join("\n"), /user-invoked/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("fails when a skill folder is not on the promotion list", async () => {
+  const root = await makeKit(async (kit) => {
+    await mkdir(join(kit, "plugins/tooling/.claude-plugin"), { recursive: true });
+    await writeFile(
+      join(kit, "plugins/tooling/.claude-plugin/plugin.json"),
+      JSON.stringify({
+        name: "tooling",
+        version: "1.0.0",
+        skills: ["./skills/ask-devex"],
+      }),
+    );
+    await writeFile(
+      join(kit, "plugins/tooling/package.json"),
+      JSON.stringify({ name: "tooling", version: "1.0.0" }),
+    );
+  });
+  try {
+    const result = checkKitContract(root);
+    assert.equal(result.ok, false);
+    assert.match(result.failures.join("\n"), /promotion list/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
 test("fails when a shipped skill contains an em-dash", async () => {
   const root = await makeKit(async (kit) => {
     await writeFile(

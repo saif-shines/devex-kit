@@ -6,5 +6,9 @@
   "homepage": "https://github.com/saif-shines/devex-kit",
   "repository": "https://github.com/saif-shines/devex-kit",
   "license": "MIT",
-  "keywords": ["devrel", "gtm", "storytelling", "dx", "content-strategy"]
+  "keywords": ["devrel", "gtm", "storytelling", "dx", "content-strategy"],
+  "skills": [
+    "./skills/devrel-dx-craft",
+    "./skills/devrel-story-craft"
+  ]
 }

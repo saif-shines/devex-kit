@@ -1,0 +1,3 @@
+interface:
+  display_name: "Pragmatic FP"
+  short_description: "Use 80/20 fp-ts in TypeScript"

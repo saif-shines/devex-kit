@@ -6,5 +6,15 @@
   "homepage": "https://github.com/saif-shines/devex-kit",
   "repository": "https://github.com/saif-shines/devex-kit",
   "license": "MIT",
-  "keywords": ["sdk", "cli", "mcp", "plugins", "skills", "developer-tools"]
+  "keywords": ["sdk", "cli", "mcp", "plugins", "skills", "developer-tools"],
+  "skills": [
+    "./skills/agent-plugin-development",
+    "./skills/ask-devex",
+    "./skills/code-style-patterns",
+    "./skills/create-skill",
+    "./skills/devrel-tooling",
+    "./skills/mcp-server-craft",
+    "./skills/pragmatic-fp",
+    "./skills/sdk-craft"
+  ]
 }

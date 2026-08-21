@@ -16,5 +16,12 @@
     "sidebar",
     "freecodecamp",
     "publication"
+  ],
+  "skills": [
+    "./skills/authoring-cookbooks",
+    "./skills/docs-contribution-router",
+    "./skills/docs-writing-style",
+    "./skills/freecodecamp-style",
+    "./skills/journey-sidebar-labels"
   ]
 }

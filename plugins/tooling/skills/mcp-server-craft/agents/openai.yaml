@@ -1,0 +1,3 @@
+interface:
+  display_name: "MCP Server Craft"
+  short_description: "Design and test MCP servers"

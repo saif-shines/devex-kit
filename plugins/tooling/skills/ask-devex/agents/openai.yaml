@@ -1,0 +1,5 @@
+interface:
+  display_name: "Ask DevEx"
+  short_description: "Find the next kit skill"
+policy:
+  allow_implicit_invocation: false

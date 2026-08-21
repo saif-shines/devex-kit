@@ -1,11 +1,11 @@
 ---
 name: create-skill
-description: |
-  Create new skills and iteratively improve existing ones using devex-kit conventions. Use when users want to create a skill from scratch, turn a workflow into a SKILL.md, write or edit a skill, improve skill triggering/description, package a skill for distribution, or follow the lean + references + progressive disclosure model. Also activates for questions about skill anatomy, frontmatter quality, imperative writing style, test cases for skills, or when the user says "create a skill", "write SKILL.md", "improve this skill", "package my skill".
+description: Start a session to write or improve a kit skill. A user-started orchestrator.
+disable-model-invocation: true
 license: MIT
 metadata:
   author: saif-shines
-  version: "1.0"
+  version: "1.1"
   type: assistive
   mode: lifecycle
 ---
