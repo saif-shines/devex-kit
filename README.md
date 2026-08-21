@@ -6,19 +6,17 @@ A collection of agent skills for developer experience work — distributed as bo
 
 ### Meta / Entry point
 
-#### using-devex-kit
+#### ask-devex
 
-The canonical starting skill (inspired by superpowers' `using-superpowers`). 
-
-**Always invoke first** on any devex-kit-eligible task:
+The kit router. The human starts it. The model does not auto-start it.
 
 ```
-/using-devex-kit <describe the work>
+/ask-devex <describe the work>
 ```
 
-It classifies intent, returns the exact target skill + copy/paste invocation, handles sequencing for multi-skill flows (story → DX → authoring is common), and gives local load instructions. Treat it as the router that makes every other skill discoverable and correctly applied.
+It names the next kit skill and returns a copy/paste invocation. It also handles multi-skill order.
 
-Install it individually or as part of the full kit — then start every relevant session by typing `/using-devex-kit`.
+Install it with the tooling plugin, then type `/ask-devex` to start.
 
 ### Documentation
 
@@ -115,7 +113,7 @@ Covers:
 - **Optimize** — Description tuning for reliable auto-triggering
 - **Package** — Validation, tile.json, distribution via skills.sh / tessl
 
-Always start with `/using-devex-kit` or invoke directly when the task is "turn this into a skill" or "improve my skill".
+Always start with `/ask-devex` or invoke directly when the task is "turn this into a skill" or "improve my skill".
 
 ### Dev GTM
 
@@ -137,7 +135,7 @@ Once installed, invoke any skill with its slash command directly in Claude Code:
 
 **Start with the router (recommended):**
 ```
-/using-devex-kit I need to design the DX for a new auth feature and choose between sample app vs recipe
+/ask-devex I need to design the DX for a new auth feature and choose between sample app vs recipe
 ```
 
 Then follow its recommendation. Direct invocations also work:
@@ -161,7 +159,7 @@ Then follow its recommendation. Direct invocations also work:
 Example sessions:
 
 ```
-/using-devex-kit I need to document a new connector and also choose the right content pattern for the getting-started material
+/ask-devex I need to document a new connector and also choose the right content pattern for the getting-started material
 ```
 
 The router will reply with the sequence (e.g. docs-contribution-router first for placement, then devrel-dx-craft for taxonomy) and the exact commands.
@@ -235,7 +233,7 @@ Discovers all `SKILL.md` files recursively under the plugin tree and `in-progres
 npx skills add saif-shines/devex-kit --yes
 
 # Or pick one skill (start with the router)
-npx skills add saif-shines/devex-kit --skill using-devex-kit --yes
+npx skills add saif-shines/devex-kit --skill ask-devex --yes
 npx skills add saif-shines/devex-kit --skill docs-contribution-router --yes
 npx skills add saif-shines/devex-kit --skill docs-writing-style --yes
 npx skills add saif-shines/devex-kit --skill authoring-cookbooks --yes
@@ -258,7 +256,7 @@ npx skills add saif-shines/devex-kit --list
 Each skill is published as its own tile (`tile.json` next to `SKILL.md`).
 
 ```bash
-tessl install saif-shines/using-devex-kit --yes
+tessl install saif-shines/ask-devex --yes
 tessl install saif-shines/docs-contribution-router --yes
 tessl install saif-shines/docs-writing-style --yes
 tessl install saif-shines/authoring-cookbooks --yes
@@ -284,7 +282,7 @@ git clone https://github.com/saif-shines/devex-kit
 Then in Claude Code:
 
 ```
-/skills load ./plugins/tooling/skills/using-devex-kit/SKILL.md
+/skills load ./plugins/tooling/skills/ask-devex/SKILL.md
 /skills load ./plugins/documentation/skills/docs-contribution-router/SKILL.md
 /skills load ./plugins/documentation/skills/docs-writing-style/SKILL.md
 /skills load ./plugins/documentation/skills/authoring-cookbooks/SKILL.md
@@ -316,17 +314,17 @@ npm run version
 
 ## Use the skills
 
-### using-devex-kit
+### ask-devex
 
-**Start here.** This is the invocable router that makes the rest of the kit usable.
+**Start here.** The human types this. The model does not auto-start it.
 
 ```
- /using-devex-kit I'm about to write a launch story for our new MCP server connectors and need to design the first-success DX at the same time
+ /ask-devex I'm about to write a launch story for our new MCP server connectors and need to design the first-success DX at the same time
 ```
 
 Output: clear recommendation of order (devrel-story-craft → devrel-dx-craft → authoring-cookbooks), plus the exact next slash commands with arguments you can copy.
 
-Use it exactly like `/using-superpowers` — at the beginning of the conversation, before you touch any of the domain skills. It prevents the "I picked the wrong skill" and "I forgot the sequencing" problems.
+Type it at the start of the conversation, before any domain skill. It prevents the "I picked the wrong skill" and "I forgot the sequencing" problems.
 
 ### docs-contribution-router
 

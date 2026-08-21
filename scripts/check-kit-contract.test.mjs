@@ -13,6 +13,12 @@ async function makeKit(mutate) {
   const skillDir = join(root, "plugins/tooling/skills/code-style-patterns");
   await mkdir(skillDir, { recursive: true });
   await writeFile(join(skillDir, "SKILL.md"), "---\nname: code-style-patterns\n---\n");
+  const askDevex = join(root, "plugins/tooling/skills/ask-devex");
+  await mkdir(askDevex, { recursive: true });
+  await writeFile(
+    join(askDevex, "SKILL.md"),
+    "---\nname: ask-devex\ndisable-model-invocation: true\n---\n",
+  );
   await writeFile(join(root, "CLAUDE.md"), "kit contract\n");
   await writeFile(join(root, "AGENTS.md"), "kit contract\n");
   await mkdir(join(root, "in-progress"), { recursive: true });
@@ -23,6 +29,68 @@ async function makeKit(mutate) {
   }
   return root;
 }
+
+test("fails when ask-devex is not the kit router", async () => {
+  const root = await makeKit();
+  await rm(join(root, "plugins/tooling/skills/ask-devex"), {
+    recursive: true,
+    force: true,
+  });
+  try {
+    const result = checkKitContract(root);
+    assert.equal(result.ok, false);
+    assert.match(result.failures.join("\n"), /ask-devex/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("fails when ask-devex is not user-invoked", async () => {
+  const root = await makeKit(async (kit) => {
+    await writeFile(
+      join(kit, "plugins/tooling/skills/ask-devex/SKILL.md"),
+      "---\nname: ask-devex\n---\n",
+    );
+  });
+  try {
+    const result = checkKitContract(root);
+    assert.equal(result.ok, false);
+    assert.match(result.failures.join("\n"), /user-invoked/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("fails when a shipped skill is still named using-devex-kit", async () => {
+  const root = await makeKit(async (kit) => {
+    await writeFile(
+      join(kit, "plugins/tooling/skills/ask-devex/SKILL.md"),
+      "---\nname: using-devex-kit\ndisable-model-invocation: true\n---\n",
+    );
+  });
+  try {
+    const result = checkKitContract(root);
+    assert.equal(result.ok, false);
+    assert.match(result.failures.join("\n"), /using-devex-kit/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("fails when using-devex-kit exists as a skill", async () => {
+  const root = await makeKit(async (kit) => {
+    const oldRouter = join(kit, "plugins/tooling/skills/using-devex-kit");
+    await mkdir(oldRouter, { recursive: true });
+    await writeFile(join(oldRouter, "SKILL.md"), "---\nname: using-devex-kit\n---\n");
+  });
+  try {
+    const result = checkKitContract(root);
+    assert.equal(result.ok, false);
+    assert.match(result.failures.join("\n"), /using-devex-kit/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
 
 test("fails when a plugin version does not match its package", async () => {
   const root = await makeKit(async (kit) => {

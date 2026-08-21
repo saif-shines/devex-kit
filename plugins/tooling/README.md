@@ -13,7 +13,7 @@ Skills for building the artifacts devrel professionals ship — SDKs, CLI tools,
 
 | Skill | Slash command | What it does |
 |-------|--------------|--------------|
-| using-devex-kit | `/using-devex-kit` | Router — classifies intent and recommends the right devex-kit skill(s) to invoke |
+| ask-devex | `/ask-devex` | Router — classifies intent and recommends the right devex-kit skill(s) to invoke |
 | sdk-craft | `/sdk-craft` | Design, build, document, and ship SDKs — full lifecycle |
 | devrel-tooling | `/devrel-tooling` | Build CLI tools and generate API collections |
 | mcp-server-craft | `/mcp-server-craft` | Build MCP servers — tool design, security, testing |
@@ -26,7 +26,7 @@ Skills for building the artifacts devrel professionals ship — SDKs, CLI tools,
 
 Start with the router:
 ```
-/using-devex-kit I need to build a TypeScript SDK for our REST API
+/ask-devex I need to build a TypeScript SDK for our REST API
 ```
 
 Or invoke directly:

@@ -66,6 +66,30 @@ export function checkKitContract(rootDir) {
     }
     seen.add(name);
   }
+  if (seen.has("using-devex-kit")) {
+    failures.push("using-devex-kit exists as a skill; the kit router name is ask-devex");
+  }
+  for (const plugin of pluginNames(rootDir)) {
+    const skillsDir = join(rootDir, "plugins", plugin, "skills");
+    if (!existsSync(skillsDir)) {
+      continue;
+    }
+    for (const entry of readdirSync(skillsDir, { withFileTypes: true })) {
+      const skillFile = join(skillsDir, entry.name, "SKILL.md");
+      if (!entry.isDirectory() || !existsSync(skillFile)) {
+        continue;
+      }
+      if (/^name:\s*using-devex-kit\s*$/m.test(readFileSync(skillFile, "utf8"))) {
+        failures.push("using-devex-kit exists as a skill; the kit router name is ask-devex");
+      }
+    }
+  }
+  const askDevex = join(rootDir, "plugins", "tooling", "skills", "ask-devex", "SKILL.md");
+  if (!existsSync(askDevex)) {
+    failures.push("ask-devex is missing from plugins/tooling/skills");
+  } else if (!readFileSync(askDevex, "utf8").includes("disable-model-invocation: true")) {
+    failures.push("ask-devex must be user-invoked (disable-model-invocation: true)");
+  }
   if (!existsSync(join(rootDir, CLAUDE_MD))) {
     failures.push("CLAUDE.md is missing; identical root contracts are required");
   }

@@ -149,7 +149,7 @@ At the end of every session, ask: **"Did this solve what you were trying to do?"
 ## When to Switch Skills
 - You are inside a plugin and the task is about the 5 restructure principles, agents, empty commands/, or plugin.json → `agent-plugin-development`.
 - You need the full eval harness, subagent grading, benchmark viewer, or the packaged `run_loop.py` optimizer right now → invoke the installed `/skill-creator` (or load the copy from `~/Downloads/SKILL.md`).
-- You are doing non-skill work (SDK, docs, CLI, MCP, stories, DX) → `using-devex-kit` first, then the target skill.
+- You are doing non-skill work (SDK, docs, CLI, MCP, stories, DX) → `ask-devex` first, then the target skill.
 
 ## Relation to the Upstream Skill-Creator
 This skill distills the methodology into devex-kit form and keeps the orchestrator lean. The complete version (with every script, agent, viewer, and platform note) is the one you just replaced into `~/Downloads/SKILL.md` (and the installed `/skill-creator`). Use either — start here for anything that should follow the style of this kit.

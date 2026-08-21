@@ -94,7 +94,7 @@ To add patterns from another popular GitHub developer:
 1. Create `references/<developer-kebab>.md` following the existing structure (what they build, coding patterns, product taste, tech stack, repo map, how to use).
 2. Update this SKILL.md with a new row in the Modes table and a dedicated section.
 3. Update the frontmatter description with trigger phrases.
-4. Add an entry to the router in `using-devex-kit` (separate change).
+4. Add an entry to the router in `ask-devex` (separate change).
 
 ## Golden Rules
 

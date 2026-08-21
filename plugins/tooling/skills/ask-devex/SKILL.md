@@ -1,22 +1,22 @@
 ---
-name: using-devex-kit
-description: |
-  Route tasks and route the user to the correct devex-kit skill before any work begins. Use when starting conversations or tasks that may involve documentation contributions, writing style, cookbook quality, sidebar navigation, SDK design/build/ship, CLI or API tooling, MCP server craft, pragmatic code patterns and idioms (e.g. functional programming in TypeScript), agent plugin or skill development, devrel storytelling, DX first-success and content taxonomy, or when the user says "using devex-kit", "which devex-kit skill should I use", "help me pick the right skill from the kit", "route this to the right devex skill", or is unsure which /docs-* /sdk-* /mcp-* /devrel-* skill applies. Activates at the start of relevant sessions just like using-superpowers.
+name: ask-devex
+description: Ask which kit skill fits the current work. A user-started router over the skills in this kit.
+disable-model-invocation: true
 license: MIT
 metadata:
   author: saif-shines
-  version: "1.0"
+  version: "1.1"
   type: router
   mode: directive
 ---
 
-# Using DevEx Kit
+# Ask DevEx
 
-**Invoke `/using-devex-kit` at the start of any devex or devrel task** (the same way you invoke using-superpowers for general agent skills). This skill analyzes the request and tells you exactly which devex-kit skill(s) to load or invoke next, with the precise slash command and arguments to use.
+**The human starts `/ask-devex`.** The model does not auto-start this skill.
 
-Claude Code (and compatible agents) will auto-route when the description matches, but explicitly starting with this skill ensures the right orchestration and catches combinations that a single skill would miss.
+This skill names the next kit skill and gives a ready-to-paste invocation.
 
-State your goal or paste the raw request. The router will classify, recommend, and give you the ready-to-paste invocation.
+State the goal or paste the raw request. Classify, recommend, and return the invocation.
 
 ## The Rule
 
@@ -30,7 +30,7 @@ Do not improvise patterns that a dedicated skill already encodes. The skills exi
 digraph devex_routing {
     "Task received (docs / SDK / CLI / MCP / GTM / plugin work)" [shape=doublecircle];
     "Might any devex-kit skill apply (1% rule)?" [shape=diamond];
-    "Invoke /using-devex-kit <task>" [shape=box];
+    "Invoke /ask-devex <task>" [shape=box];
     "Router recommends exact skill + invocation" [shape=box];
     "Load or invoke the recommended skill(s)" [shape=box];
     "Follow that skill's rules exactly (load its references when told)" [shape=box];
@@ -38,9 +38,9 @@ digraph devex_routing {
     "Task complete or handoff to another skill" [shape=doublecircle];
 
     "Task received (docs / SDK / CLI / MCP / GTM / plugin work)" -> "Might any devex-kit skill apply (1% rule)?";
-    "Might any devex-kit skill apply (1% rule)?" -> "Invoke /using-devex-kit <task>" [label="yes"];
+    "Might any devex-kit skill apply (1% rule)?" -> "Invoke /ask-devex <task>" [label="yes"];
     "Might any devex-kit skill apply (1% rule)?" -> "Do the work inside the skill's guardrails" [label="definitely not"];
-    "Invoke /using-devex-kit <task>" -> "Router recommends exact skill + invocation";
+    "Invoke /ask-devex <task>" -> "Router recommends exact skill + invocation";
     "Router recommends exact skill + invocation" -> "Load or invoke the recommended skill(s)";
     "Load or invoke the recommended skill(s)" -> "Follow that skill's rules exactly (load its references when told)";
     "Follow that skill's rules exactly (load its references when told)" -> "Do the work inside the skill's guardrails";
@@ -62,7 +62,7 @@ These thoughts mean you are about to skip the router (and the value of the kit):
 | "I remember what the skill says" | Skills evolve. The current version (with its references) is the source of truth. Load it. |
 | "I'll read the skill after I start" | The rule is: route first, then the skill's process becomes your process. Load it. |
 
-All of the above mean: invoke `/using-devex-kit` (or the specific skill) before you write another sentence or line.
+All of the above mean: invoke `/ask-devex` (or the specific skill) before you write another sentence or line.
 
 ## Quick Routing Table
 
@@ -88,14 +88,14 @@ When the task legitimately spans two skills (very common), the router will tell 
 
 **Claude Code (installed via skills.sh or tessl):**
 ```
-/using-devex-kit <your task description>
+/ask-devex <your task description>
 ```
 Then immediately follow the returned recommendation, e.g. paste the suggested `/sdk-craft ...` line.
 
 **Local development (no install):**
 ```
-/skills load ./plugins/tooling/skills/using-devex-kit/SKILL.md
-/using-devex-kit I need to design a new SDK...
+/skills load ./plugins/tooling/skills/ask-devex/SKILL.md
+/ask-devex I need to design a new SDK...
 ```
 (The load only needs to happen once per session or after edits.)
 

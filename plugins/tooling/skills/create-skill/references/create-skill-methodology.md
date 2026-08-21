@@ -97,7 +97,7 @@ Triggering note: simple one-step tasks often bypass skills even with perfect des
 For updating an installed skill later: copy to /tmp first (installed locations can be read-only), edit the copy, re-package.
 
 ## When to Use the Full Upstream Skill-Creator vs This
-- Use **this create-skill** (devex-kit) for: learning the devex-kit conventions, writing your first devex skill, keeping SKILL.md lean, following the 5 principles, routing through using-devex-kit.
+- Use **this create-skill** (devex-kit) for: learning the devex-kit conventions, writing your first devex skill, keeping SKILL.md lean, following the 5 principles, routing through ask-devex.
 - Use the **full /skill-creator** (or the copy now in your ~/Downloads) when you need the complete eval harness, subagent grading, benchmark viewer, description optimizer scripts, blind A/B, or the heavy iteration loop with quantitative variance.
 
 Both are valuable. Start here for anything that will live in (or follow the style of) devex-kit.
