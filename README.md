@@ -28,14 +28,15 @@ Generic devrel skills for documentation workflows — useful to any devrel profe
 
 Routes documentation contributions to the right content type, placement, template, and workflow — before the contributor writes a single line.
 
-Five branches:
+Four branches:
 - **API reference** — docs-side flow for landing a regenerated spec (does not cover the upstream source repo)
-- **Agent connector** — hard stop on editing generated pages; walks through `_setup-*`, `_usage-*`, `_section-*` templates and `pnpm run sync-agent-connectors`
 - **Content placement** — decision tree: cookbook / how-to / concept / reference / quickstart; explicit Aside anti-pattern rule
 - **Integration guide** — section skeleton, frontmatter starter, screenshot workflow (VS Code paste-image extension)
 - **Escalation** — severity-tagged (low → critical) for IA/tooling/override changes; maps to CODEOWNERS paths
 
 Scalekit-specific paths are in `references/scalekit-*.json`. External consumers drop their own configs at `<docs-repo>/.devex-kit/` — no edits to SKILL.md required.
+
+Scalekit agent-connector docs (generated pages, `_setup-*` templates, `pnpm run sync-agent-connectors`) live in [skillkit](https://github.com/saif-shines/skillkit), not in this kit.
 
 #### docs-writing-style
 
@@ -375,12 +376,6 @@ page should it be?
 **API reference update:**
 ```
 I have a regenerated scalekit.scalar.yaml. What do I do to land it in the docs repo?
-```
-
-**Agent connector work:**
-```
-I want to add setup instructions for the Notion connector. How do I do that without
-editing the generated pages?
 ```
 
 **Integration guide:**
