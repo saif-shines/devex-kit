@@ -1,6 +1,9 @@
-import { existsSync, readdirSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
+
+const CLAUDE_MD = "CLAUDE.md";
+const AGENTS_MD = "AGENTS.md";
 
 function pluginNames(rootDir) {
   const pluginsDir = join(rootDir, "plugins");
@@ -48,6 +51,21 @@ export function checkKitContract(rootDir) {
       failures.push(`skill name "${name}" appears more than once`);
     }
     seen.add(name);
+  }
+  if (!existsSync(join(rootDir, CLAUDE_MD))) {
+    failures.push("CLAUDE.md is missing; identical root contracts are required");
+  }
+  if (!existsSync(join(rootDir, AGENTS_MD))) {
+    failures.push("AGENTS.md is missing; identical root contracts are required");
+  }
+  const claudePath = join(rootDir, CLAUDE_MD);
+  const agentsPath = join(rootDir, AGENTS_MD);
+  if (
+    existsSync(claudePath) &&
+    existsSync(agentsPath) &&
+    readFileSync(claudePath, "utf8") !== readFileSync(agentsPath, "utf8")
+  ) {
+    failures.push("CLAUDE.md and AGENTS.md must be identical");
   }
   return { ok: failures.length === 0, failures };
 }

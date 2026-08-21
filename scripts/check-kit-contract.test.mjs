@@ -13,11 +13,50 @@ async function makeKit(mutate) {
   const skillDir = join(root, "plugins/tooling/skills/code-style-patterns");
   await mkdir(skillDir, { recursive: true });
   await writeFile(join(skillDir, "SKILL.md"), "---\nname: code-style-patterns\n---\n");
+  await writeFile(join(root, "CLAUDE.md"), "kit contract\n");
+  await writeFile(join(root, "AGENTS.md"), "kit contract\n");
   if (mutate) {
     await mutate(root);
   }
   return root;
 }
+
+test("fails when root contracts differ", async () => {
+  const root = await makeKit(async (kit) => {
+    await writeFile(join(kit, "AGENTS.md"), "different contract\n");
+  });
+  try {
+    const result = checkKitContract(root);
+    assert.equal(result.ok, false);
+    assert.match(result.failures.join("\n"), /identical/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("fails when AGENTS.md is missing", async () => {
+  const root = await makeKit();
+  await rm(join(root, "AGENTS.md"));
+  try {
+    const result = checkKitContract(root);
+    assert.equal(result.ok, false);
+    assert.match(result.failures.join("\n"), /AGENTS\.md/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("fails when CLAUDE.md is missing", async () => {
+  const root = await makeKit();
+  await rm(join(root, "CLAUDE.md"));
+  try {
+    const result = checkKitContract(root);
+    assert.equal(result.ok, false);
+    assert.match(result.failures.join("\n"), /CLAUDE\.md/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
 
 test("fails when .agents/skills is present", async () => {
   const root = await makeKit(async (kit) => {

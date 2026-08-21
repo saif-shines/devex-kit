@@ -107,12 +107,14 @@ Full mechanics and example queries are in `references/create-skill-methodology.m
 
 ## Package & Ship
 - Run validation (frontmatter, structure, description quality, referenced files exist).
-- Produce the `.skill` (or just commit for devex-kit).
-- For devex-kit skills: add/update `tile.json`, update this kit's README + `using-devex-kit` router + `skills-lock.json`, then users can `npx skills add saif-shines/devex-kit --skill create-skill` or use tessl.
+- Produce the `.skill` (or just commit for this kit).
+- For a kit skill: create `plugins/<plugin>/skills/<name>/` under documentation, tooling, or dev-gtm. That is the only live tree.
+- Load the root contracts (`CLAUDE.md` / `AGENTS.md`) and complete the promotion checklist before calling the skill shipped.
+- Do not add skills under `.agents/` or any other second tree.
 
 When updating an already-installed skill later, copy to a writable location first.
 
-> Packaging commands and the exact devex-kit release checklist live in `references/create-skill-methodology.md`.
+> Packaging commands live in `references/create-skill-methodology.md`. The promotion checklist lives in the root contracts.
 
 ## Phase Gates
 **Capture → Draft:** Clear triggers collected? Success criteria stated? Test-cases decision made with the user?
@@ -123,7 +125,7 @@ When updating an already-installed skill later, copy to a writable location firs
 
 **Optimize → Package:** Description updated with the optimized version? Scores shown to user?
 
-**Package:** tile.json + README + lock updates ready? Hashes will be computed on write.
+**Package:** skill is under `plugins/<plugin>/skills/<name>/`? Root-contract promotion checklist complete?
 
 ## Quality Checklist
 - [ ] Frontmatter has `name`, third-person `description` with concrete triggers, `license: MIT`, and the standard metadata block.
@@ -134,7 +136,8 @@ When updating an already-installed skill later, copy to a writable location firs
 - [ ] Ends with "Did this help?" + link to https://github.com/saif-shines/devex-kit/issues.
 - [ ] Cross-references `agent-plugin-development` for plugin restructure work.
 - [ ] `tile.json` exists and follows the canonical shape.
-- [ ] If part of devex-kit: README, using-devex-kit router, and skills-lock.json were updated in the same change.
+- [ ] The skill directory is `plugins/<plugin>/skills/<name>/`.
+- [ ] The root-contract promotion checklist is complete.
 
 ## Did this help?
 At the end of every session, ask: **"Did this solve what you were trying to do?"**

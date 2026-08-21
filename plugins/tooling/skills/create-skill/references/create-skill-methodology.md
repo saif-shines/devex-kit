@@ -92,7 +92,7 @@ Triggering note: simple one-step tasks often bypass skills even with perfect des
 ## Packaging & Distribution
 - Validate first (frontmatter, structure, naming, references exist, description quality).
 - `python -m scripts.package_skill <path-to-skill-dir>` (or the upstream package_skill.py) produces a `.skill` zip.
-- For devex-kit skills: add `tile.json`, update README + using-devex-kit router + skills-lock.json, commit, and let users `npx skills add` or `tessl install`.
+- For kit skills: write under `plugins/<plugin>/skills/<name>/`. Do not add a second tree. Follow the promotion checklist in the root contracts (`CLAUDE.md` / `AGENTS.md`).
 
 For updating an installed skill later: copy to /tmp first (installed locations can be read-only), edit the copy, re-package.
 
