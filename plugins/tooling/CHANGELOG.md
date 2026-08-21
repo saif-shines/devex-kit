@@ -1,5 +1,11 @@
 # tooling
 
+## 3.0.0
+
+### Major Changes
+
+- Rename create-skill to skill-craft and agent-plugin-development to plugin-craft.
+
 ## 2.0.0
 
 ### Major Changes

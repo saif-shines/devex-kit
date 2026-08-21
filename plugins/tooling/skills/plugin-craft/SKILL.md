@@ -1,5 +1,5 @@
 ---
-name: agent-plugin-development
+name: plugin-craft
 description: |
   Design, build, restructure, and ship Claude Code plugins using the modern skills-first + agents + externalized references model. Use this skill when creating a new plugin, writing or refactoring skills, building spawnable agents, externalizing reference material into references/ or docs/, de-emphasizing commands, or asking about "plugin development", "create skill", "write agent", "restructure plugin", "SKILL.md best practices", "references/ in plugins", "agent orchestration", "pr-review-toolkit", "docs-engineering plugin", or the 5 restructure principles. Also activates for questions about lean SKILL.md, progressive disclosure, scalekit-code-doctor pattern, plugin.json, tile.json, or packaging for devex-kit and marketplaces.
 license: MIT
@@ -9,7 +9,7 @@ metadata:
   type: assistive
   mode: lifecycle
 ---
-# Agent Plugin Development
+# Plugin Craft
 
 Build Claude Code plugins the modern way: skills as the primary orchestration layer, agents only for high-agency specialists, reference material aggressively externalized, and commands reduced to structural compatibility shims. This is the post-restructure model proven in devex-kit and the authstack consolidation.
 
@@ -75,7 +75,7 @@ Empty `commands/` and `agents/` directories are correct and intentional. They sa
 
 ## Skill Development
 
-Skills are the entry point users invoke (`/agent-plugin-development`, `/sdk-craft`, etc.). They must be lean, imperative, and delegate.
+Skills are the entry point users invoke (`/plugin-craft`, `/sdk-craft`, etc.). They must be lean, imperative, and delegate.
 
 Follow these devex-kit conventions exactly:
 

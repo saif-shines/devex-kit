@@ -77,8 +77,8 @@ All of the above mean: invoke `/ask-devex` (or the specific skill) before you wr
 | "Building an MCP server", "design MCP tools", "MCP security / auth", "test MCP with agents", "stdio vs Streamable HTTP" | mcp-server-craft | `/mcp-server-craft I'm building an MCP server to expose our search API to AI agents. Help me design the tool schemas.` |
 | "Pragmatic FP in TypeScript", "80/20 fp-ts", "functional light", "FLJS", "reasonable code", "when to use functional programming", "pipe Option Either for null and errors", "don't use FP if harder to read", "pragmatic functional programming" | pragmatic-fp | `/pragmatic-fp I'm writing some TypeScript and want the practical 80/20 on fp-ts without the theory (inspired by Functional-Light JS).`<br>`/pragmatic-fp I have a chain of null checks: should I reach for Option or keep optional chaining?` |
 | "shadcn style", "sindresorhus style", "ahmadawais CLI", "community code styles", "write like shadcn" | code-style-patterns | `/code-style-patterns Apply shadcn style to this Next.js component.` |
-| "Creating a new skill", "writing SKILL.md", "improve a skill", "package a skill", "create-skill" | create-skill | `/create-skill I'm turning this repeated workflow into a reusable skill. Start with capture.`<br>`/create-skill Review the draft I just wrote.` |
-| "restructure a plugin", "5 principles", "build spawnable agents", "externalize references", "plugin skill layout", "agent-plugin-development" | agent-plugin-development | `/agent-plugin-development I'm restructuring the pr-review-toolkit plugin to the skills-first model. Start with the model phase.` |
+| "Creating a new skill", "writing SKILL.md", "improve a skill", "package a skill", "skill-craft" | skill-craft | `/skill-craft I'm turning this repeated workflow into a reusable skill. Start with capture.`<br>`/skill-craft Review the draft I just wrote.` |
+| "restructure a plugin", "5 principles", "build spawnable agents", "externalize references", "plugin skill layout", "plugin-craft" | plugin-craft | `/plugin-craft I'm restructuring the pr-review-toolkit plugin to the skills-first model. Start with the model phase.` |
 | "Launch story", "TAB playbook", "dev influencer presence", "packaging and pricing for devs", "authentic dev story", "12 story mistakes" | devrel-story-craft | `/devrel-story-craft plan TAB for connectors. Help me recruit and draft the first call questions.`<br>`/devrel-story-craft review mode. Here's my draft launch story...` |
 | "First success", "sample app vs recipe vs pattern", "DX journey", "content jobs", "onboarding for devs", "technical engagement system", "translator" | devrel-dx-craft | `/devrel-dx-craft plan first-success. For the connectors feature, choose Sample Application vs Recipe vs Pattern and outline the DX path.` |
 
@@ -117,7 +117,7 @@ Many real tasks are pipelines:
 - Story validation (devrel-story-craft) → first-success DX design (devrel-dx-craft) → actual sample / recipe authoring (authoring-cookbooks + docs-writing-style)
 - DX audit (devrel-dx-craft) → SDK work (sdk-craft) or CLI work (devrel-tooling)
 - New integration info (docs-contribution-router) → style handoff (docs-writing-style)
-- New skill you are writing (create-skill) → may also touch agent-plugin-development if the skill is part of a plugin restructure or needs the 5 principles / agents guidance
+- New skill you are writing (skill-craft) → may also touch plugin-craft if the skill is part of a plugin restructure or needs the 5 principles / agents guidance
 
 The router will surface the order and any "use X for phase 1, then hand off to Y" instructions. Each target skill contains its own "When to switch skills" and "Integration Graph" sections that reinforce the handoff contract.
 
@@ -125,8 +125,8 @@ The router will surface the order and any "use X for phase 1, then hand off to Y
 
 - You are already inside a target skill and the task clearly moved to a different domain → stop and let the user invoke the next skill (or re-invoke this router with the new state).
 - The current skill's "When to switch skills" section explicitly names another devex-kit skill → follow it.
-- The work is purely about the mechanics of writing/shipping skills themselves (lean SKILL.md, references, description, packaging) → create-skill.
-- The work is about plugin restructure, the 5 principles, agents, empty commands/, or examples/ layout inside a .claude-plugin → agent-plugin-development.
+- The work is purely about the mechanics of writing/shipping skills themselves (lean SKILL.md, references, description, packaging) → skill-craft.
+- The work is about plugin restructure, the 5 principles, agents, empty commands/, or examples/ layout inside a .claude-plugin → plugin-craft.
 - You need general agent process discipline (TDD, brainstorming, verification-before-completion, etc.) → those live in the superpowers set; devex-kit skills complement them but do not replace them.
 
 ## Quality Checklist (for this router)

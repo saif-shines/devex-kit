@@ -7,7 +7,12 @@ const AGENTS_MD = "AGENTS.md";
 const HUMAN_INDEX = join("docs", "skills.md");
 const COOKBOOK_SKILL = join("plugins", "documentation", "skills", "authoring-cookbooks", "SKILL.md");
 const COOKBOOK_WORD_CAP = 2000;
-const ORCHESTRATORS = new Set(["ask-devex", "docs-contribution-router", "create-skill"]);
+const ORCHESTRATORS = new Set(["ask-devex", "docs-contribution-router", "skill-craft"]);
+const RETIRED_SKILLS = {
+  "using-devex-kit": "the kit router name is ask-devex",
+  "create-skill": "the kit author skill is skill-craft",
+  "agent-plugin-development": "the plugin skill is plugin-craft",
+};
 
 function pluginNames(rootDir) {
   const pluginsDir = join(rootDir, "plugins");
@@ -99,13 +104,17 @@ export function checkKitContract(rootDir) {
     }
     seen.add(name);
   }
-  if (seen.has("using-devex-kit")) {
-    failures.push("using-devex-kit exists as a skill; the kit router name is ask-devex");
+  for (const [oldName, reason] of Object.entries(RETIRED_SKILLS)) {
+    if (seen.has(oldName)) {
+      failures.push(`${oldName} exists as a skill; ${reason}`);
+    }
   }
   for (const skill of shippedSkillFiles(rootDir)) {
     const text = readFileSync(skill.path, "utf8");
-    if (/^name:\s*using-devex-kit\s*$/m.test(text)) {
-      failures.push("using-devex-kit exists as a skill; the kit router name is ask-devex");
+    for (const [oldName, reason] of Object.entries(RETIRED_SKILLS)) {
+      if (new RegExp(`^name:\\s*${oldName}\\s*$`, "m").test(text)) {
+        failures.push(`${oldName} exists as a skill; ${reason}`);
+      }
     }
     if (text.includes("\u2014")) {
       failures.push(`${skill.name} contains an em-dash; skill text must not use em-dashes`);
