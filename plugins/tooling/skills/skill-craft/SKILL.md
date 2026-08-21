@@ -1,5 +1,5 @@
 ---
-name: create-skill
+name: skill-craft
 description: Start a session to write or improve a kit skill. A user-started orchestrator.
 disable-model-invocation: true
 license: MIT
@@ -10,11 +10,11 @@ metadata:
   mode: lifecycle
 ---
 
-# Create Skill
+# Skill Craft
 
 Author effective, lean skills that extend agents with specialized workflows, following the exact devex-kit patterns used by every skill in this kit.
 
-This skill is the general entry point for skill creation and improvement. For plugin-specific restructure, the 5 principles, agents, empty commands/, and examples/ layout, also load `agent-plugin-development`.
+This skill is the general entry point for skill creation and improvement. For plugin-specific restructure, the 5 principles, agents, empty commands/, and examples/ layout, also load `plugin-craft`.
 
 State the phase or paste the request. The skill will route and keep you on the rails.
 
@@ -39,10 +39,10 @@ Ask (one at a time, regular questions):
 
 Surface edge cases, example inputs/outputs, and dependencies early. Research in parallel via MCPs or subagents when useful.
 
-> For the full capture + interview checklist and how to turn answers into frontmatter + body, load `references/create-skill-methodology.md`.
+> For the full capture + interview checklist and how to turn answers into frontmatter + body, load `references/skill-craft-methodology.md`.
 
 ## Draft the Skill
-Follow devex-kit conventions exactly (see also `agent-plugin-development` and its `references/skill-development.md`).
+Follow devex-kit conventions exactly (see also `plugin-craft` and its `references/skill-development.md`).
 
 **Frontmatter template:**
 ```yaml
@@ -80,7 +80,7 @@ metadata:
 - Include small, realistic input → output examples.
 - Reference every supporting file so the model discovers it.
 
-> Full details on anatomy, progressive disclosure, name/description quality, writing patterns, and the "Principle of Lack of Surprise" live in `references/create-skill-methodology.md`.
+> Full details on anatomy, progressive disclosure, name/description quality, writing patterns, and the "Principle of Lack of Surprise" live in `references/skill-craft-methodology.md`.
 
 ## Test & Iterate (when it adds value)
 For skills with verifiable outputs, create a few realistic test prompts, save them, run with-skill + baseline subagents in parallel, review results with the user (qual + quant), improve, repeat.
@@ -103,7 +103,7 @@ After the skill body is solid, offer to tune the frontmatter description for bet
 
 Triggering reality: simple one-step tasks often bypass skills. Target the complex, multi-step, high-context, or specialized work the user actually repeats.
 
-Full mechanics and example queries are in `references/create-skill-methodology.md` (and the complete upstream in `~/Downloads/SKILL.md`).
+Full mechanics and example queries are in `references/skill-craft-methodology.md` (and the complete upstream in `~/Downloads/SKILL.md`).
 
 ## Package & Ship
 - Run validation (frontmatter, structure, description quality, referenced files exist).
@@ -116,7 +116,7 @@ Full mechanics and example queries are in `references/create-skill-methodology.m
 
 When updating an already-installed skill later, copy to a writable location first.
 
-> Packaging commands live in `references/create-skill-methodology.md`. The promotion checklist lives in the root contracts.
+> Packaging commands live in `references/skill-craft-methodology.md`. The promotion checklist lives in the root contracts.
 
 ## Phase Gates
 **Capture → Draft:** Clear triggers collected? Success criteria stated? Test-cases decision made with the user?
@@ -136,7 +136,7 @@ When updating an already-installed skill later, copy to a writable location firs
 - [ ] SKILL.md body is lean; progressive disclosure is obvious.
 - [ ] Phase gates and a quality checklist (with boxes) are present.
 - [ ] Ends with "Did this help?" + link to https://github.com/saif-shines/devex-kit/issues.
-- [ ] Cross-references `agent-plugin-development` for plugin restructure work.
+- [ ] Cross-references `plugin-craft` for plugin restructure work.
 - [ ] `tile.json` exists and follows the canonical shape.
 - [ ] The skill directory is `plugins/<plugin>/skills/<name>/`.
 - [ ] The root-contract promotion checklist is complete.
@@ -149,7 +149,7 @@ At the end of every session, ask: **"Did this solve what you were trying to do?"
 - If the structure, examples, or cross-links were incomplete, a reference was stale, or the output led to a skill that felt bloated or hard to trigger: encourage the user to file an issue at **https://github.com/saif-shines/devex-kit/issues**. Offer to help draft it: include what they were building, which phase, what this skill produced, and what felt missing or incorrect.
 
 ## When to Switch Skills
-- You are inside a plugin and the task is about the 5 restructure principles, agents, empty commands/, or plugin.json → `agent-plugin-development`.
+- You are inside a plugin and the task is about the 5 restructure principles, agents, empty commands/, or plugin.json → `plugin-craft`.
 - You need the full eval harness, subagent grading, benchmark viewer, or the packaged `run_loop.py` optimizer right now → invoke the installed `/skill-creator` (or load the copy from `~/Downloads/SKILL.md`).
 - You are doing non-skill work (SDK, docs, CLI, MCP, stories, DX) → `ask-devex` first, then the target skill.
 

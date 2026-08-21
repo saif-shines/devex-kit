@@ -87,7 +87,7 @@ You can also start a skill directly:
 /sdk-craft Design the public API for our TypeScript SDK
 ```
 
-The three user-started skills are `ask-devex`, `docs-contribution-router`, and `create-skill`. The rest may start from a description match.
+The three user-started skills are `ask-devex`, `docs-contribution-router`, and `skill-craft`. The rest may start from a description match.
 
 Full list: [docs/skills.md](docs/skills.md).
 

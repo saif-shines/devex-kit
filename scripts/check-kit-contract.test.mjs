@@ -154,18 +154,18 @@ test("fails when a craft skill is marked user-invoked", async () => {
   }
 });
 
-test("fails when create-skill is not user-invoked", async () => {
+test("fails when skill-craft is not user-invoked", async () => {
   const root = await makeKit(async (kit) => {
-    const dir = join(kit, "plugins/tooling/skills/create-skill");
+    const dir = join(kit, "plugins/tooling/skills/skill-craft");
     await mkdir(dir, { recursive: true });
-    await writeFile(join(dir, "SKILL.md"), "---\nname: create-skill\n---\n");
+    await writeFile(join(dir, "SKILL.md"), "---\nname: skill-craft\n---\n");
     await mkdir(join(kit, "plugins/tooling/.claude-plugin"), { recursive: true });
     await writeFile(
       join(kit, "plugins/tooling/.claude-plugin/plugin.json"),
       JSON.stringify({
         name: "tooling",
         version: "1.0.0",
-        skills: ["./skills/ask-devex", "./skills/code-style-patterns", "./skills/create-skill"],
+        skills: ["./skills/ask-devex", "./skills/code-style-patterns", "./skills/skill-craft"],
       }),
     );
     await writeFile(
@@ -176,7 +176,7 @@ test("fails when create-skill is not user-invoked", async () => {
   try {
     const result = checkKitContract(root);
     assert.equal(result.ok, false);
-    assert.match(result.failures.join("\n"), /create-skill/);
+    assert.match(result.failures.join("\n"), /skill-craft/);
     assert.match(result.failures.join("\n"), /user-invoked/);
   } finally {
     await rm(root, { recursive: true, force: true });
@@ -282,6 +282,22 @@ test("fails when a shipped skill is still named using-devex-kit", async () => {
     const result = checkKitContract(root);
     assert.equal(result.ok, false);
     assert.match(result.failures.join("\n"), /using-devex-kit/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("fails when a retired skill name still exists", async () => {
+  const root = await makeKit(async (kit) => {
+    const oldAuthor = join(kit, "plugins/tooling/skills/create-skill");
+    await mkdir(oldAuthor, { recursive: true });
+    await writeFile(join(oldAuthor, "SKILL.md"), "---\nname: create-skill\n---\n");
+  });
+  try {
+    const result = checkKitContract(root);
+    assert.equal(result.ok, false);
+    assert.match(result.failures.join("\n"), /create-skill/);
+    assert.match(result.failures.join("\n"), /skill-craft/);
   } finally {
     await rm(root, { recursive: true, force: true });
   }

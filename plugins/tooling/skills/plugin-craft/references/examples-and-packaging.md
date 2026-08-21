@@ -90,10 +90,10 @@ Use this in addition to the quality checklist in the main SKILL.md.
 
 ## How to Add Your New Skill to devex-kit
 
-1. Create the dir under `skills/tooling/agent-plugin-development/` (or documentation/ if it's purely docs-related).
+1. Create the dir under `skills/tooling/plugin-craft/` (or documentation/ if it's purely docs-related).
 2. Include SKILL.md + tile.json + references/ (at minimum one reference explaining the domain).
 3. Add a short section to the root README.md under the appropriate heading with one-sentence summary + example invocation.
-4. The skill is now part of the canonical collection and can be referenced by future "agent-plugin-development" sessions.
+4. The skill is now part of the canonical collection and can be referenced by future "plugin-craft" sessions.
 
 ## Official Quickstart (Claude Code)
 
@@ -197,5 +197,5 @@ This makes the functionality shareable via marketplaces or internal team repos w
 
 A well-packaged plugin following this skill is self-documenting. A new contributor (or an agent using this skill) should be able to land in the repo root, read only the README and the top-level SKILL.md, and know exactly where to put new content and why the structure looks the way it does.
 
-That is the measure of success for agent-plugin-development.
+That is the measure of success for plugin-craft.
 

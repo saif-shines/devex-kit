@@ -1,5 +1,5 @@
 interface:
-  display_name: "Create Skill"
+  display_name: "Skill Craft"
   short_description: "Write or improve a kit skill"
 policy:
   allow_implicit_invocation: false

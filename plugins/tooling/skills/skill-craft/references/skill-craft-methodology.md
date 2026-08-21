@@ -1,6 +1,6 @@
 # Skill Creation Methodology (Distilled)
 
-Core loop for authoring effective skills (general or plugin-specific). This is the engine behind `/create-skill`. For plugin restructure + the 5 principles, also load the agent-plugin-development skill.
+Core loop for authoring effective skills (general or plugin-specific). This is the engine behind `/skill-craft`. For plugin restructure + the 5 principles, also load the plugin-craft skill.
 
 ## Core Loop (always)
 1. Capture intent from conversation + interview the user.
@@ -25,7 +25,7 @@ Ask (one at a time):
 Proactively surface edge cases, example files, dependencies. Research via MCPs or subagents in parallel when helpful.
 
 ## Write / Edit the SKILL.md
-Follow devex-kit conventions (see agent-plugin-development + its references/skill-development.md for the full 5-principles and frontmatter rules).
+Follow devex-kit conventions (see plugin-craft + its references/skill-development.md for the full 5-principles and frontmatter rules).
 
 **Frontmatter (required):**
 ```yaml
@@ -97,7 +97,7 @@ Triggering note: simple one-step tasks often bypass skills even with perfect des
 For updating an installed skill later: copy to /tmp first (installed locations can be read-only), edit the copy, re-package.
 
 ## When to Use the Full Upstream Skill-Creator vs This
-- Use **this create-skill** (devex-kit) for: learning the devex-kit conventions, writing your first devex skill, keeping SKILL.md lean, following the 5 principles, routing through ask-devex.
+- Use **this skill** (`skill-craft`) for: learning the devex-kit conventions, writing your first devex skill, keeping SKILL.md lean, following the 5 principles, routing through ask-devex.
 - Use the **full /skill-creator** (or the copy now in your ~/Downloads) when you need the complete eval harness, subagent grading, benchmark viewer, description optimizer scripts, blind A/B, or the heavy iteration loop with quantitative variance.
 
 Both are valuable. Start here for anything that will live in (or follow the style of) devex-kit.

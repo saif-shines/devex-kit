@@ -140,7 +140,7 @@ Before declaring the session complete for any area:
 
 - For actual writing of the story, landing page, or newsletter copy: use `docs-writing-style` or `authoring-cookbooks`.
 - For building the sample apps, recipes, or tools that deliver the "magic" in the story: use `devrel-dx-craft` then `devrel-tooling`.
-- For agent plugin or skill development patterns: `agent-plugin-development`.
+- For agent plugin or skill development patterns: `plugin-craft`.
 - For DX journey mapping or content taxonomy (sample apps vs recipes vs patterns): `devrel-dx-craft`.
 
 ## Did this help?
