@@ -8,7 +8,7 @@ metadata:
   version: "1.0"
   type: assistive
   mode: lifecycle
-  sources: "awslabs/mcp DESIGN_GUIDELINES.md, modelcontextprotocol.info/docs/best-practices"
+  sources: "awslabs/mcp DESIGN_GUIDELINES.md, modelcontextprotocol.info/docs/best-practices, mattpocock/skills writing-for-agents"
 ---
 
 # MCP Server Craft
@@ -48,12 +48,12 @@ Rules:
 - **snake_case** preferred (aligns with MCP reference implementations)
 - Maximum **64 characters** for the fully qualified name
 - Start with a letter; only alphanumeric, `_`, or `-`
-- Be consistent within a server: don't mix `snake_case` and `kebab-case`
-- Verb-noun pattern: `search_code` not `code_search`
+- Use one case style per server (`snake_case` or `kebab-case`)
+- Verb-noun pattern: `search_code` rather than `code_search`
 
 ### Tool descriptions
 
-Descriptions are documentation the LLM reads at inference time. They directly affect whether the agent picks the right tool.
+A tool description is a **context pointer**. The wording, not the handler, decides when the agent reaches the tool. Every always-loaded word earns its place.
 
 ```
 Good: "Search for code across repositories using a text query.
@@ -64,9 +64,14 @@ Bad:  "Code search functionality."
 ```
 
 Include in every description:
-- **What** the tool does (one sentence)
+- **What** the tool does (one sentence). Front-load the leading verb (`Search`, `List`, `Create`).
 - **What** it returns (shape and content)
-- **When** to use it (helps the LLM choose between similar tools)
+- **When** to use it. One trigger per branch. Collapse synonyms that rename the same case.
+
+Write the **positive** form. State the target behaviour. A ban ("Don't use relative paths") makes the forbidden form more available.
+
+Good field line: `"Provide the full absolute path."`
+Bad field line: `"Don't use relative paths."`
 
 ### Tool schemas
 
@@ -105,7 +110,7 @@ Key patterns:
 - Use `Field(...)` (required) vs `Field(default)` (optional): never leave ambiguous
 - Add constraints (`ge`, `le`, `min`, `max`, `Literal`, `enum`) so the LLM knows valid ranges
 - Write descriptions that guide the model, not just document the type
-- For critical parameters, include explicit instructions: `"IMPORTANT: Provide the full absolute path, not relative"`
+- For critical parameters, include explicit instructions: `"Provide the full absolute path."`
 
 ### Resource design
 
@@ -211,7 +216,7 @@ result_c = await fetch_issues(repo_c)
 
 ### Error handling
 
-Return errors inside tool results so the LLM can react: don't throw protocol-level exceptions that crash the conversation.
+Return errors inside tool results so the LLM can react. Keep protocol-level exceptions out of the conversation.
 
 ```typescript
 // Good: structured error the LLM can interpret
@@ -303,7 +308,7 @@ const server = new McpServer({
 
 ## Phase gates
 
-**Design → Build:** Every tool has a verb-noun name ≤ 64 chars? Descriptions include what/returns/when? Schemas have constraints and field descriptions?
+**Design → Build:** Every tool has a verb-noun name ≤ 64 chars? Descriptions include what/returns/when, front-load the verb, and use one trigger per branch? Field text is positive (target behaviour, not a ban)? Schemas have constraints and field descriptions?
 
 **Build → Harden:** Server starts cleanly on both stdio and HTTP? All handlers are async? Tool responses are structured JSON the LLM can parse?
 
@@ -313,6 +318,7 @@ const server = new McpServer({
 
 - [ ] Tool names follow verb-noun pattern, ≤ 64 characters
 - [ ] Every tool has a description that says what, returns what, and when to use
+- [ ] Descriptions front-load the verb, use one trigger per branch, and state the positive target
 - [ ] Input schemas have field descriptions, constraints, and defaults
 - [ ] Errors use `isError: true` with suggestions, not raw exceptions
 - [ ] File paths and URIs are validated and sanitized

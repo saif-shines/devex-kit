@@ -60,11 +60,37 @@ delete_branch
 
 ## Writing descriptions the LLM reads
 
-Tool descriptions are the most important text in your MCP server. The LLM reads them at inference time to decide:
+A tool description is a **context pointer**. The wording, not the handler, decides when the agent reaches the tool. A strong tool behind a weak description is a variance bug: sharpen the wording first.
+
+The description is always loaded. Every word spends context load on every turn. It must earn its place.
+
+The LLM reads descriptions at inference time to decide:
 
 1. **Which tool to call** (disambiguation)
 2. **What parameters to provide** (field descriptions)
 3. **What to expect back** (return format)
+
+### Pointer rules
+
+- **Front-load the leading word.** Put the trigger verb first (`Search`, `List`, `Create`). That is where triggering work happens.
+- **One trigger per branch.** A branch is a distinct case the tool handles. Synonyms that rename one case are one branch written twice. Collapse them. Keep only genuinely distinct cases.
+- **Cut identity the handler already carries.** The name `search_code` already says search. The description adds returns and when, not a restatement of the name.
+
+### Prompt the positive
+
+State the target behaviour. A ban drags the forbidden form into context and makes it more available.
+
+| Write this | Not this |
+|------------|----------|
+| `Provide the full absolute path.` | `Don't use relative paths.` |
+| `Return structured JSON the model can parse.` | `Don't dump raw stack traces.` |
+| `Use search_code for definitions.` | `Don't use this tool for definitions.` |
+
+A prohibition earns a place only as a hard guardrail that cannot be phrased positively. Even then, pair it with the positive target.
+
+### Leading words
+
+Reuse a compact word the model already knows (`Search`, `List`, `path`, `owner/repo`) instead of spelling out a triad. A made-up label recruits no priors. The same word in the tool name, the description, and the field text makes the agent reach the tool more reliably.
 
 ### Description template
 
@@ -116,8 +142,8 @@ workspace_dir: str = Field(
     ...,
     description=(
         "Absolute path to the IDE workspace directory. "
-        "IMPORTANT: Always provide the full absolute path, not relative. "
-        "Files will be saved relative to this directory."
+        "Provide the full absolute path. "
+        "Files will be saved under this directory."
     )
 )
 
@@ -300,6 +326,8 @@ class SearchResponse(BaseModel):
 |-------------|---------|-----|
 | **One tool per API endpoint** | 50+ tools overwhelm the LLM | Group into higher-level intent tools |
 | **Vague descriptions** | LLM picks wrong tool or fills params incorrectly | Write what/returns/when descriptions |
+| **Weak pointer** | Strong tool, weak wording; agent misses the tool | Front-load the verb; one trigger per branch |
+| **Negation in the pointer** | Ban makes the forbidden form more available | State the positive target |
 | **No constraints** | LLM sends `limit: 999999` or invalid enums | Add min/max, Literal, regex |
 | **God tool** | One tool that does everything via a `action` parameter | Split into focused verb-noun tools |
 | **Raw error dumps** | LLM sees a stack trace and hallucinates | Return `isError: true` with suggestion |
