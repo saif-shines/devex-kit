@@ -7,7 +7,8 @@ Generic principles for developer-facing technical documentation. These apply to 
 - **Sentence case** for all headings: "Configure your auth provider" not "Configure Your Auth Provider."
 - **Short, descriptive page titles**: 3–7 words. Headings describe outcomes, not categories.
 - **Imperative headings**: "Configure proxies" not "Configuring proxies" or "Proxy configuration."
-- **Opening paragraph**: 1–3 sentences. State what the reader will accomplish, when they need it, and the approach. No "In this guide" or "Welcome to."
+- **Opening paragraph (story first)**: 1–3 sentences. Teach the concept the reader came for. State what they will do, when they need it, and the approach. No "In this guide" or "Welcome to."
+- **Then the work**: language tabs, helpers, install extras, and constructor snippets come after the story. Language and framework tabs belong in the procedure, not the first screen.
 - **One idea per paragraph**. Short paragraphs are easier to skim than long ones.
 - **Topic sentences are standalone**: the first sentence of each section or paragraph should be understandable without reading what came before it.
 - **Key takeaways at the top**: conclusion before reasoning, result before procedure.
@@ -42,6 +43,11 @@ Generic principles for developer-facing technical documentation. These apply to 
 | Passive voice in procedures | Active imperative |
 | Gerund headings ("Configuring…") | Imperative ("Configure…") or noun ("Configuration") |
 | Socratic build-up (context → theory → conclusion) | Conclusion first, then support |
+| Two or more languages or frameworks named in the opening | Teach the concept first; put Node/Python/Go/Java and framework tabs in the procedure |
+| Language/framework matrix in the opening ("X uses helper, Y does not") | Move the split into the procedure |
+| Mid-page CTA ("Full reference: Express session middleware.") | Put related lookup in `seeAlso` or after the reader can complete the step |
+| Sending the reader to another page to finish this page's task | Keep the task completable on this page |
+| A Django / SDK / other-product link before the story exists | Story first, then links |
 
 ## Code in documentation
 
@@ -63,6 +69,7 @@ Generic principles for developer-facing technical documentation. These apply to 
 ## Links
 
 - Descriptive anchor text: "See the authentication guide" not "click here" or "see this."
+- Put related lookup in `seeAlso`, or in one sentence after the reader can complete the step. Never a standalone CTA between the instruction and the snippet.
 - Backticks for code: variables, functions, endpoints, file paths, environment variables, and command-line flags.
 - Relative links for internal pages.
 

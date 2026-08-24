@@ -10,7 +10,9 @@ Use this rubric in review mode. For each criterion, report PASS, FAIL, or WARN. 
 
 | Criterion | PASS condition | Common FAIL |
 |---|---|---|
-| Opening paragraph exists | First 1–3 sentences state what the reader will do, when to use this, and the approach | Page opens with a heading, a code block, or context about Scalekit rather than the reader's goal |
+| Opening paragraph exists | First 1–3 sentences teach the concept the reader came for: what they will do, when to use this, and the approach | Page opens with a heading, a code block, or context about Scalekit rather than the reader's goal |
+| Story first, work second | Opening is the concept only. Language tabs, helpers, install extras, and constructor snippets come after | Opening names two or more languages or frameworks; a language/framework matrix; tabs or constructor snippets on the first screen |
+| No mid-task detours | Related lookup is in `seeAlso` or after the reader can complete the step | Mid-page CTA; sending the reader to another page to finish this page's task; a Django / SDK / other-product link before the story exists |
 | No "In this guide" or "Welcome to" opener | First sentence starts with the topic or the action | Starts with "In this guide, we'll show you how to…" |
 | Topic sentences are standalone | Each paragraph's first sentence can be understood without reading prior content | "Building on what we covered above…" or "As mentioned…" |
 
@@ -59,6 +61,8 @@ Use this rubric in review mode. For each criterion, report PASS, FAIL, or WARN. 
 | Criterion | PASS condition | Common FAIL |
 |---|---|---|
 | Descriptive link text | Links say what they point to | "click here", "this link", "this guide" |
+| Related lookup after the step | Related links live in `seeAlso` or in one sentence after the reader can complete the step | Standalone CTA between the instruction and the snippet (for example, "Full reference: Express session middleware.") |
+| This page finishes its own task | The reader can complete the task on this page | Sending the reader to another page to finish this page's task |
 | Code formatting for identifiers | Variables, functions, endpoints, file paths, env vars use backticks | Plain text for code identifiers |
 | No dead-end pages | Every page with steps links forward to the next logical step or to related guides | Pages that end without a "next steps" or `prev`/`next` frontmatter when part of a sequence |
 
