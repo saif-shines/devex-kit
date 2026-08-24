@@ -1,6 +1,6 @@
 ---
 name: docs-writing-style
-description: Two-mode writing guide: exports a paste-ready style prompt for coding agents (handoff mode) or reviews a draft against the documentation quality rubric (review mode).
+description: "Two-mode writing guide: exports a paste-ready style prompt for coding agents (handoff mode) or reviews a draft against the documentation quality rubric (review mode)."
 license: MIT
 metadata:
   author: saif-shines
@@ -72,7 +72,9 @@ These apply regardless of mode. Violations in review mode are always FAIL.
 
 **Structure**
 - Sentence case for all headings. No "Configure Your Auth Provider": use "Configure your auth provider."
-- Page opens with a clear one-paragraph statement: what the reader will do and why.
+- **Story first.** Opening is 1–3 sentences that teach the concept the reader came for: what they will do, when they need it, and the approach. Example: what a session is, why login starts, why logout has three layers.
+- **Then the work.** Language tabs, helpers, install extras, and constructor snippets come after the story. Node/Python/Go/Java and per-framework tabs belong in the procedure, not the first screen.
+- Opening FAIL (always FAIL in review): naming two or more languages or frameworks; a language/framework matrix ("X uses helper, Y does not"); a mid-page CTA; sending the reader to another page to finish this page's task; a Django / SDK / other-product link before the story exists.
 - Procedure steps use imperative verbs: "Install", "Run", "Configure": not "Installing", "You should run."
 - H2 for major sections; H3 for subsections. Never use H1 in body content.
 - **Step headings inside `<Steps>` must be H3 (`###`) or smaller**: never H2. H2 inside Steps creates oversized step titles that break visual hierarchy.
@@ -99,6 +101,7 @@ These apply regardless of mode. Violations in review mode are always FAIL.
 
 **Links**
 - Descriptive link text only. Never "click here" or "this link."
+- Put related lookup in `seeAlso`, or in one sentence after the reader can complete the step. Never a standalone CTA between the instruction and the snippet.
 - Backticks for code identifiers, file paths, environment variables, and API endpoints.
 
 ---

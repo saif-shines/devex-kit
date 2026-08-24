@@ -24,7 +24,8 @@ You are writing developer documentation for <your-docs-site-url> (<your-product-
 
 ## Page structure
 
-- <Opening paragraph rule>
+- <Opening paragraph: story first. 1–3 sentences that teach the concept. What the reader will do, when they need it, the approach.>
+- <Then the work: language tabs, helpers, install extras, and constructor snippets come after the story. Language and framework tabs belong in the procedure, not the first screen.>
 - <Information order rule: conclusion first? or procedure first?>
 - <Topic sentence rule>
 
@@ -57,7 +58,8 @@ Always show failure paths alongside success paths.
 
 ## Links
 
-<Link text rules.>
+<Link text rules. Descriptive. Never "click here.">
+<Related lookup: `seeAlso`, or one sentence after the reader can complete the step. Never a standalone CTA between the instruction and the snippet.>
 <Code formatting rules for identifiers.>
 
 ## What to avoid
