@@ -1,11 +1,13 @@
 ---
 name: devrel-tooling
 description: |
-  Build CLI tools and API utilities that developers on your platform actually use. Covers CLI design (command hierarchy, flags, completions, cross-platform UX) and API collection generation (Postman/OpenAPI from Express, Next.js, Fastify, Hono routes). Use this skill when building a developer-facing CLI tool, adding subcommands or flags, implementing shell completions, designing interactive prompts, generating Postman collections from code, creating API testing artifacts, or building any developer utility. Also activates for questions about argument parsing (commander, click, typer, cobra), progress indicators, terminal UX, or Postman collection format.
+  Build developer CLIs and API collections.
+  Use when adding commands, completions, or generating a Postman collection from routes.
+  It does not design the SDK API (that's `sdk-craft`).
 license: MIT
 metadata:
   author: saif-shines
-  version: "1.0"
+  version: "1.1"
   type: assistive
   mode: implementation
 ---
@@ -205,4 +207,16 @@ Use **commander** (Node.js), **click/typer** (Python), or **cobra** (Go). For de
 - [ ] Request bodies included for POST/PUT/PATCH
 - [ ] Environment variables configured
 - [ ] Collection imports cleanly in Postman
+
+## When to switch skills
+
+- Client library, types, or npm publish → `sdk-craft`
+- MCP server tools or transport → `mcp-server-craft`
+
+## Did this help?
+
+At the end of every session, ask: **"Did this solve what you were trying to do?"**
+
+- If yes: done.
+- If a command tree was wrong, completions failed, or the collection missed a route: encourage the user to file an issue at **https://github.com/saif-shines/devex-kit/issues**. Offer to help draft it. Include the domain (CLI or collection) and what was missing.
 

@@ -1,17 +1,20 @@
 ---
 name: journey-sidebar-labels
-description: "Audit and design documentation sidebar labels and section order so navigation follows a clear developer journey: concise labels, sentence case, and phase-aligned groups (reference model: Full stack auth sidebar in Scalekit developer-docs)."
+description: |
+  Audit sidebar labels and order as a developer journey.
+  Use when nav is alphabetical, labels are nouns, or groups need sentence case.
+  It does not write page copy (that's `docs-writing-style`).
 license: MIT
 metadata:
   author: saif-shines
-  version: "1.0"
+  version: "1.1"
   type: diagnostic
   mode: assistive
 ---
 
 # Journey sidebar labels
 
-You help authors and information architects align **sidebar group labels**, **item labels**, and **section order** with a **developer journey**: readers should be able to scan the nav and understand *where they are* in the implementation path and *what comes next*.
+Align **sidebar group labels**, **item labels**, and **section order** with a **developer journey**. Readers scan the nav to see where they are in the implementation path and what comes next.
 
 This skill is grounded in:
 
@@ -73,11 +76,11 @@ Use `references/fsa-sidebar-journey.json` as a **checklist** when auditing anoth
 5. **Preview test**: for each leaf label, ask: “Can a reader predict the page’s purpose from this label alone?” If a bare-noun label (e.g. “Test users”, “Webhooks”, “Permissions”) could plausibly name 3+ different pages, it needs an action verb or qualifying context.
 6. **Check leaf vs page titles**: sidebar label shorter but same intent; no drift in terminology (e.g. “SSO” vs “Enterprise SSO” across nav and H1).
 
-## What you do not do
+## Out of scope
 
-- You do not dictate Starlight vs custom nav frameworks: you work with whatever `sidebar` structure the repo uses.
-- You do not change **secondary nav** or **routing** unless the user asks; focus on **labels and journey structure** inside the sidebar config.
-- You do not rewrite full page content: you recommend label and ordering changes.
+- Leave nav framework choice to the repo.
+- Change labels and journey structure only, unless the user asks for routing work.
+- Recommend label and order changes. Leave page rewrite to `docs-writing-style`.
 
 ## Example prompts
 

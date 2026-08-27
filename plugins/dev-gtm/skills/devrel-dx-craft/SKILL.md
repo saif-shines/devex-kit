@@ -1,11 +1,13 @@
 ---
 name: devrel-dx-craft
 description: |
-  Design DX for first success and adoption, choose the right content types (Sample Applications, Code Snippets/Recipes, Solution Patterns), apply "content has a job" and translator principles, and run an effective technical engagement system. Use when working on getting-started experiences, sample apps vs recipes vs patterns decisions, content strategy, onboarding, or DX audits for developer-facing products. Also activates for mentions of "first success", "sample applications", "code snippets", "recipes", "solution patterns", "dx journey", "onboarding", "content has a job", "translator", "share knowledge not features", "technical engagement system", or "dev gtm".
+  Design first-success DX and pick sample app vs recipe vs pattern.
+  Use when auditing onboarding or choosing content types for developers.
+  It does not write launch stories (that's `devrel-story-craft`).
 license: MIT
 metadata:
   author: saif-shines
-  version: "1.0"
+  version: "1.1"
   type: assistive
   mode: lifecycle
 ---

@@ -1,0 +1,10 @@
+{
+  "name": "saif-shines/ask-saif",
+  "version": "1.3.0",
+  "summary": "User-started kit router. Names the next skill and gives a ready-to-type line.",
+  "skills": {
+    "ask-saif": {
+      "path": "SKILL.md"
+    }
+  }
+}

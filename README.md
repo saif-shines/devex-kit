@@ -37,7 +37,7 @@ Install the plugins you want:
 /plugin install dev-gtm@devex-kit
 ```
 
-`tooling` includes the router (`ask-devex`). Start there if you are unsure.
+`tooling` includes the router (`ask-saif`). Start there if you are unsure.
 
 ### Any agent (`npx skills`)
 
@@ -50,7 +50,7 @@ npx skills add saif-shines/devex-kit --yes
 Or install one skill:
 
 ```bash
-npx skills add saif-shines/devex-kit --skill ask-devex --yes
+npx skills add saif-shines/devex-kit --skill ask-saif --yes
 ```
 
 List names first with `--list`. Do not install a name from `in-progress/`.
@@ -64,17 +64,17 @@ git clone https://github.com/saif-shines/devex-kit
 Load one skill by path, for example:
 
 ```
-/skills load ./plugins/tooling/skills/ask-devex/SKILL.md
+/skills load ./plugins/tooling/skills/ask-saif/SKILL.md
 ```
 
 The path for every skill is `plugins/<plugin>/skills/<name>/SKILL.md`.
 
 ## Use
 
-Type `/ask-devex` and state the job. The human starts this skill. The model does not.
+Type `/ask-saif` and state the job. The human starts this skill. The model does not.
 
 ```
-/ask-devex I need to design first-success DX and then write the getting-started docs
+/ask-saif I need to design first-success DX and then write the getting-started docs
 ```
 
 The router names the next skill and gives a command you can paste.
@@ -87,7 +87,7 @@ You can also start a skill directly:
 /sdk-craft Design the public API for our TypeScript SDK
 ```
 
-The three user-started skills are `ask-devex`, `docs-contribution-router`, and `skill-craft`. The rest may start from a description match.
+The three user-started skills are `ask-saif`, `docs-contribution-router`, and `skill-craft`. The rest may start from a description match.
 
 Full list: [docs/skills.md](docs/skills.md).
 

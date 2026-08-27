@@ -1,10 +1,13 @@
 ---
 name: docs-writing-style
-description: "Two-mode writing guide: exports a paste-ready style prompt for coding agents (handoff mode) or reviews a draft against the documentation quality rubric (review mode)."
+description: |
+  Export a docs style prompt or review a draft against the house rubric.
+  Use when handing off voice to an agent or checking a docs draft.
+  It does not place the page (that's `docs-contribution-router`).
 license: MIT
 metadata:
   author: saif-shines
-  version: "1.0"
+  version: "1.1"
   type: assistive
   mode: handoff+review
   maturity_score: 10

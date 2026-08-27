@@ -1,5 +1,5 @@
 interface:
-  display_name: "Ask DevEx"
+  display_name: "Ask Saif"
   short_description: "Find the next kit skill"
 policy:
   allow_implicit_invocation: false

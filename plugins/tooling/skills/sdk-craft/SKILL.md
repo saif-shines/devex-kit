@@ -1,11 +1,13 @@
 ---
 name: sdk-craft
 description: |
-  Design, build, document, and ship SDKs that developers love. Covers the full SDK lifecycle: from API surface design and type safety through implementation, bundling, documentation, versioning, and publishing. Use this skill whenever someone is creating a new SDK, extracting shared code into a client library, improving SDK developer experience, planning a breaking change or migration guide, or reviewing an SDK for quality. Also activates for questions about error message design, client library patterns, type-safe API design, SDK packaging (ESM/CJS), or npm publishing.
+  Design, build, document, and ship SDKs.
+  Use when creating a client library, planning a breaking change, or reviewing SDK quality.
+  It does not build a CLI (that's `devrel-tooling`) or an MCP server (that's `mcp-server-craft`).
 license: MIT
 metadata:
   author: saif-shines
-  version: "1.0"
+  version: "1.1"
   type: assistive
   mode: lifecycle
 ---
@@ -272,4 +274,16 @@ Before any SDK release:
 - [ ] Changelog updated
 - [ ] Migration guide exists (if breaking)
 - [ ] CI runs tests and generates docs
+
+## When to switch skills
+
+- CLI, completions, or Postman collection → `devrel-tooling`
+- MCP server tools or transport → `mcp-server-craft`
+
+## Did this help?
+
+At the end of every session, ask: **"Did this solve what you were trying to do?"**
+
+- If yes: done.
+- If the API surface was wrong, an error message missed a fix, or the ship checklist skipped a file: encourage the user to file an issue at **https://github.com/saif-shines/devex-kit/issues**. Offer to help draft it. Include the phase, the public API, and what was missing.
 

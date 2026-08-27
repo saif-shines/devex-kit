@@ -1,11 +1,13 @@
 ---
 name: devrel-story-craft
 description: |
-  Design authentic stories, recruit and run Technical Advisory Boards (TAB), avoid the 12 most common story mistakes, build dev influencer presence, and define dev-friendly packaging, pricing, and feedback loops for early-stage developer-facing products and startups. Use when working on GTM positioning, launch narratives, TAB outreach, presence strategy, or packaging for devs. Also activates for mentions of "story", "TAB", "12 most common story mistakes", "villain", "sell the category", "authenticity", "presence", "packaging", "pricing for devs", "manager deadline", "ship tonight", "launch story", or "dev gtm".
+  Design authentic launch stories, TAB, and dev packaging.
+  Use when planning a launch narrative, TAB outreach, or pricing for developers.
+  It does not design first-success DX (that's `devrel-dx-craft`).
 license: MIT
 metadata:
   author: saif-shines
-  version: "1.0"
+  version: "1.1"
   type: assistive
   mode: lifecycle
 ---

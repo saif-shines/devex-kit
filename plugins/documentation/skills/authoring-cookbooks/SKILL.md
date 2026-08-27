@@ -1,10 +1,13 @@
 ---
 name: authoring-cookbooks
-description: Diagnose and fix documentation quality problems in cookbook-style writing: skimmability, writing clarity, and reader helpfulness.
+description: |
+  Diagnose cookbook quality: skimmability, clarity, and reader load.
+  Use when recipes are hard to follow or a new cookbook is starting.
+  It does not set house voice (that's `docs-writing-style`).
 license: MIT
 metadata:
   author: saif-shines
-  version: "1.1"
+  version: "1.2"
   type: diagnostic
   mode: diagnostic+assistive
   maturity_score: 18

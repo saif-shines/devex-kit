@@ -4,7 +4,7 @@ One table for humans. There is no per-skill page.
 
 | Skill | Plugin | Start | Job |
 |-------|--------|-------|-----|
-| [ask-devex](../plugins/tooling/skills/ask-devex/SKILL.md) | tooling | `/ask-devex` | Name the next kit skill. The human starts this. |
+| [ask-saif](../plugins/tooling/skills/ask-saif/SKILL.md) | tooling | `/ask-saif` | Name the next kit skill. The human starts this. |
 | [docs-contribution-router](../plugins/documentation/skills/docs-contribution-router/SKILL.md) | documentation | `/docs-contribution-router` | Route a docs contribution. The human starts this. |
 | [skill-craft](../plugins/tooling/skills/skill-craft/SKILL.md) | tooling | `/skill-craft` | Write or improve a kit skill. The human starts this. |
 | [docs-writing-style](../plugins/documentation/skills/docs-writing-style/SKILL.md) | documentation | `/docs-writing-style` | Review or hand off docs voice. |

@@ -81,20 +81,23 @@ See sdk-craft and mcp-server-craft for the cleanest examples. docs-contribution-
 Good trigger list:
 ```
 description: |
-  Design, build, document, and ship SDKs that developers love. ... Use this skill whenever someone is creating a new SDK, ... Also activates for questions about error message design, ...
+  Design, build, document, and ship SDKs.
+  Use when creating a client library, planning a breaking change, or reviewing SDK quality.
+  It does not build a CLI (that's `devrel-tooling`).
 ```
 
 Bad:
 - Too vague: "Provides SDK help."
 - Not third person: "You use this when building SDKs."
-- Missing keywords users actually say.
+- Missing the sibling line: the next skill cannot see the boundary.
+- Synonym dump: ten phrases that rename one branch.
 
-List 5-12 concrete phrases.
+One trigger per branch. Front-load the leading verb.
 
 ## Progressive Disclosure & Context Management
 
 - Metadata + name/desc always loaded (~100 words)
-- SKILL.md body when the skill activates (< ~5k tokens ideal)
+- SKILL.md body when the skill activates (at or under 200 lines)
 - References loaded on demand by explicit instruction in the SKILL or by the model when it sees the `load `references/...`` call
 
 This is why scalekit-code-doctor starts with "**Before doing anything else**, read the reference files..."
@@ -191,7 +194,7 @@ Then create the references/ files with the expanded material.
 
 ## Integration with devex-kit
 
-When your skill lives in this repo under `skills/tooling/your-skill/` or `skills/documentation/`:
+When your skill lives in this repo under `plugins/<plugin>/skills/<name>/`:
 
 - Add `tile.json` (exact shape used by sdk-craft etc.)
 - The skill becomes installable/invokable as `/your-skill` once the kit is used.

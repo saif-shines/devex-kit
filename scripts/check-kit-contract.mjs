@@ -7,9 +7,10 @@ const AGENTS_MD = "AGENTS.md";
 const HUMAN_INDEX = join("docs", "skills.md");
 const COOKBOOK_SKILL = join("plugins", "documentation", "skills", "authoring-cookbooks", "SKILL.md");
 const COOKBOOK_WORD_CAP = 2000;
-const ORCHESTRATORS = new Set(["ask-devex", "docs-contribution-router", "skill-craft"]);
+const ORCHESTRATORS = new Set(["ask-saif", "docs-contribution-router", "skill-craft"]);
 const RETIRED_SKILLS = {
-  "using-devex-kit": "the kit router name is ask-devex",
+  "using-devex-kit": "the kit router name is ask-saif",
+  "ask-devex": "the kit router name is ask-saif",
   "create-skill": "the kit author skill is skill-craft",
   "agent-plugin-development": "the plugin skill is plugin-craft",
 };
@@ -123,11 +124,11 @@ export function checkKitContract(rootDir) {
       failures.push(`${skill.name} starts with "You are"; write in imperative voice`);
     }
   }
-  const askDevex = join(rootDir, "plugins", "tooling", "skills", "ask-devex", "SKILL.md");
-  if (!existsSync(askDevex)) {
-    failures.push("ask-devex is missing from plugins/tooling/skills");
-  } else if (!readFileSync(askDevex, "utf8").includes("disable-model-invocation: true")) {
-    failures.push("ask-devex must be user-invoked (disable-model-invocation: true)");
+  const askSaif = join(rootDir, "plugins", "tooling", "skills", "ask-saif", "SKILL.md");
+  if (!existsSync(askSaif)) {
+    failures.push("ask-saif is missing from plugins/tooling/skills");
+  } else if (!readFileSync(askSaif, "utf8").includes("disable-model-invocation: true")) {
+    failures.push("ask-saif must be user-invoked (disable-model-invocation: true)");
   }
   if (!existsSync(join(rootDir, CLAUDE_MD))) {
     failures.push("CLAUDE.md is missing; identical root contracts are required");
@@ -224,8 +225,8 @@ export function checkKitContract(rootDir) {
     failures.push("docs/skills.md is missing; the kit needs one human skills table");
   } else {
     const index = readFileSync(indexPath, "utf8");
-    if (!index.includes("| [ask-devex]")) {
-      failures.push("docs/skills.md must list ask-devex");
+    if (!index.includes("| [ask-saif]")) {
+      failures.push("docs/skills.md must list ask-saif");
     }
     for (const name of skillNames(rootDir)) {
       if (!index.includes(`| [${name}]`)) {

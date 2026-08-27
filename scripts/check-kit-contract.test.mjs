@@ -13,11 +13,11 @@ async function makeKit(mutate) {
   const skillDir = join(root, "plugins/tooling/skills/code-style-patterns");
   await mkdir(skillDir, { recursive: true });
   await writeFile(join(skillDir, "SKILL.md"), "---\nname: code-style-patterns\n---\n");
-  const askDevex = join(root, "plugins/tooling/skills/ask-devex");
-  await mkdir(askDevex, { recursive: true });
+  const askSaif = join(root, "plugins/tooling/skills/ask-saif");
+  await mkdir(askSaif, { recursive: true });
   await writeFile(
-    join(askDevex, "SKILL.md"),
-    "---\nname: ask-devex\ndisable-model-invocation: true\n---\n",
+    join(askSaif, "SKILL.md"),
+    "---\nname: ask-saif\ndisable-model-invocation: true\n---\n",
   );
   await writeFile(join(root, "CLAUDE.md"), "kit contract\n");
   await writeFile(join(root, "AGENTS.md"), "kit contract\n");
@@ -27,7 +27,7 @@ async function makeKit(mutate) {
   await mkdir(join(root, "docs"), { recursive: true });
   await writeFile(
     join(root, "docs/skills.md"),
-    "| Skill |\n| [ask-devex] |\n| [code-style-patterns] |\n",
+    "| Skill |\n| [ask-saif] |\n| [code-style-patterns] |\n",
   );
   if (mutate) {
     await mutate(root);
@@ -49,7 +49,7 @@ test("fails when the human skills table is missing", async () => {
 
 test("fails when a shipped skill is missing from the human skills table", async () => {
   const root = await makeKit(async (kit) => {
-    await writeFile(join(kit, "docs/skills.md"), "| Skill |\n| [ask-devex] |\n");
+    await writeFile(join(kit, "docs/skills.md"), "| Skill |\n| [ask-saif] |\n");
   });
   try {
     const result = checkKitContract(root);
@@ -68,7 +68,7 @@ test("fails when authoring-cookbooks is over the lean cap", async () => {
     await writeFile(join(dir, "SKILL.md"), `---\nname: authoring-cookbooks\n---\n${words}\n`);
     await writeFile(
       join(kit, "docs/skills.md"),
-      "| Skill |\n| [ask-devex] |\n| [code-style-patterns] |\n| [authoring-cookbooks] |\n",
+      "| Skill |\n| [ask-saif] |\n| [code-style-patterns] |\n| [authoring-cookbooks] |\n",
     );
   });
   try {
@@ -88,7 +88,7 @@ test("fails when authoring-cookbooks has no load blockquote", async () => {
     await writeFile(join(dir, "SKILL.md"), "---\nname: authoring-cookbooks\n---\nDiagnose cookbooks.\n");
     await writeFile(
       join(kit, "docs/skills.md"),
-      "| Skill |\n| [ask-devex] |\n| [code-style-patterns] |\n| [authoring-cookbooks] |\n",
+      "| Skill |\n| [ask-saif] |\n| [code-style-patterns] |\n| [authoring-cookbooks] |\n",
     );
   });
   try {
@@ -108,7 +108,7 @@ test("fails when a shipped skill is missing a Codex invocation file", async () =
       JSON.stringify({
         name: "tooling",
         version: "1.0.0",
-        skills: ["./skills/ask-devex", "./skills/code-style-patterns"],
+        skills: ["./skills/ask-saif", "./skills/code-style-patterns"],
       }),
     );
     await writeFile(
@@ -137,7 +137,7 @@ test("fails when a craft skill is marked user-invoked", async () => {
       JSON.stringify({
         name: "tooling",
         version: "1.0.0",
-        skills: ["./skills/ask-devex", "./skills/code-style-patterns"],
+        skills: ["./skills/ask-saif", "./skills/code-style-patterns"],
       }),
     );
     await writeFile(
@@ -165,7 +165,7 @@ test("fails when skill-craft is not user-invoked", async () => {
       JSON.stringify({
         name: "tooling",
         version: "1.0.0",
-        skills: ["./skills/ask-devex", "./skills/code-style-patterns", "./skills/skill-craft"],
+        skills: ["./skills/ask-saif", "./skills/code-style-patterns", "./skills/skill-craft"],
       }),
     );
     await writeFile(
@@ -191,7 +191,7 @@ test("fails when a skill folder is not on the promotion list", async () => {
       JSON.stringify({
         name: "tooling",
         version: "1.0.0",
-        skills: ["./skills/ask-devex"],
+        skills: ["./skills/ask-saif"],
       }),
     );
     await writeFile(
@@ -240,26 +240,26 @@ test("fails when a shipped skill starts with You are", async () => {
   }
 });
 
-test("fails when ask-devex is not the kit router", async () => {
+test("fails when ask-saif is not the kit router", async () => {
   const root = await makeKit();
-  await rm(join(root, "plugins/tooling/skills/ask-devex"), {
+  await rm(join(root, "plugins/tooling/skills/ask-saif"), {
     recursive: true,
     force: true,
   });
   try {
     const result = checkKitContract(root);
     assert.equal(result.ok, false);
-    assert.match(result.failures.join("\n"), /ask-devex/);
+    assert.match(result.failures.join("\n"), /ask-saif/);
   } finally {
     await rm(root, { recursive: true, force: true });
   }
 });
 
-test("fails when ask-devex is not user-invoked", async () => {
+test("fails when ask-saif is not user-invoked", async () => {
   const root = await makeKit(async (kit) => {
     await writeFile(
-      join(kit, "plugins/tooling/skills/ask-devex/SKILL.md"),
-      "---\nname: ask-devex\n---\n",
+      join(kit, "plugins/tooling/skills/ask-saif/SKILL.md"),
+      "---\nname: ask-saif\n---\n",
     );
   });
   try {
@@ -274,7 +274,7 @@ test("fails when ask-devex is not user-invoked", async () => {
 test("fails when a shipped skill is still named using-devex-kit", async () => {
   const root = await makeKit(async (kit) => {
     await writeFile(
-      join(kit, "plugins/tooling/skills/ask-devex/SKILL.md"),
+      join(kit, "plugins/tooling/skills/ask-saif/SKILL.md"),
       "---\nname: using-devex-kit\ndisable-model-invocation: true\n---\n",
     );
   });
@@ -313,6 +313,22 @@ test("fails when using-devex-kit exists as a skill", async () => {
     const result = checkKitContract(root);
     assert.equal(result.ok, false);
     assert.match(result.failures.join("\n"), /using-devex-kit/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("fails when ask-devex exists as a skill", async () => {
+  const root = await makeKit(async (kit) => {
+    const oldRouter = join(kit, "plugins/tooling/skills/ask-devex");
+    await mkdir(oldRouter, { recursive: true });
+    await writeFile(join(oldRouter, "SKILL.md"), "---\nname: ask-devex\n---\n");
+  });
+  try {
+    const result = checkKitContract(root);
+    assert.equal(result.ok, false);
+    assert.match(result.failures.join("\n"), /ask-devex/);
+    assert.match(result.failures.join("\n"), /ask-saif/);
   } finally {
     await rm(root, { recursive: true, force: true });
   }
