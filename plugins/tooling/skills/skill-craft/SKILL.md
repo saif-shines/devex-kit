@@ -5,16 +5,16 @@ disable-model-invocation: true
 license: MIT
 metadata:
   author: saif-shines
-  version: "1.1"
+  version: "1.2"
   type: assistive
   mode: lifecycle
 ---
 
 # Skill Craft
 
-Author effective, lean skills that extend agents with specialized workflows, following the exact devex-kit patterns used by every skill in this kit.
+Author lean kit skills.
 
-This skill is the general entry point for skill creation and improvement. For plugin-specific restructure, the 5 principles, agents, empty commands/, and examples/ layout, also load `plugin-craft`.
+It does not restructure plugins (that's `plugin-craft`).
 
 State the phase or paste the request. The skill will route and keep you on the rails.
 
@@ -49,8 +49,9 @@ Follow devex-kit conventions exactly (see also `plugin-craft` and its `reference
 ---
 name: your-skill-name
 description: |
-  Third-person sentence(s). List the exact trigger phrases.
-  "Use when the user asks to 'foo', 'bar the baz', or mentions 'widget'."
+  Action first.
+  Use when the user asks to 'foo' or mentions 'widget'.
+  It does not do the sibling job (that's `other-skill`).
 license: MIT
 metadata:
   author: saif-shines
@@ -60,7 +61,7 @@ metadata:
 ---
 ```
 
-**Body requirements (lean target 1,500-2,000 words):**
+**Body requirements (at or under 200 lines):**
 - Phase table at the top.
 - Imperative voice ("Load...", "Validate...", "Write...").
 - `> For expanded X, load `references/yyy.md`` for anything heavy.
@@ -68,6 +69,7 @@ metadata:
 - Quality checklist with actionable boxes.
 - "Did this help?" section with the github issues link.
 - Explicit cross-references to sibling skills when relevant.
+- Every step ends on a checkable **Done when** line.
 
 **Progressive disclosure (non-negotiable):**
 - Keep SKILL.md body small.
@@ -87,7 +89,7 @@ For skills with verifiable outputs, create a few realistic test prompts, save th
 
 Organize work in sibling workspace directories. Capture timing from notifications. Grade, aggregate, show the user (viewer or static HTML).
 
-See the upstream full skill-creator (now also mirrored in your `~/Downloads/SKILL.md`) for the complete harness, `eval-viewer/generate_review.py`, assertion drafting, blind comparison, and environment-specific notes (Claude.ai, Cowork, etc.).
+Use the installed `/skill-creator` when the full eval harness, viewer, or description optimizer is needed.
 
 For subjective skills, lean on direct user review of outputs instead of heavy assertions.
 
@@ -97,13 +99,13 @@ Keep going until the user is happy, all feedback is empty/positive, or further c
 After the skill body is solid, offer to tune the frontmatter description for better auto-triggering.
 
 - Generate 15-20 realistic eval queries (good coverage of should-trigger + tricky near-miss should-not-trigger cases).
-- Let the user review/edit via a simple HTML form that exports to `~/Downloads/eval_set.json`.
+- Let the user review/edit via a simple HTML form that exports an `eval_set.json`.
 - Run the optimization loop (splits train/held-out, iterates, picks best by test score).
 - Apply the winner and show the delta.
 
 Triggering reality: simple one-step tasks often bypass skills. Target the complex, multi-step, high-context, or specialized work the user actually repeats.
 
-Full mechanics and example queries are in `references/skill-craft-methodology.md` (and the complete upstream in `~/Downloads/SKILL.md`).
+Full mechanics and example queries are in `references/skill-craft-methodology.md`.
 
 ## Package & Ship
 - Run validation (frontmatter, structure, description quality, referenced files exist).
@@ -127,7 +129,7 @@ When updating an already-installed skill later, copy to a writable location firs
 ## Phase Gates
 **Capture → Draft:** Clear triggers collected? Success criteria stated? Test-cases decision made with the user?
 
-**Draft → Test/Iterate:** SKILL.md uses exact devex frontmatter? Body is imperative, <~2000 words, delegates via load references? Quality checklist present?
+**Draft → Test/Iterate:** SKILL.md uses exact devex frontmatter? Body is imperative, at or under 200 lines, delegates via load references? Quality checklist present?
 
 **Test/Iterate → Optimize:** User has reviewed real outputs and is happy (or has given specific feedback that is now addressed)?
 
@@ -139,7 +141,7 @@ When updating an already-installed skill later, copy to a writable location firs
 - [ ] Frontmatter has `name`, third-person `description` with concrete triggers, `license: MIT`, and the standard metadata block.
 - [ ] Body opens with a phase table and uses imperative voice.
 - [ ] Long content is in `references/` and referenced with the exact `> For ... load `references/...`` blockquote.
-- [ ] SKILL.md body is lean; progressive disclosure is obvious.
+- [ ] SKILL.md body is at or under 200 lines; progressive disclosure is obvious.
 - [ ] Phase gates and a quality checklist (with boxes) are present.
 - [ ] Ends with "Did this help?" + link to https://github.com/saif-shines/devex-kit/issues.
 - [ ] Cross-references `plugin-craft` for plugin restructure work.
@@ -156,10 +158,10 @@ At the end of every session, ask: **"Did this solve what you were trying to do?"
 
 ## When to Switch Skills
 - You are inside a plugin and the task is about the 5 restructure principles, agents, empty commands/, or plugin.json → `plugin-craft`.
-- You need the full eval harness, subagent grading, benchmark viewer, or the packaged `run_loop.py` optimizer right now → invoke the installed `/skill-creator` (or load the copy from `~/Downloads/SKILL.md`).
+- You need the full eval harness, subagent grading, benchmark viewer, or the packaged `run_loop.py` optimizer right now → invoke the installed `/skill-creator`.
 - You are doing non-skill work (SDK, docs, CLI, MCP, stories, DX) → `ask-devex` first, then the target skill.
 
 ## Relation to the Upstream Skill-Creator
-This skill distills the methodology into devex-kit form and keeps the orchestrator lean. The complete version (with every script, agent, viewer, and platform note) is the one you just replaced into `~/Downloads/SKILL.md` (and the installed `/skill-creator`). Use either: start here for anything that should follow the style of this kit.
+This skill distills the methodology into kit form and keeps the orchestrator lean. Use `/skill-creator` for the full eval harness. Start here for anything that should follow the style of this kit.
 
 State the phase or describe the skill you are building. Load the references when told. Ship a good one.

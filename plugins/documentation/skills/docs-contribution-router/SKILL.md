@@ -5,7 +5,7 @@ disable-model-invocation: true
 license: MIT
 metadata:
   author: saif-shines
-  version: "1.1"
+  version: "1.2"
   type: router
   mode: directive
   maturity_score: 10
@@ -14,6 +14,8 @@ metadata:
 # Docs contribution router
 
 Route contributors to the right content type, placement, and workflow before they start writing. Output a clear action plan: content type, file path, frontmatter starter, and a sidebar label suggestion.
+
+It does not write the page (that's `docs-writing-style`).
 
 Do not wait for a polished proposal. Route on stated intent. "I want to document X" is enough.
 

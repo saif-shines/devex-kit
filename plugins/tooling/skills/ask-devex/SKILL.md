@@ -5,7 +5,7 @@ disable-model-invocation: true
 license: MIT
 metadata:
   author: saif-shines
-  version: "1.1"
+  version: "1.2"
   type: router
   mode: directive
 ---
@@ -14,55 +14,13 @@ metadata:
 
 **The human starts `/ask-devex`.** The model does not auto-start this skill.
 
-This skill names the next kit skill and gives a ready-to-paste invocation.
+Name the next kit skill. Return a ready-to-paste invocation. Stop.
 
-State the goal or paste the raw request. Classify, recommend, and return the invocation.
+It does not do the target skill's work.
 
-## The Rule
+State the goal or paste the raw request.
 
-**Check for a devex-kit skill match BEFORE you start doing the work the skill covers.** 
-
-If there is even a 1% chance a devex-kit skill applies to the current task, invoke the router (or the target skill directly if you are certain). The target skill's instructions then become mandatory.
-
-Do not improvise patterns that a dedicated skill already encodes. The skills exist precisely to prevent common footguns in docs, SDKs, DX, GTM, and tooling.
-
-```dot
-digraph devex_routing {
-    "Task received (docs / SDK / CLI / MCP / GTM / plugin work)" [shape=doublecircle];
-    "Might any devex-kit skill apply (1% rule)?" [shape=diamond];
-    "Invoke /ask-devex <task>" [shape=box];
-    "Router recommends exact skill + invocation" [shape=box];
-    "Load or invoke the recommended skill(s)" [shape=box];
-    "Follow that skill's rules exactly (load its references when told)" [shape=box];
-    "Do the work inside the skill's guardrails" [shape=box];
-    "Task complete or handoff to another skill" [shape=doublecircle];
-
-    "Task received (docs / SDK / CLI / MCP / GTM / plugin work)" -> "Might any devex-kit skill apply (1% rule)?";
-    "Might any devex-kit skill apply (1% rule)?" -> "Invoke /ask-devex <task>" [label="yes"];
-    "Might any devex-kit skill apply (1% rule)?" -> "Do the work inside the skill's guardrails" [label="definitely not"];
-    "Invoke /ask-devex <task>" -> "Router recommends exact skill + invocation";
-    "Router recommends exact skill + invocation" -> "Load or invoke the recommended skill(s)";
-    "Load or invoke the recommended skill(s)" -> "Follow that skill's rules exactly (load its references when told)";
-    "Follow that skill's rules exactly (load its references when told)" -> "Do the work inside the skill's guardrails";
-    "Do the work inside the skill's guardrails" -> "Task complete or handoff to another skill";
-}
-```
-
-## Red Flags: STOP and Route First
-
-These thoughts mean you are about to skip the router (and the value of the kit):
-
-| Thought | Reality |
-|---------|---------|
-| "I already know which skill to use" | The router catches cross-skill workflows, sequencing, and "use A then B" cases that a single skill never sees. |
-| "This is just a quick docs question" | Quick questions are still contributions or style reviews. Router surfaces the right branch immediately. |
-| "I'll just build the SDK the normal way" | sdk-craft encodes the exact design/build/document/ship sequence and phase gates that prevent bad SDKs. |
-| "I can pick the content type myself" | docs-contribution-router + placement maps stop the most common "put it in the wrong place" errors. |
-| "The task is too small for a formal skill" | Small tasks are where the biggest consistency wins (and losses) happen. |
-| "I remember what the skill says" | Skills evolve. The current version (with its references) is the source of truth. Load it. |
-| "I'll read the skill after I start" | The rule is: route first, then the skill's process becomes your process. Load it. |
-
-All of the above mean: invoke `/ask-devex` (or the specific skill) before you write another sentence or line.
+**Done when:** the user has one skill name and one invocation line.
 
 ## Quick Routing Table
 
@@ -86,11 +44,11 @@ When the task legitimately spans two skills (very common), the router will tell 
 
 ## How to Invoke (by environment)
 
-**Claude Code (installed via skills.sh or tessl):**
+**Claude Code (installed via marketplace or `npx skills`):**
 ```
 /ask-devex <your task description>
 ```
-Then immediately follow the returned recommendation, e.g. paste the suggested `/sdk-craft ...` line.
+Then follow the returned recommendation, e.g. paste the suggested `/sdk-craft ...` line.
 
 **Local development (no install):**
 ```
@@ -137,7 +95,6 @@ Before ending the routing session:
 - [ ] User received at least one ready-to-use slash invocation (with example arguments).
 - [ ] Sequencing / multi-skill cases were called out when present.
 - [ ] Platform-specific load instructions were given if the user is working locally.
-- [ ] Red-flag rationalizations were countered if they appeared.
 - [ ] "Did this help?" question was asked at the end.
 
 ## Did this help?

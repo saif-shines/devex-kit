@@ -36,3 +36,7 @@ Write skill text in imperative voice.
 Do not start a skill with "You are".
 Do not use em-dashes.
 Keep `metadata.type` and `metadata.mode` in frontmatter.
+
+## Kit router
+
+The human starts `/ask-devex` to name the next kit skill. Do not start that skill unasked.

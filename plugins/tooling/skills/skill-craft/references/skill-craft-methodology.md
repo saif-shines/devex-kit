@@ -43,16 +43,17 @@ metadata:
 ---
 ```
 
-**Body shape (lean, ~1500-2000 words ideal):**
+**Body shape (at or under 200 lines):**
 - Opening phase/mode table.
 - Imperative voice throughout.
 - `> For expanded ... load `references/xxx.md`` for anything long.
 - Phase gates + quality checklist.
 - "Did this help?" + github issue link at the end.
+- Every step ends on a checkable **Done when** line.
 
 **Progressive disclosure (critical):**
 - Metadata (name+desc) always loaded.
-- SKILL.md body when triggered (<500 lines ideal).
+- SKILL.md body when triggered (at or under 200 lines).
 - references/, examples/, scripts/ loaded on demand.
 
 Move exhaustive tables, long checklists, full code samples, schemas, anti-patterns, and platform variants into references/.
@@ -66,7 +67,7 @@ Move exhaustive tables, long checklists, full code samples, schemas, anti-patter
 
 **Name & description quality:**
 - name: lowercase letters, digits, hyphens; 2-64 chars.
-- description: third person; include the exact phrases that should auto-trigger the skill; be a little "pushy" to combat under-triggering.
+- description: third person; action first, then `Use when`, then a sibling `It does not … (that's \`name\`)`. One trigger per branch.
 
 ## Testing & Iteration (when objective outputs or high stakes)
 - Put runs in `<skill-name>-workspace/iteration-N/eval-M/{with_skill,old_skill,without_skill}/`.
@@ -77,13 +78,13 @@ Move exhaustive tables, long checklists, full code samples, schemas, anti-patter
 
 For subjective skills, favor qualitative review over heavy assertions.
 
-See the full upstream skill-creator (your local `~/Downloads/SKILL.md` after the replacement step, or the installed `/skill-creator`) for the detailed eval harness, timing capture, viewer invocation, blind-comparison agents, and Cowork/Claude.ai/Cowork adaptation notes.
+Use the installed `/skill-creator` for the detailed eval harness, timing capture, viewer, and blind-comparison agents.
 
 ## Description Optimization (after the skill is good)
 Offer this step. It improves auto-triggering.
 
 - Generate 15-20 realistic eval queries (mix should-trigger / should-not-trigger). Real user phrasing, file names, context, edge cases. Near-misses are gold.
-- Use the HTML review template (see upstream `assets/eval_review.html` or re-implement a simple version) so the user can edit/toggle and export `~/Downloads/eval_set.json`.
+- Use the HTML review template (see upstream `assets/eval_review.html` or re-implement a simple version) so the user can edit/toggle and export an `eval_set.json`.
 - Run the optimization loop (upstream `scripts/run_loop.py` or equivalent). It trains on 60%, holds out 40%, iterates descriptions, returns best_description by test score.
 - Apply the winner to the frontmatter; show before/after + scores.
 
@@ -98,6 +99,6 @@ For updating an installed skill later: copy to /tmp first (installed locations c
 
 ## When to Use the Full Upstream Skill-Creator vs This
 - Use **this skill** (`skill-craft`) for: learning the devex-kit conventions, writing your first devex skill, keeping SKILL.md lean, following the 5 principles, routing through ask-devex.
-- Use the **full /skill-creator** (or the copy now in your ~/Downloads) when you need the complete eval harness, subagent grading, benchmark viewer, description optimizer scripts, blind A/B, or the heavy iteration loop with quantitative variance.
+- Use the **full /skill-creator** when you need the complete eval harness, subagent grading, benchmark viewer, description optimizer scripts, blind A/B, or the heavy iteration loop with quantitative variance.
 
 Both are valuable. Start here for anything that will live in (or follow the style of) devex-kit.

@@ -1,11 +1,13 @@
 ---
 name: plugin-craft
 description: |
-  Design, build, restructure, and ship Claude Code plugins using the modern skills-first + agents + externalized references model. Use this skill when creating a new plugin, writing or refactoring skills, building spawnable agents, externalizing reference material into references/ or docs/, de-emphasizing commands, or asking about "plugin development", "create skill", "write agent", "restructure plugin", "SKILL.md best practices", "references/ in plugins", "agent orchestration", "pr-review-toolkit", "docs-engineering plugin", or the 5 restructure principles. Also activates for questions about lean SKILL.md, progressive disclosure, scalekit-code-doctor pattern, plugin.json, tile.json, or packaging for devex-kit and marketplaces.
+  Design and restructure Claude Code plugins.
+  Use when applying the five restructure principles, adding agents, or packaging a plugin.
+  It does not write a kit SKILL.md (that's `skill-craft`).
 license: MIT
 metadata:
   author: saif-shines
-  version: "1.0"
+  version: "1.1"
   type: assistive
   mode: lifecycle
 ---
@@ -91,7 +93,7 @@ Follow these devex-kit conventions exactly:
 
 > For the exact frontmatter template, description best practices, full body organization, subagent handoff rules, common mistakes, and a ready-to-copy skeleton, load `references/skill-development.md`.
 
-The target length for the SKILL.md body itself is 1,500–2,000 words. Everything beyond that lives in references/.
+Keep each SKILL.md body at or under 200 lines. Everything beyond that lives in references/.
 
 ---
 
@@ -194,7 +196,7 @@ Before declaring the plugin or skill complete:
 - [ ] Commands/ dir exists and is empty or contains only .deleted shims (no logic)
 - [ ] Agents/ dir exists and is empty or contains only 0–6 focused specialists with rich example blocks in their descriptions
 - [ ] Every SKILL.md uses the exact devex-kit frontmatter (license + metadata block)
-- [ ] SKILL.md body is imperative, uses tables for decisions, contains phase gates + quality checklist, ends with "Did this help?", and delegates via `> For expanded ... load `references/...`` 
+- [ ] SKILL.md body is at or under 200 lines, imperative, uses tables for decisions, contains phase gates + quality checklist, ends with "Did this help?", and delegates via `> For expanded ... load `references/...`` 
 - [ ] All long tables, exhaustive checklists, framework samples, anti-patterns, and reference data live in references/ or sibling .md files (scalekit-code-doctor pattern)
 - [ ] At least one skill demonstrates the examples/ sibling pattern
 - [ ] Plugin README documents the 5 principles and canonical vs adapter layers

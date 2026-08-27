@@ -1,13 +1,9 @@
 ---
 name: freecodecamp-style
 description: |
-  Author, review, and package freeCodeCamp publication tutorials against the
-  official Publication Style Guide and Hashnode contributor workflow.
-  Use when the user asks to "write freecodecamp style", "fCC tutorial",
-  "freeCodeCamp style guide", "Hashnode draft for freeCodeCamp", "review this
-  for freecodecamp", "fCC headline", "submit to freeCodeCamp editorial",
-  "freeCodeCamp handbook", or mentions freeCodeCamp /news publication style,
-  dual-submit (Submit Article + email draft URL), or MathJax tag requirements.
+  Author and review freeCodeCamp /news tutorials.
+  Use when writing an fCC tutorial, a Hashnode draft, or a dual-submit checklist.
+  It does not set kit house voice (that's `docs-writing-style`).
 version: 0.1.0
 license: MIT
 metadata:

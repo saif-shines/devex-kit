@@ -1,11 +1,13 @@
 ---
 name: pragmatic-fp
 description: |
-  Pragmatic 80/20 guide to functional programming in TypeScript with fp-ts, drawing from Functional-Light JavaScript principles. Master pipe, Option, Either, map, and flatMap: and know exactly when to skip FP entirely for readable, "reasonable" code. Use this skill for a pragmatic starting point for fp-ts or functional programming in TypeScript, when the task is exploratory or educational and needs the 80/20 view of what is actually worth adopting, deciding if FP helps or hurts readability, replacing defensive null checks and try-catch with Option/Either, or getting before-and-after refactors for real code. Also activates for questions about "pragmatic functional programming", "fp-ts pipe Option Either", "when not to use functional programming", "80/20 fp-ts", "functional light", "FLJS", "reasonable code", "Kyle Simpson FP", or "pragmatic fp in TypeScript".
+  Apply 80/20 fp-ts in TypeScript and skip FP when it hurts readability.
+  Use when choosing pipe, Option, or Either, or deciding whether FP helps the code.
+  It does not apply named community styles (that's `code-style-patterns`).
 license: MIT
 metadata:
   author: saif-shines
-  version: "1.0"
+  version: "1.1"
   type: assistive
   mode: directive
 ---

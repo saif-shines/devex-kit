@@ -1,11 +1,13 @@
 ---
 name: code-style-patterns
 description: |
-  Curated code style patterns, idioms, and conventions drawn from popular GitHub developers and respected open source contributors (starting with shadcn, sindresorhus, and ahmadawais). Use this when you want to apply real-world community-proven patterns (e.g. "shadcn style", "write like shadcn", "shadcn/ui patterns", "sindresorhus style", "Sindre Sorhus patterns", "tiny elegant utilities", "ahmadawais style", "Ahmad Awais CLI patterns", "WordPress CLI workflows"), author or maintain collections of such styles, get before/after examples, or decide when a popular pattern is appropriate. Also activates for mentions of "patterns from popular github users", "community code styles", "hero patterns", "open source style guides", "authoring code styles", "shadcn", "sindresorhus", "ahmadawais", or specific developer names + style.
+  Apply community code styles from shadcn, sindresorhus, or ahmadawais.
+  Use when the user names those styles or wants a community pattern applied to code.
+  It does not design plugins (that's `plugin-craft`).
 license: MIT
 metadata:
   author: saif-shines
-  version: "1.0"
+  version: "1.1"
   type: assistive
   mode: directive
 ---
