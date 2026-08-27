@@ -159,7 +159,7 @@ At the end of every session, ask: **"Did this solve what you were trying to do?"
 ## When to Switch Skills
 - You are inside a plugin and the task is about the 5 restructure principles, agents, empty commands/, or plugin.json → `plugin-craft`.
 - You need the full eval harness, subagent grading, benchmark viewer, or the packaged `run_loop.py` optimizer right now → invoke the installed `/skill-creator`.
-- You are doing non-skill work (SDK, docs, CLI, MCP, stories, DX) → `ask-devex` first, then the target skill.
+- You are doing non-skill work (SDK, docs, CLI, MCP, stories, DX) → `ask-saif` first, then the target skill.
 
 ## Relation to the Upstream Skill-Creator
 This skill distills the methodology into kit form and keeps the orchestrator lean. Use `/skill-creator` for the full eval harness. Start here for anything that should follow the style of this kit.

@@ -28,7 +28,7 @@ Apply recorded bumps with `npm run version`.
 
 When adding, renaming, removing, or changing when a skill should be used, update the kit router table.
 A router that omits a new skill, or still routes to a removed skill, is a router that lies.
-The kit router skill is `plugins/tooling/skills/ask-devex/SKILL.md`.
+The kit router skill is `plugins/tooling/skills/ask-saif/SKILL.md`.
 
 ## Voice
 
@@ -39,4 +39,4 @@ Keep `metadata.type` and `metadata.mode` in frontmatter.
 
 ## Kit router
 
-The human starts `/ask-devex` to name the next kit skill. Do not start that skill unasked.
+The human starts `/ask-saif` to name the next kit skill. Do not start that skill unasked.
