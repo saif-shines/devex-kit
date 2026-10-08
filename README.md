@@ -4,6 +4,8 @@ Skills for documentation, SDKs, CLIs, MCP servers, and developer go-to-market.
 
 You install a plugin or a single skill. Then you type a slash command. The agent follows that skill.
 
+To check a skill before you share it, run `dora review --quick`. Install that with `npx skills add saif-shines/doraval`.
+
 This kit is generic. Scalekit-only docs work (agent connectors, CODEOWNERS escalation) lives in [skillkit](https://github.com/saif-shines/skillkit) `docs-engineering`.
 
 Longer install examples and author notes: [saifshines.dev/devex-kit](https://saifshines.dev/devex-kit).
